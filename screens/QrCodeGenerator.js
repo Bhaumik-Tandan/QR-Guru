@@ -1,39 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, TextInput, Button } from 'react-native';
-import { QRCode } from 'react-native-custom-qr-codes-expo';
+import QR from '../component/QR';
 
 export default function QRCodeGenerator() {
-  const [value, onChangeText] = useState('');
   const [qrCodeContent, setQRCodeContent] = useState('');
 
-  const generateQRCode = () => {
-    setQRCodeContent(value);
-  };
+  useEffect(() => {
+  }, [qrCodeContent]);
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Enter text to generate QR code"
-        onChangeText={text => onChangeText(text)}
-        value={value}
+        onChangeText={text => {
+          setQRCodeContent(text); // Update QR code content as text changes
+        }}
+        value={qrCodeContent}
       />
 
-      <Button title="Generate QR Code" onPress={generateQRCode} />
 
-      {qrCodeContent && (
-        <QRCode
-          content={qrCodeContent}
-          codeStyle='circle'
-          outerEyeStyle='circle'
-          innerEyeStyle='circle'
-          size={250}
-          color='black'
-          backgroundColor='blue'
-          padding={10}
-          linearGradient={['rgb(255,0,0)','rgb(0,255,255)']}
-        />
-      )}
+      <QR qrCodeContent={qrCodeContent} />
     </View>
   );
 }
