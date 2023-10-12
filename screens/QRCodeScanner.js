@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, Linking, TouchableOpacity, TextInput, Button } from 'react-native';
 import * as BarCodeScanner from 'expo-barcode-scanner';
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from '../helper/res';
-import { BlurView } from 'expo-blur';
-import { Camera } from 'expo-camera';
-import QRIndicator from '../component/QRIndicator';
+import CameraScanner from '../component/CameraScanner';
 
 function isUrl(str) {
   str = str.toLowerCase();
-  return /^(https?|ftp|file|data):\/\//.test(str) || str.includes('.');
+  return /^(https?|ftp|file|data):\/\//.test(str) || str.includes("//");
 }
 
 const QRCodeScanner = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [scannedData, setScannedData] = useState('');
+  const [isLit, setIsLit] = useState(false);
 
   useEffect(() => {
     const checkCameraPermission = async () => {
@@ -62,16 +61,12 @@ const QRCodeScanner = () => {
           </TouchableOpacity>
         </View>
       ) : (
-        <View style={styles.scannerContainer}>
-            <Camera
-          barCodeScannerSettings={{
-            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-          }}
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={StyleSheet.absoluteFill}
+        <CameraScanner
+          handleBarCodeScanned={handleBarCodeScanned}
+          isLit={isLit}
+          setIsLit={setIsLit}
         />
-        <QRIndicator />
-        </View>
+
       )}
     </View>
   );
@@ -80,16 +75,6 @@ const QRCodeScanner = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  scannerContainer: {
-    width: calcWidth(100),
-    height: calcHeight(100),
-    overflow: 'hidden',
-    zIndex: 1,
-    flex: 1,
-    backgroundColor: '#000',
     justifyContent: 'center',
     alignItems: 'center',
   },
