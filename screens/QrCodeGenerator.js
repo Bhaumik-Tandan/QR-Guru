@@ -100,14 +100,14 @@ export default function QRCodeGenerator() {
     <TouchableOpacity
       style={{ flex: 1, justifyContent: 'center',
       alignItems: 'center' }}
-      onPress={captureQrCode}
+      onPress={selectImage}
     >
       <EvilIcons name="image" size={50} color="black" />
     </TouchableOpacity>
     <TouchableOpacity
       style={{ flex: 1,justifyContent: 'center',
       alignItems: 'center' }}
-      onPress={selectImage}
+      onPress={captureQrCode}
     >
      <AntDesign name="sharealt" size={50} color="black"  />
     </TouchableOpacity>
