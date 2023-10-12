@@ -25,12 +25,10 @@ function BannerAdComponent() {
 
 const styles = StyleSheet.create({
   adBannerContainer: {
-    position: 'absolute',
-    bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%', // Adjust the width as needed
-    height: calcHeight(8),   // Adjust the height as needed
+    height: calcHeight(10),   // Adjust the height as needed
   },
 });
 
