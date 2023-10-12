@@ -15,12 +15,12 @@ const QRCodeScanner = () => {
   const [scannedData, setScannedData] = useState('');
   const [isLit, setIsLit] = useState(false);
 
-  const checkCameraPermission = async () => {
-    const { status } = await BarCodeScanner.getPermissionsAsync();
-    setHasPermission(status === 'granted');
-  };
 
   useEffect(() => {
+    const checkCameraPermission = async () => {
+      const { status } = await BarCodeScanner.getPermissionsAsync();
+      setHasPermission(status === 'granted');
+    };
     checkCameraPermission();
   }, []);
 

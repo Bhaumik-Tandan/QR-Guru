@@ -16,7 +16,6 @@ export default function QRCodeGenerator() {
   // State for QR code content and background image
   const [qrCodeContent, setQRCodeContent] = useState('');
   const [backgroundImage, setBackgroundImage] = useState(null);
-  console.log(require('../assets/back.jpg'));
 
   // Reference to capture QR code view
   const qrCodeView = useRef(null);
