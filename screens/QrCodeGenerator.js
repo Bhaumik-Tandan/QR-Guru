@@ -1,26 +1,18 @@
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet, TextInput, Button } from 'react-native';
+import { View,ScrollView, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import QR from '../component/QR';
 import { calcHeight } from '../helper/res';
 import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
-
-
-
-
-
+import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 
 export default function QRCodeGenerator() {
-  // State for QR code content and background image
   const [qrCodeContent, setQRCodeContent] = useState('');
   const [backgroundImage, setBackgroundImage] = useState(null);
-
-  // Reference to capture QR code view
   const qrCodeView = useRef(null);
 
-  // Function to share the generated QR code
   const shareQrCode = async (imageUri) => {
     const cacheUri = `${FileSystem.cacheDirectory}qrCode.jpg`;
 
@@ -45,7 +37,6 @@ export default function QRCodeGenerator() {
     }
   };
 
-  // Function to capture the QR code
   const captureQrCode = async () => {
     if (qrCodeView.current) {
       try {
@@ -68,11 +59,9 @@ export default function QRCodeGenerator() {
         const selectedImagePath = result.assets[0].uri;
   
         try {
-          // Check if the source file exists
           const fileInfo = await FileSystem.getInfoAsync(selectedImagePath);
   
           if (fileInfo.exists) {
-            // Set the selected image as the background
             setBackgroundImage(selectedImagePath);
           } else {
             console.error('Source image does not exist.');
@@ -87,38 +76,45 @@ export default function QRCodeGenerator() {
       console.log('Permission to access media library not granted.');
     }
   };
-  
-
 
   return (
-    <View style={styles.container}>
-      {/* Input for QR code content */}
+    <ScrollView contentContainerStyle={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Enter text to generate QR code"
-        onChangeText={(text) => {
-          setQRCodeContent(text);
-        }}
+        onChangeText={(text) => setQRCodeContent(text)}
         value={qrCodeContent}
         numberOfLines={10}
       />
 
-      {/* Button to select a background image */}
-      <Button title="Select Background Image" onPress={selectImage} />
 
-      {/* View for capturing the QR code with optional background image */}
       <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView}>
-  {backgroundImage ? (
-    <QR qrCodeContent={qrCodeContent} backgroundImage={{ uri: backgroundImage }} />
-  ) : (
-    <QR qrCodeContent={qrCodeContent} />
-  )}
-</ViewShot>
+        {backgroundImage ? (
+          <QR qrCodeContent={qrCodeContent} backgroundImage={{ uri: backgroundImage }} />
+        ) : (
+          <QR qrCodeContent={qrCodeContent} />
+        )}
+      </ViewShot>
+      {qrCodeContent && (
+  <View style={styles.iconContainer}>
+    <TouchableOpacity
+      style={{ flex: 1, justifyContent: 'center',
+      alignItems: 'center' }}
+      onPress={captureQrCode}
+    >
+      <EvilIcons name="image" size={50} color="black" />
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={{ flex: 1,justifyContent: 'center',
+      alignItems: 'center' }}
+      onPress={selectImage}
+    >
+     <AntDesign name="sharealt" size={50} color="black"  />
+    </TouchableOpacity>
+  </View>
+)}
 
-
-      {/* Button to share the generated QR code */}
-      {qrCodeContent && <Button title="Share QR Code" onPress={captureQrCode} />}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -127,14 +123,21 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: 'center',
+    justifyContent: 'center', // Center content vertically
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: calcHeight(10), // Add margin to the input
     paddingHorizontal: 10,
     width: '100%',
     height: calcHeight(10),
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: calcHeight(5), // Add margin above the icons
+    width: '100%'
   },
 });
