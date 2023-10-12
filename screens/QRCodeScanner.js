@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, Linking, TouchableOpacity, TextInput, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Linking, Button } from 'react-native';
 import * as BarCodeScanner from 'expo-barcode-scanner';
-import { calcHeight, calcWidth, getFontSizeByWindowWidth } from '../helper/res';
 import CameraScanner from '../component/CameraScanner';
 import ScannedResult from '../component/ScannedResult';
 
@@ -16,12 +15,12 @@ const QRCodeScanner = () => {
   const [scannedData, setScannedData] = useState('');
   const [isLit, setIsLit] = useState(false);
 
-  useEffect(() => {
-    const checkCameraPermission = async () => {
-      const { status } = await BarCodeScanner.getPermissionsAsync();
-      setHasPermission(status === 'granted');
-    };
+  const checkCameraPermission = async () => {
+    const { status } = await BarCodeScanner.getPermissionsAsync();
+    setHasPermission(status === 'granted');
+  };
 
+  useEffect(() => {
     checkCameraPermission();
   }, []);
 

@@ -1,19 +1,25 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, TextInput, Button } from 'react-native';
 import QR from '../component/QR';
 import { calcHeight } from '../helper/res';
 import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
+import {
+  launchCamera,
+  launchImageLibrary,
+  CameraOptions,
+  ImageLibraryOptions,
+} from 'react-native-image-picker';
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
+  const [backgroundImage, setBackgroundImage] = useState(null);
   const qrCodeView = useRef(null);
 
   const shareQrCode = async (imageUri) => {
     const cacheUri = `${FileSystem.cacheDirectory}qrCode.jpg`;
 
-    // Create a copy of the local image to the cache directory
     await FileSystem.copyAsync({ from: imageUri, to: cacheUri });
 
     const shareOptions = {
@@ -47,19 +53,36 @@ export default function QRCodeGenerator() {
     }
   };
 
+  const selectImage = () => {
+    const options = {
+      title: 'Select Background Image',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    launchImageLibrary(options, (response) => {
+      if (response.uri) {
+        setBackgroundImage(response.uri);
+      }
+    });
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Enter text to generate QR code"
         onChangeText={(text) => {
-          setQRCodeContent(text); // Update QR code content as text changes
+          setQRCodeContent(text);
         }}
         value={qrCodeContent}
         numberOfLines={10}
       />
+      {/* <Button title="Select Background Image" onPress={selectImage} /> */}
       <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView}>
-        <QR qrCodeContent={qrCodeContent} />
+        <QR qrCodeContent={qrCodeContent} backgroundImage={backgroundImage} />
       </ViewShot>
       {qrCodeContent && <Button title="Share QR Code" onPress={captureQrCode} />}
     </View>

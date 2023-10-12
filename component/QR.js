@@ -18,20 +18,13 @@ class QR extends Component {
   }
 
   render() {
-    const { qrCodeContent } = this.props;
+    const { qrCodeContent,backgroundImage } = this.props;
     const { showQrCode } = this.state;
 
     return qrCodeContent && showQrCode && (
       <QRCode
         content={qrCodeContent}
-        codeStyle='circle'
-        outerEyeStyle='circle'
-        innerEyeStyle='circle'
-        size={250}
-        color='black'
-        backgroundColor='blue'
-        padding={10}
-        linearGradient={['rgb(255,0,0)', 'rgb(0,255,255)']}
+        backgroundImage={backgroundImage}
       />
     );
   }
