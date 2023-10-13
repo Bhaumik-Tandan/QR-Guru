@@ -6,6 +6,7 @@ import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 import getLocalImage from '../helper/getLocalImage';
+import * as FileSystem from 'expo-file-system';                     
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');

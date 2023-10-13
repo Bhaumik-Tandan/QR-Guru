@@ -29,7 +29,7 @@ const QRCodeScanner = () => {
     setHasPermission(status === 'granted');
   };
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     setScannedData(data);
     if (isUrl(data)) Linking.openURL(data);
