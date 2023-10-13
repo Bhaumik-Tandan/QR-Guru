@@ -9,13 +9,19 @@ import getLocalImage from '../helper/getLocalImage';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-async function getImage() {
-  const image = await getLocalImage();
-  console.log(image,"dcc");
-}
 
 const CameraScanner = ({ handleBarCodeScanned, isLit, setIsLit }) => {
     const { bottom } = useSafeAreaInsets();
+    async function getImage() {
+      const image = await getLocalImage();
+      const scannedResults = await BarCodeScanner.BarCodeScanner.scanFromURLAsync(
+        image
+      );
+      if(scannedResults.length > 0) {
+        handleBarCodeScanned(scannedResults[0]);
+      }
+      alert('No QR code found in image');
+    }
   return (
     <View style={styles.scannerContainer}>
       <Camera
