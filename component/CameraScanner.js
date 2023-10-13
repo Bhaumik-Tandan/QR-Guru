@@ -6,6 +6,7 @@ import QRFooterButton from './QRFooterButton';
 import { calcHeight, calcWidth } from '../helper/res';
 import * as BarCodeScanner from 'expo-barcode-scanner';
 import getLocalImage from '../helper/getLocalImage';
+import getQrDataFromImage from '../helper/getQrDataFromImage';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -14,9 +15,7 @@ const CameraScanner = ({ handleBarCodeScanned, isLit, setIsLit }) => {
     const { bottom } = useSafeAreaInsets();
     async function getImage() {
       const image = await getLocalImage();
-      const scannedResults = await BarCodeScanner.BarCodeScanner.scanFromURLAsync(
-        image
-      );
+      const scannedResults = await getQrDataFromImage(image);
       if(scannedResults.length > 0) {
         handleBarCodeScanned(scannedResults[0]);
       }
