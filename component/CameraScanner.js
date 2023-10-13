@@ -18,6 +18,7 @@ const CameraScanner = ({ handleBarCodeScanned, isLit, setIsLit }) => {
       const scannedResults = await getQrDataFromImage(image);
       if(scannedResults.length > 0) {
         handleBarCodeScanned(scannedResults[0]);
+        return;
       }
       alert('No QR code found in image');
     }

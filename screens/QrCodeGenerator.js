@@ -6,7 +6,8 @@ import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 import getLocalImage from '../helper/getLocalImage';
-import * as FileSystem from 'expo-file-system';                     
+import * as FileSystem from 'expo-file-system';    
+import getQrDataFromImage from '../helper/getQrDataFromImage';                 
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
@@ -49,10 +50,27 @@ export default function QRCodeGenerator() {
     }
   };
 
+  const validateQrCodeContent = async () => {
+    if (qrCodeView.current) {
+      try {
+        const uri = await qrCodeView.current.capture();
+        const qrData=await getQrDataFromImage(uri);
+        if(qrData.length==0){
+          alert("Image is not fit for QR code");
+        }
+      } catch (error) {
+        console.error('Error capturing QR code:', error);
+      }
+    }
+  }
+
   async function selectImage() {
     try {
       const localImageUri = await getLocalImage();
       setBackgroundImage(localImageUri);
+      setTimeout(() => {
+      validateQrCodeContent();
+      }, 1000);
     } catch (error) {
       console.error('Error selecting image:', error);
     }
