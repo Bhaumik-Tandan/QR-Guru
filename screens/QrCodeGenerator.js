@@ -4,9 +4,8 @@ import QR from '../component/QR';
 import { calcHeight } from '../helper/res';
 import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
-import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
 import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
+import getLocalImage from '../helper/getLocalImage';
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
@@ -49,33 +48,14 @@ export default function QRCodeGenerator() {
     }
   };
 
-  const selectImage = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  
-    if (permissionResult.granted) {
-      const result = await ImagePicker.launchImageLibraryAsync();
-  
-      if (result.assets && result.assets.length > 0 && result.assets[0].uri) {
-        const selectedImagePath = result.assets[0].uri;
-  
-        try {
-          const fileInfo = await FileSystem.getInfoAsync(selectedImagePath);
-  
-          if (fileInfo.exists) {
-            setBackgroundImage(selectedImagePath);
-          } else {
-            console.error('Source image does not exist.');
-          }
-        } catch (error) {
-          console.error('Error selecting image:', error);
-        }
-      } else {
-        console.log('Image selection canceled or result.uri is null.');
-      }
-    } else {
-      console.log('Permission to access media library not granted.');
+  async function selectImage() {
+    try {
+      const localImageUri = await getLocalImage();
+      setBackgroundImage(localImageUri);
+    } catch (error) {
+      console.error('Error selecting image:', error);
     }
-  };
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

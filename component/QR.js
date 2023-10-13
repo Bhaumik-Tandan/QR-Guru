@@ -10,7 +10,7 @@ class QR extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.qrCodeContent !== prevProps.qrCodeContent) {
+    if (this.props.qrCodeContent !== prevProps.qrCodeContent || this.props.backgroundImage !== prevProps.backgroundImage) {
       this.setState({ showQrCode: false }, () => {
         this.setState({ showQrCode: true });
       });
@@ -25,6 +25,10 @@ class QR extends Component {
       <QRCode
         content={qrCodeContent}
         backgroundImage={backgroundImage}
+        color={"#000000"}
+        codeStyle="square"
+        backgroundColor={"#ffffff"}
+        gradientDirection={"horizontal"}
       />
     );
   }
