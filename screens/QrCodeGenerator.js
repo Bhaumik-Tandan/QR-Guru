@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { View,ScrollView, StyleSheet, TextInput, TouchableOpacity,Text } from 'react-native';
-import QR from '../component/QR';
+import QRDisplay from '../component/QRDisplay';
 import { calcHeight } from '../helper/res';
-import ViewShot from 'react-native-view-shot';
 import * as Sharing from 'expo-sharing';
 import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 import getLocalImage from '../helper/getLocalImage';
 import * as FileSystem from 'expo-file-system';    
 import getQrDataFromImage from '../helper/getQrDataFromImage';  
-import { FontAwesome } from '@expo/vector-icons';               
+import { FontAwesome } from '@expo/vector-icons';          
+import IconButtons from '../component/IconButtons';     
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
@@ -92,43 +92,15 @@ export default function QRCodeGenerator() {
       />
 
 
-      <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView} style={{backgroundColor:"#fff"}} >
-        {backgroundImage ? (
-          <QR qrCodeContent={qrCodeContent} backgroundImage={{ uri: backgroundImage }} />
-        ) : (
-          <QR qrCodeContent={qrCodeContent} />
-        )}
-      </ViewShot>
-      {qrCodeContent && (
-  <View style={styles.iconContainer}>
-    <TouchableOpacity
-      style={{ flex: 1, justifyContent: 'center',
-      alignItems: 'center' }}
-      onPress={selectImage}
-    >
-      <EvilIcons name="image" size={50} color="black" />
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={{ flex: 1,justifyContent: 'center',
-      alignItems: 'center' }}
-      onPress={captureQrCode}
-    >
-     <AntDesign name="sharealt" size={50} color="black"  />
-    </TouchableOpacity>
-    {backgroundImage && (
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              onPress={clearBackgroundImage}
-            >
-              <FontAwesome name="remove" size={50} color="red" />
-            </TouchableOpacity>
-          )}
-  </View>
-)}
+       <QRDisplay qrCodeContent={qrCodeContent} backgroundImage={backgroundImage} qrCodeView={qrCodeView} />
+       {qrCodeContent && (
+        <IconButtons
+          selectImage={selectImage}
+          captureQrCode={captureQrCode}
+          clearBackgroundImage={clearBackgroundImage}
+          backgroundImage={backgroundImage}
+        />
+      )}
 
     </ScrollView>
   );
@@ -149,11 +121,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     width: '100%',
     height: calcHeight(10),
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    margin: calcHeight(5), // Add margin above the icons
-    width: '100%'
-  },
+  }
 });
