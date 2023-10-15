@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View,ScrollView, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View,ScrollView, StyleSheet, TextInput, TouchableOpacity,Text } from 'react-native';
 import QR from '../component/QR';
 import { calcHeight } from '../helper/res';
 import ViewShot from 'react-native-view-shot';
@@ -7,12 +7,17 @@ import * as Sharing from 'expo-sharing';
 import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 import getLocalImage from '../helper/getLocalImage';
 import * as FileSystem from 'expo-file-system';    
-import getQrDataFromImage from '../helper/getQrDataFromImage';                 
+import getQrDataFromImage from '../helper/getQrDataFromImage';  
+import { FontAwesome } from '@expo/vector-icons';               
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
   const [backgroundImage, setBackgroundImage] = useState(null);
   const qrCodeView = useRef(null);
+
+  const clearBackgroundImage = () => {
+    setBackgroundImage(null);
+  };
 
   const shareQrCode = async (imageUri) => {
     const cacheUri = `${FileSystem.cacheDirectory}qrCode.jpg`;
@@ -110,6 +115,18 @@ export default function QRCodeGenerator() {
     >
      <AntDesign name="sharealt" size={50} color="black"  />
     </TouchableOpacity>
+    {backgroundImage && (
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={clearBackgroundImage}
+            >
+              <FontAwesome name="remove" size={50} color="red" />
+            </TouchableOpacity>
+          )}
   </View>
 )}
 
