@@ -25,7 +25,7 @@ class QR extends Component {
       <QRCode
         content={qrCodeContent}
         backgroundImage={backgroundImage}
-        color={"#000000"}
+        color={"#0802A3"}
         codeStyle="square"
         backgroundColor={"#ffffff"}
         gradientDirection={"horizontal"}

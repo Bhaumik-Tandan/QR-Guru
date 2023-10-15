@@ -87,7 +87,7 @@ export default function QRCodeGenerator() {
       />
 
 
-      <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView}>
+      <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView} style={{backgroundColor:"#fff"}} >
         {backgroundImage ? (
           <QR qrCodeContent={qrCodeContent} backgroundImage={{ uri: backgroundImage }} />
         ) : (
