@@ -2,7 +2,7 @@
   "expo": {
     "name": "QR Guru",
     "slug": "qrguru",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,7 +23,7 @@
         "backgroundColor": "#000"
       },
       "package": "com.qrguru.qrguru",
-      "versionCode": 4
+      "versionCode": 5
     },
     "web": {
       "favicon": "./assets/favicon.png"
