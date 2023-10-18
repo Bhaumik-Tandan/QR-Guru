@@ -10,13 +10,13 @@ const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgro
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         onPress={selectImage}
       >
-        <EvilIcons name="image" size={calcWidth(1)} color="black" />
+        <EvilIcons name="image" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
       <TouchableOpacity
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         onPress={captureQrCode}
       >
-        <AntDesign name="sharealt" size={calcWidth(1)} color="black" />
+        <AntDesign name="sharealt" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
       {backgroundImage && (
         <TouchableOpacity
@@ -27,7 +27,7 @@ const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgro
           }}
           onPress={clearBackgroundImage}
         >
-          <FontAwesome name="remove" size={calcWidth(1)} color="red" />
+          <FontAwesome name="remove" size={calcWidth(10)} color="red" />
         </TouchableOpacity>
       )}
     </View>
