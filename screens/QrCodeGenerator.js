@@ -45,7 +45,6 @@ export default function QRCodeGenerator() {
     if (qrCodeView.current) {
       try {
         const uri = await qrCodeView.current.capture();
-        console.log('Image saved to', uri);
         shareQrCode(uri);
       } catch (error) {
         console.error('Error capturing QR code:', error);
