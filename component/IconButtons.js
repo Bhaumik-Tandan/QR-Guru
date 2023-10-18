@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity,StyleSheet } from 'react-native';
 import { EvilIcons, AntDesign, FontAwesome } from '@expo/vector-icons';
-import { calcHeight } from '../helper/res';
+import { calcHeight,calcWidth } from '../helper/res';
 
 const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgroundImage }) => {
   return (
@@ -10,13 +10,13 @@ const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgro
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         onPress={selectImage}
       >
-        <EvilIcons name="image" size={50} color="black" />
+        <EvilIcons name="image" size={calcWidth(1)} color="black" />
       </TouchableOpacity>
       <TouchableOpacity
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         onPress={captureQrCode}
       >
-        <AntDesign name="sharealt" size={50} color="black" />
+        <AntDesign name="sharealt" size={calcWidth(1)} color="black" />
       </TouchableOpacity>
       {backgroundImage && (
         <TouchableOpacity
@@ -27,7 +27,7 @@ const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgro
           }}
           onPress={clearBackgroundImage}
         >
-          <FontAwesome name="remove" size={50} color="red" />
+          <FontAwesome name="remove" size={calcWidth(1)} color="red" />
         </TouchableOpacity>
       )}
     </View>

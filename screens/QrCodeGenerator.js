@@ -1,13 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { View,ScrollView, StyleSheet, TextInput, TouchableOpacity,Text } from 'react-native';
 import QRDisplay from '../component/QRDisplay';
-import { calcHeight } from '../helper/res';
+import { calcHeight, calcWidth } from '../helper/res';
 import * as Sharing from 'expo-sharing';
-import { EvilIcons,AntDesign } from '@expo/vector-icons'; 
 import getLocalImage from '../helper/getLocalImage';
 import * as FileSystem from 'expo-file-system';    
-import getQrDataFromImage from '../helper/getQrDataFromImage';  
-import { FontAwesome } from '@expo/vector-icons';          
+import getQrDataFromImage from '../helper/getQrDataFromImage'; 
 import IconButtons from '../component/IconButtons';     
 
 export default function QRCodeGenerator() {
@@ -109,16 +107,16 @@ export default function QRCodeGenerator() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: calcHeight(5),
     alignItems: 'center',
     justifyContent: 'center', // Center content vertically
   },
   input: {
-    height: 40,
+    height: calcHeight(10),
     borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: calcHeight(10), // Add margin to the input
-    paddingHorizontal: 10,
+    borderWidth: calcWidth(0.25),
+    marginBottom: calcHeight(2), // Add margin to the input
+    paddingHorizontal: calcWidth(2),
     width: '100%',
     height: calcHeight(10),
   }

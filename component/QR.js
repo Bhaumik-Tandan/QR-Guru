@@ -28,7 +28,6 @@ class QR extends Component {
         color={"#0802A3"}
         codeStyle="square"
         backgroundColor={"#ffffff"}
-        gradientDirection={"horizontal"}
       />
     );
   }
