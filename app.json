@@ -37,6 +37,7 @@
     "owner": "qr-guru"
   },
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-5499479031752321~6963395025"
+    "android_app_id": "ca-app-pub-5499479031752321~6963395025",
+    "ios_app_id": "ca-app-pub-5499479031752321~3152298051"
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { calcHeight } from '../../helper/res';
+import { Platform } from 'react-native';
 
 function BannerAdComponent() {
-  const adUnitId = 'ca-app-pub-5499479031752321/9214153841';
+  const adUnitId = Platform.OS==="android"?'ca-app-pub-5499479031752321/9214153841':'ca-app-pub-5499479031752321/7901243614';
   const {BannerAd, BannerAdSize, TestIds} = require('react-native-google-mobile-ads');
 
   return (

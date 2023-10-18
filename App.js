@@ -1,9 +1,8 @@
 import * as React from 'react';
 import TabNavigator from './navigator/TabNavigator';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
+import Constants from 'expo-constants';
 
 
 
@@ -11,8 +10,7 @@ export default function App() {
   return (
     <SafeAreaProvider
             style={{
-                paddingTop:
-                    Platform === 'android' ? Constants.statusBarHeight : 0,
+                paddingTop:Constants.statusBarHeight
             }}
         >
             <StatusBar style="auto" />
