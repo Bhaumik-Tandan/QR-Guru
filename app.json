@@ -42,6 +42,12 @@
         {
           "cameraPermission": "The app needs to access your camera to scan QR codes"
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs gallery access for two key features: scanning QR codes from your images and using gallery pictures as QR code backgrounds"
+        }
       ]
     ]
   },
