@@ -46,6 +46,24 @@
               "ENV": "productionTest"
           }
       },
+      "preview": {
+        "distribution": "store",
+        "releaseChannel": "main",
+        "android": {
+            "buildType": "app-bundle"
+        },
+        "cache": {
+            "key": "Invalidate"
+        },
+        "ios": {
+            "cocoapods": "1.11.2",
+            "enterpriseProvisioning": "universal",
+            "simulator": true
+        },
+        "env": {
+            "ENV": "production"
+        }
+    },
       "production": {
           "distribution": "store",
           "releaseChannel": "main",

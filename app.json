@@ -35,7 +35,15 @@
         "projectId": "c68f5747-460f-400c-b39c-664b2ed20208"
       }
     },
-    "owner": "qr-guru"
+    "owner": "qr-guru",
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "The app needs to access your camera to scan QR codes"
+        }
+      ]
+    ]
   },
   "react-native-google-mobile-ads": {
     "android_app_id": "ca-app-pub-5499479031752321~6963395025",
