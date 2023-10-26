@@ -1,10 +1,11 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Replace 'FontAwesome' with the icon library of your choice
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome"; // Replace 'FontAwesome' with the icon library of your choice
 import BannerAd from "../component/BannerAd";
-import QRCodeGenerator from '../screens/QrCodeGenerator';
-import QRCodeScanner from '../screens/QRCodeScanner';
+import GeneratorNavigator from "./GeneratorNavigator";
+import QRCodeScanner from "../screens/QRCodeScanner";
+import PAGES from "../constants/pages";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,13 +14,11 @@ function TabNavigator() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          header: () => (
-              <BannerAd /> 
-          ),
+          header: () => <BannerAd />,
         }}
       >
         <Tab.Screen
-          name="Scanner"
+          name={PAGES.SCANNER}
           component={QRCodeScanner}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -28,8 +27,8 @@ function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="Generator"
-          component={QRCodeGenerator}
+          name={PAGES.GENERATOR_NAVIGATOR}
+          component={GeneratorNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Icon name="qrcode" size={size} color={color} /> // Replace 'qrcode' with the icon name you want to use

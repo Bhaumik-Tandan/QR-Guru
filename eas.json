@@ -1,88 +1,88 @@
 {
   "cli": {
-      "version": ">= 5.2.0",
-      "promptToConfigurePushNotifications": false
+    "version": ">= 5.2.0",
+    "promptToConfigurePushNotifications": false
   },
   "build": {
-      "development": {
-          "releaseChannel": "staging",
-          "distribution": "internal",
-          "android": {
-              "gradleCommand": ":app:assembleDebug"
-          },
-          "ios": {
-              "cocoapods": "1.11.2",
-              "enterpriseProvisioning": "adhoc"
-          },
-          "env": {
-              "ENV": "development"
-          }
+    "development": {
+      "releaseChannel": "staging",
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
       },
-      "staging": {
-          "releaseChannel": "staging",
-          "distribution": "internal",
-          "android": {
-              "buildType": "apk"
-          },
-          "ios": {
-              "cocoapods": "1.11.2",
-              "enterpriseProvisioning": "adhoc"
-          },
-          "env": {
-              "ENV": "staging"
-          }
+      "ios": {
+        "cocoapods": "1.11.2",
+        "enterpriseProvisioning": "adhoc"
       },
-      "productionTest": {
-          "releaseChannel": "staging",
-          "distribution": "internal",
-          "android": {
-              "buildType": "apk"
-          },
-          "ios": {
-              "cocoapods": "1.11.2",
-              "enterpriseProvisioning": "adhoc"
-          },
-          "env": {
-              "ENV": "productionTest"
-          }
-      },
-      "preview": {
-        "distribution": "store",
-        "releaseChannel": "main",
-        "android": {
-            "buildType": "app-bundle"
-        },
-        "cache": {
-            "key": "Invalidate"
-        },
-        "ios": {
-            "cocoapods": "1.11.2",
-            "enterpriseProvisioning": "universal",
-            "simulator": true
-        },
-        "env": {
-            "ENV": "production"
-        }
-    },
-      "production": {
-          "distribution": "store",
-          "releaseChannel": "main",
-          "android": {
-              "buildType": "app-bundle"
-          },
-          "cache": {
-              "key": "Invalidate"
-          },
-          "ios": {
-              "cocoapods": "1.11.2",
-              "enterpriseProvisioning": "universal"
-          },
-          "env": {
-              "ENV": "production"
-          }
+      "env": {
+        "ENV": "development"
       }
+    },
+    "staging": {
+      "releaseChannel": "staging",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "cocoapods": "1.11.2",
+        "enterpriseProvisioning": "adhoc"
+      },
+      "env": {
+        "ENV": "staging"
+      }
+    },
+    "productionTest": {
+      "releaseChannel": "staging",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "cocoapods": "1.11.2",
+        "enterpriseProvisioning": "adhoc"
+      },
+      "env": {
+        "ENV": "productionTest"
+      }
+    },
+    "preview": {
+      "distribution": "store",
+      "releaseChannel": "main",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "cache": {
+        "key": "Invalidate"
+      },
+      "ios": {
+        "cocoapods": "1.11.2",
+        "enterpriseProvisioning": "universal",
+        "simulator": true
+      },
+      "env": {
+        "ENV": "production"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "releaseChannel": "main",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "cache": {
+        "key": "Invalidate"
+      },
+      "ios": {
+        "cocoapods": "1.11.2",
+        "enterpriseProvisioning": "universal"
+      },
+      "env": {
+        "ENV": "production"
+      }
+    }
   },
   "submit": {
-      "production": {}
+    "production": {}
   }
 }

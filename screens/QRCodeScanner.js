@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Linking, Button,Image } from 'react-native';
-import * as BarCodeScanner from 'expo-barcode-scanner';
-import CameraScanner from '../component/CameraScanner';
-import ScannedResult from '../component/ScannedResult';
-import * as SplashScreen from 'expo-splash-screen';
-
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Linking, Button, Image } from "react-native";
+import * as BarCodeScanner from "expo-barcode-scanner";
+import CameraScanner from "../component/CameraScanner";
+import ScannedResult from "../component/ScannedResult";
+import * as SplashScreen from "expo-splash-screen";
 
 function isUrl(str) {
   str = str.toLowerCase();
@@ -14,15 +13,14 @@ function isUrl(str) {
 const QRCodeScanner = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [scannedData, setScannedData] = useState('');
+  const [scannedData, setScannedData] = useState("");
   const [isLit, setIsLit] = useState(false);
-
 
   useEffect(() => {
     const checkCameraPermission = async () => {
       const { status } = await BarCodeScanner.getPermissionsAsync();
-      setHasPermission(status === 'granted');
-      if (status !== 'granted') {
+      setHasPermission(status === "granted");
+      if (status !== "granted") {
         requestCameraPermission();
       }
       SplashScreen.hideAsync();
@@ -32,7 +30,7 @@ const QRCodeScanner = () => {
 
   const requestCameraPermission = async () => {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
-    setHasPermission(status === 'granted');
+    setHasPermission(status === "granted");
   };
 
   const handleBarCodeScanned = ({ data }) => {
@@ -43,22 +41,27 @@ const QRCodeScanner = () => {
 
   const handleScanAgain = () => {
     setScanned(false);
-    setScannedData('');
+    setScannedData("");
   };
 
   return (
     <View style={styles.container}>
-      {!hasPermission? (
-        <Button title="Allow Camera Permission" onPress={requestCameraPermission} />
+      {!hasPermission ? (
+        <Button
+          title="Allow Camera Permission"
+          onPress={requestCameraPermission}
+        />
       ) : scanned ? (
-        <ScannedResult scannedData={scannedData} handleScanAgain={handleScanAgain} />
+        <ScannedResult
+          scannedData={scannedData}
+          handleScanAgain={handleScanAgain}
+        />
       ) : (
         <CameraScanner
           handleBarCodeScanned={handleBarCodeScanned}
           isLit={isLit}
           setIsLit={setIsLit}
         />
-
       )}
     </View>
   );
@@ -67,9 +70,9 @@ const QRCodeScanner = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default QRCodeScanner;

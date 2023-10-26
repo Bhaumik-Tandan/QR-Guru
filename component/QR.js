@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { QRCode } from 'react-native-custom-qr-codes-expo';
-import { calcWidth } from '../helper/res';
+import React, { Component } from "react";
+import { QRCode } from "react-native-custom-qr-codes-expo";
+import { calcWidth } from "../helper/res";
 
 class QR extends Component {
   constructor(props) {
@@ -11,7 +11,10 @@ class QR extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.qrCodeContent !== prevProps.qrCodeContent || this.props.logo !== prevProps.logo) {
+    if (
+      this.props.qrCodeContent !== prevProps.qrCodeContent ||
+      this.props.logo !== prevProps.logo
+    ) {
       this.setState({ showQrCode: false }, () => {
         this.setState({ showQrCode: true });
       });
@@ -19,18 +22,21 @@ class QR extends Component {
   }
 
   render() {
-    const { qrCodeContent,logo } = this.props;
+    const { qrCodeContent, logo } = this.props;
     const { showQrCode } = this.state;
 
-    return qrCodeContent && showQrCode && (
-      <QRCode
-        content={qrCodeContent}
-        logo={logo}
-        color={"#0802A3"}
-        codeStyle="square"
-        backgroundColor={"#ffffff"}
-        logoSize={calcWidth(15)}
-      />
+    return (
+      qrCodeContent &&
+      showQrCode && (
+        <QRCode
+          content={qrCodeContent}
+          logo={logo}
+          color={"#0802A3"}
+          codeStyle="square"
+          backgroundColor={"#ffffff"}
+          logoSize={calcWidth(15)}
+        />
+      )
     );
   }
 }
