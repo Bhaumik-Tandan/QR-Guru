@@ -4,11 +4,13 @@ import { calcWidth } from "../helper/res";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import Website from "../component/QRForms/Website";
 
 const QRTypes = [
   {
     title: "Website",
     icon: <Foundation name="web" size={calcWidth(10)} color="blue" />,
+    component: <Website/>,
   },
   {
     title: "Wifi",

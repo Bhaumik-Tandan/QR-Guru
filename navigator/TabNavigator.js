@@ -33,6 +33,8 @@ function TabNavigator() {
             tabBarIcon: ({ color, size }) => (
               <Icon name="qrcode" size={size} color={color} /> // Replace 'qrcode' with the icon name you want to use
             ),
+            headerShown: false,
+            tabBarLabel: "Generator",
           }}
         />
       </Tab.Navigator>
