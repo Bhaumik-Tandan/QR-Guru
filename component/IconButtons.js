@@ -3,7 +3,7 @@ import { View, TouchableOpacity,StyleSheet } from 'react-native';
 import { EvilIcons, AntDesign, FontAwesome } from '@expo/vector-icons';
 import { calcHeight,calcWidth } from '../helper/res';
 
-const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgroundImage }) => {
+const IconButtons = ({ selectImage, captureQrCode, clearLogo, logo }) => {
   return (
     <View style={styles.iconContainer}>
       <TouchableOpacity
@@ -18,14 +18,14 @@ const IconButtons = ({ selectImage, captureQrCode, clearBackgroundImage, backgro
       >
         <AntDesign name="sharealt" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
-      {backgroundImage && (
+      {logo && (
         <TouchableOpacity
           style={{
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          onPress={clearBackgroundImage}
+          onPress={clearLogo}
         >
           <FontAwesome name="remove" size={calcWidth(10)} color="red" />
         </TouchableOpacity>

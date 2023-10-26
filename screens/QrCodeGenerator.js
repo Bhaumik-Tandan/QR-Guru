@@ -9,11 +9,11 @@ import IconButtons from '../component/IconButtons';
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
-  const [backgroundImage, setBackgroundImage] = useState(null);
+  const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
 
-  const clearBackgroundImage = () => {
-    setBackgroundImage(null);
+  const clearLogo = () => {
+    setLogo(null);
   };
 
   const shareQrCode = async (imageUri) => {
@@ -59,7 +59,7 @@ export default function QRCodeGenerator() {
   async function selectImage() {
     try {
       const localImageUri = await getLocalImage();
-      setBackgroundImage(localImageUri);
+      setLogo(localImageUri);
       setTimeout(() => {
       validateQrCodeContent();
       }, 1000);
@@ -79,13 +79,13 @@ export default function QRCodeGenerator() {
       />
 
 
-       <QRDisplay qrCodeContent={qrCodeContent} backgroundImage={backgroundImage} qrCodeView={qrCodeView} />
+       <QRDisplay qrCodeContent={qrCodeContent} logo={logo} qrCodeView={qrCodeView} />
        {qrCodeContent && (
         <IconButtons
           selectImage={selectImage}
           captureQrCode={captureQrCode}
-          clearBackgroundImage={clearBackgroundImage}
-          backgroundImage={backgroundImage}
+          clearLogo={clearLogo}
+          logo={logo}
         />
       )}
 
