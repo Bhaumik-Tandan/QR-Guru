@@ -11,7 +11,7 @@ class QR extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.qrCodeContent !== prevProps.qrCodeContent || this.props.backgroundImage !== prevProps.backgroundImage) {
+    if (this.props.qrCodeContent !== prevProps.qrCodeContent || this.props.logo !== prevProps.logo) {
       this.setState({ showQrCode: false }, () => {
         this.setState({ showQrCode: true });
       });
@@ -19,13 +19,13 @@ class QR extends Component {
   }
 
   render() {
-    const { qrCodeContent,backgroundImage } = this.props;
+    const { qrCodeContent,logo } = this.props;
     const { showQrCode } = this.state;
 
     return qrCodeContent && showQrCode && (
       <QRCode
         content={qrCodeContent}
-        logo={backgroundImage}
+        logo={logo}
         color={"#0802A3"}
         codeStyle="square"
         backgroundColor={"#ffffff"}

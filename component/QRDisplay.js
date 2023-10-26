@@ -7,7 +7,7 @@ const QRDisplay = ({ qrCodeContent, backgroundImage, qrCodeView }) => {
   return (
     <ViewShot options={{ format: 'jpg', quality: 0.9 }} ref={qrCodeView} style={{ backgroundColor: '#fff' }}>
       {backgroundImage ? (
-        <QR qrCodeContent={qrCodeContent} backgroundImage={{ uri: backgroundImage }} />
+        <QR qrCodeContent={qrCodeContent} logo={{ uri: backgroundImage }} />
       ) : (
         <QR qrCodeContent={qrCodeContent} />
       )}
