@@ -2,6 +2,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import QRCodeGenerator from "../screens/QrCodeOptions";
 import QRGenerationForm from "../screens/QRGenerationForm";
 import PAGES from "../constants/pages";
+import QR from "../screens/QR";
+import BannerAd from "../component/BannerAd";
 const Stack = createNativeStackNavigator();
 
 function GeneratorNavigator() {
@@ -10,9 +12,12 @@ function GeneratorNavigator() {
       <Stack.Screen
         name={PAGES.GENERATOR_OPTIONS}
         component={QRCodeGenerator}
-        options={{ headerShown: false }}
+        options={{ 
+          header: () => <BannerAd/>,
+        }}
       />
       <Stack.Screen name={PAGES.GENERATOR_FORM} component={QRGenerationForm} options={{ headerShown: false }}/>
+      <Stack.Screen name={PAGES.QR} component={QR} />
     </Stack.Navigator>
   );
 }

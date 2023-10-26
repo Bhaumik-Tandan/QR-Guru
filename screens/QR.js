@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   ScrollView,
@@ -14,10 +14,14 @@ import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 
-export default function QRCodeGenerator() {
+export default function QRCodeGenerator({route:{params:{data}}}) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
+
+  useEffect (()=>{
+    setQRCodeContent(data)
+  },[data]);
 
   const clearLogo = () => {
     setLogo(null);
@@ -76,13 +80,6 @@ export default function QRCodeGenerator() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter text to generate QR code"
-        onChangeText={(text) => setQRCodeContent(text)}
-        value={qrCodeContent}
-        numberOfLines={10}
-      />
 
       <QRDisplay
         qrCodeContent={qrCodeContent}
