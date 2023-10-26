@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { QRCode } from 'react-native-custom-qr-codes-expo';
+import { calcWidth } from '../helper/res';
 
 class QR extends Component {
   constructor(props) {
@@ -24,10 +25,11 @@ class QR extends Component {
     return qrCodeContent && showQrCode && (
       <QRCode
         content={qrCodeContent}
-        backgroundImage={backgroundImage}
+        logo={backgroundImage}
         color={"#0802A3"}
         codeStyle="square"
         backgroundColor={"#ffffff"}
+        logoSize={calcWidth(15)}
       />
     );
   }
