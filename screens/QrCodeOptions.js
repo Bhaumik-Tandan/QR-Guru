@@ -21,7 +21,6 @@ export default function QRCodeOptions({ navigation }) {
           <TouchableOpacity
             style={styles.item}
             onPress={()=>navigation.navigate(PAGES.GENERATOR_FORM,{type:item.title})}
-            // onPress={() => console.log(item.title)}
           >
             {item.icon}
             <Text>{item.title}</Text>

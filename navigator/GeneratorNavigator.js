@@ -10,8 +10,9 @@ function GeneratorNavigator() {
       <Stack.Screen
         name={PAGES.GENERATOR_OPTIONS}
         component={QRCodeGenerator}
+        options={{ headerShown: false }}
       />
-      <Stack.Screen name={PAGES.GENERATOR_FORM} component={QRGenerationForm} />
+      <Stack.Screen name={PAGES.GENERATOR_FORM} component={QRGenerationForm} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
