@@ -6,7 +6,8 @@ import QRTypes from '../constants/QRTypes';
 export default function QRCodeGenerator() {
 
   return (
-    <FlatList contentContainerStyle={styles.container}
+    <View style={styles.container}>
+    <FlatList 
     data={QRTypes}
     numColumns={3}
       keyExtractor={(item) => item.title}
@@ -17,18 +18,16 @@ export default function QRCodeGenerator() {
         </TouchableOpacity>
       )}
 
-    >
-
-    </FlatList>
+    />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: calcHeight(5),
     alignItems: 'center',
-    justifyContent: 'center', // Center content vertically
+    justifyContent: 'center', // Center content vertically,
   },
   item: {
     backgroundColor: 'rgba(0,0,0,0.1)',
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: calcHeight(27),
     width: calcWidth(27),
     height: calcWidth(27),
-    margin: calcHeight(1),
+    marginHorizontal: calcHeight(1),
+    marginVertical: calcHeight(2),
   }
 });
