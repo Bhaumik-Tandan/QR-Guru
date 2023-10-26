@@ -5,7 +5,7 @@ import { calcHeight, calcWidth } from '../helper/res';
 import * as Sharing from 'expo-sharing';
 import getLocalImage from '../helper/getLocalImage';
 import getQrDataFromImage from '../helper/getQrDataFromImage'; 
-import IconButtons from '../component/IconButtons';     
+import IconButtons from '../component/IconButtons';  
 
 export default function QRCodeGenerator() {
   const [qrCodeContent, setQRCodeContent] = useState('');
