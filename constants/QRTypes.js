@@ -5,6 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Website from "../component/QRForms/Website";
+import Wifi from "../component/QRForms/Wifi";
 
 const QRTypes = [
   {
@@ -15,6 +16,7 @@ const QRTypes = [
   {
     title: "Wifi",
     icon: <AntDesign name="wifi" size={calcWidth(10)} color="blue" />,
+    component: <Wifi/>,
   },
   {
     title: "Text",
