@@ -14,7 +14,8 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.qrguru.qrguru"
+      "bundleIdentifier": "com.qrguru.qrguru",
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {
