@@ -10,7 +10,7 @@ import textStyle from "../constants/textStyle";
 import textContainerStyle from "../constants/textContainerStyle";
 import { calcWidth } from "../helper/res";
 
-export default function QRForm({ iconName, placeholder, generateQRContent }) {
+export default function GenericQRForm({ iconName, placeholder, generateQRContent }) {
   const [value, onChangeText] = useState("");
 
   const handleGenerateQR = () => {
