@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import PAGES from "../../constants/pages";
 import GenericQRForm from "../GenericQRForm";
 
-export default function TextBox() {
+export default function Phone() {
   const navigation = useNavigation();
 
   return (
