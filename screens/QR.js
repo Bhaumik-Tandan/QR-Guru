@@ -14,14 +14,18 @@ import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 
-export default function QRCodeGenerator({route:{params:{data}}}) {
+export default function QRCodeGenerator({
+  route: {
+    params: { data },
+  },
+}) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
 
-  useEffect (()=>{
-    setQRCodeContent(data)
-  },[data]);
+  useEffect(() => {
+    setQRCodeContent(data);
+  }, [data]);
 
   const clearLogo = () => {
     setLogo(null);
@@ -80,7 +84,6 @@ export default function QRCodeGenerator({route:{params:{data}}}) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-
       <QRDisplay
         qrCodeContent={qrCodeContent}
         logo={logo}

@@ -12,11 +12,15 @@ function GeneratorNavigator() {
       <Stack.Screen
         name={PAGES.GENERATOR_OPTIONS}
         component={QRCodeGenerator}
-        options={{ 
-          header: () => <BannerAd/>,
+        options={{
+          header: () => <BannerAd />,
         }}
       />
-      <Stack.Screen name={PAGES.GENERATOR_FORM} component={QRGenerationForm} options={{ headerShown: false }}/>
+      <Stack.Screen
+        name={PAGES.GENERATOR_FORM}
+        component={QRGenerationForm}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name={PAGES.QR} component={QR} />
     </Stack.Navigator>
   );

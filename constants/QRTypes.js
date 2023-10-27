@@ -11,12 +11,12 @@ const QRTypes = [
   {
     title: "Website",
     icon: <Foundation name="web" size={calcWidth(10)} color="blue" />,
-    component: <Website/>,
+    component: <Website />,
   },
   {
     title: "Wifi",
     icon: <AntDesign name="wifi" size={calcWidth(10)} color="blue" />,
-    component: <Wifi/>,
+    component: <Wifi />,
   },
   {
     title: "Text",

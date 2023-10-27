@@ -1,11 +1,15 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import { calcHeight } from "../helper/res";
 import Website from "../component/QRForms/Website";
 
-function QRGenerationForm({ navigation, route: { params: { type,component } } }) {
-
+function QRGenerationForm({
+  navigation,
+  route: {
+    params: { type, component },
+  },
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
@@ -24,7 +28,7 @@ export default QRGenerationForm;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
   },
   topNav: {
     flexDirection: "row",
