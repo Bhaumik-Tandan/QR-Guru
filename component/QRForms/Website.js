@@ -4,6 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import { calcHeight, calcWidth,getFontSizeByWindowWidth } from '../../helper/res';
 import { useNavigation } from '@react-navigation/native';
 import PAGES from '../../constants/pages';
+import GenerateButton from '../GenerateButton';
 
 export default function Website() {
     const [value, onChangeText] = useState('https://');
@@ -12,7 +13,7 @@ export default function Website() {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-      <Entypo name="link" size={24} color="black" />
+      <Entypo name="link" size={calcWidth(10)} color="black" />
       <TextInput
         style={styles.text}
         placeholder="Enter Website URL"
@@ -35,11 +36,8 @@ export default function Website() {
       />
       </View>
       </View>
-      <TouchableOpacity style={styles.generateButton}
-      onPress={() => navigation.navigate(PAGES.QR,{data:value})}
-      >
-      <Text style={styles.buttonText}>Generate</Text>
-      </TouchableOpacity>
+      <GenerateButton 
+      onPress={() => navigation.navigate(PAGES.QR,{data:value})}/>
     </View>
   );
 }
@@ -75,15 +73,5 @@ const styles = StyleSheet.create({
       marginHorizontal:calcWidth(5),
       backgroundColor:"rgba(0,0,0,0.1)",
       borderRadius:calcHeight(1),
-    },
-    generateButton:{
-      marginVertical:calcHeight(10),
-      backgroundColor:"blue",
-      padding:calcHeight(2),
-      borderRadius:calcHeight(2),
-    },
-    buttonText:{
-      color:"white",
-      fontSize:getFontSizeByWindowWidth(15)
     }
 });

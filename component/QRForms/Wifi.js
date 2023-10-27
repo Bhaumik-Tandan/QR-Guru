@@ -1,31 +1,40 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button,StyleSheet,TouchableOpacity,Text } from 'react-native';
-import { Entypo } from '@expo/vector-icons'; 
+import RNPickerSelect from 'react-native-picker-select';
 import { calcHeight, calcWidth,getFontSizeByWindowWidth } from '../../helper/res';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons'; 
 import PAGES from '../../constants/pages';
+import networkOptions from '../../constants/networkOptions';
+import GenerateButton from '../GenerateButton';
 
 export default function Wifi() {
-    const [value, onChangeText] = useState('');
+    const [name,setName] = useState('');
     const navigation = useNavigation();
+    const [networkType,setNetworkType] = useState('');
 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-      <Feather name="wifi" size={24} color="black" />
+      <Feather name="wifi" size={calcWidth(10)} color="black" />
       <TextInput
         style={styles.text}
-        placeholder="Enter Website URL"
-        onChangeText={text => onChangeText(text)}
-        value={value}
+        placeholder="Network Name (SSID)"
+        onChangeText={text => setName(text)}
+        value={name}
       />
       </View>
-      <TouchableOpacity style={styles.generateButton}
-      onPress={() => navigation.navigate(PAGES.QR,{data:value})}
-      >
-      <Text style={styles.buttonText}>Generate</Text>
-      </TouchableOpacity>
+      <View style={styles.textContainer}>
+      <Feather name="wifi" size={calcWidth(10)} color="black" />
+      <RNPickerSelect
+        items={networkOptions}
+        onValueChange={(value) => setNetworkType(value)}
+        placeholder={{ label: 'Select a network', value: null }}
+      />
+      </View>
+      <GenerateButton style={styles.generateButton}
+      onPress={() => navigation.navigate(PAGES.QR,{data:name})}
+      />
     </View>
   );
 }
@@ -61,15 +70,5 @@ const styles = StyleSheet.create({
       marginHorizontal:calcWidth(5),
       backgroundColor:"rgba(0,0,0,0.1)",
       borderRadius:calcHeight(1),
-    },
-    generateButton:{
-      marginVertical:calcHeight(10),
-      backgroundColor:"blue",
-      padding:calcHeight(2),
-      borderRadius:calcHeight(2),
-    },
-    buttonText:{
-      color:"white",
-      fontSize:getFontSizeByWindowWidth(15)
     }
 });
