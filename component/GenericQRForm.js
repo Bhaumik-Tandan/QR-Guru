@@ -10,7 +10,7 @@ import textStyle from "../constants/textStyle";
 import textContainerStyle from "../constants/textContainerStyle";
 import { calcWidth } from "../helper/res";
 
-export default function GenericQRForm({ iconName, placeholder, generateQRContent }) {
+export default function GenericQRForm({ icon, placeholder, generateQRContent }) {
   const [value, onChangeText] = useState("");
 
   const handleGenerateQR = () => {
@@ -20,7 +20,7 @@ export default function GenericQRForm({ iconName, placeholder, generateQRContent
   return (
     <View style={styles.container}>
       <View style={textContainerStyle}>
-        <Ionicons name={iconName} size={calcWidth(8)} color="black" />
+       {icon}
         <TextInput
           style={textStyle}
           placeholder={placeholder}
