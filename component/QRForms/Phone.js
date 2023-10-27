@@ -15,27 +15,18 @@ import PAGES from "../../constants/pages";
 import GenerateButton from "../GenerateButton";
 import textStyle from "../../constants/textStyle";
 import textContainerStyle from "../../constants/textContainerStyle";
+import QRForm from "../GenericQRForm";
 
 export default function TextBox() {
   const [value, onChangeText] = useState("");
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <View style={textContainerStyle}>
-      <Ionicons name="phone-portrait-sharp" size={calcWidth(8)} color="black" />
-        <TextInput
-          style={textStyle}
-          placeholder="Phone Number"
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
-          multiline={true}
-        />
-      </View>
-      <GenerateButton
-        onPress={() => navigation.navigate(PAGES.QR, { data: `tel:${value}` })}
-      />
-    </View>
+    <QRForm
+  iconName="phone-portrait-sharp"
+  placeholder="Phone Number"
+  generateQRContent={(value) => navigation.navigate(PAGES.QR, { data: `tel:${value}` })}
+/>
   );
 }
 
