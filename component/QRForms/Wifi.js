@@ -21,6 +21,8 @@ import GenerateButton from "../GenerateButton";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import getWifiString from "../../utils/stringGenerator/getWifiString";
+import textContainerStyle from "../../constants/textContainerStyle";
+import textStyle from "../../constants/textStyle";
 
 export default function Wifi() {
   const [name, setName] = useState("");
@@ -30,33 +32,33 @@ export default function Wifi() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.textContainer}>
+      <View style={textContainerStyle}>
         <Feather name="wifi" size={calcWidth(8)} color="black" />
         <TextInput
-          style={styles.text}
+          style={textStyle}
           placeholder="Network Name (SSID)"
           onChangeText={(text) => setName(text)}
           value={name}
         />
       </View>
-      <View style={styles.textContainer}>
+      <View style={textContainerStyle}>
         <MaterialIcons name="security" size={calcWidth(8)} color="black" />
-        <View style={styles.text}>
+        <View style={textStyle}>
           <RNPickerSelect
             items={networkOptions}
             onValueChange={(value) => setNetworkType(value)}
             placeholder={{ label: "Select Security Type", value: "WPA" }}
             style={{
-              inputAndroid: styles.text,
-              inputIOS: styles.text,
+              inputAndroid: textStyle,
+              inputIOS: textStyle,
             }}
           />
         </View>
       </View>
-      <View style={styles.textContainer}>
+      <View style={textContainerStyle}>
         <Entypo name="lock" size={calcWidth(8)} color="black" />
         <TextInput
-          style={styles.text}
+          style={textStyle}
           placeholder="Password"
           onChangeText={(text) => setPassword(text)}
           value={password}
@@ -78,21 +80,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-  },
-  textContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: calcHeight(2),
-    padding: calcHeight(2),
-    backgroundColor: "rgba(0,0,0,0.1)",
-    width: "100%",
-    borderRadius: calcHeight(1),
-  },
-  text: {
-    width: "90%",
-    marginLeft: calcWidth(5),
-    fontSize: getFontSizeByWindowWidth(15),
   },
   buttonContainer: {
     flexDirection: "row",

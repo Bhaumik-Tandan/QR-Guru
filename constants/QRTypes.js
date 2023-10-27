@@ -6,6 +6,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Website from "../component/QRForms/Website";
 import Wifi from "../component/QRForms/Wifi";
+import TextBox from "../component/QRForms/TextBox";
 
 const QRTypes = [
   {
@@ -21,6 +22,7 @@ const QRTypes = [
   {
     title: "Text",
     icon: <Entypo name="text" size={calcWidth(10)} color="blue" />,
+    component: <TextBox />,
   },
   {
     title: "Contacts",
