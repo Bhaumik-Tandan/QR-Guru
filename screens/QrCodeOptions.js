@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { calcHeight, calcWidth } from "../helper/res";
-import QRTypes from "../constants/QRTypes";
 import PAGES from "../constants/pages";
+import QRTypes from "../constants/QRForms/QRTypes";
 
 export default function QRCodeOptions({ navigation }) {
   return (
