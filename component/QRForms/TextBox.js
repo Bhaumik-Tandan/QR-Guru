@@ -13,32 +13,24 @@ import PAGES from "../../constants/pages";
 import GenerateButton from "../GenerateButton";
 import textStyle from "../../constants/textStyle";
 import textContainerStyle from "../../constants/textContainerStyle";
+import GenericQRForm from "../GenericQRForm";
+
+const textBox = {
+  fields: [
+    {
+      name: "text",
+      placeholder: "Please enter something",
+      multiline: true,
+    },
+  ],
+  generateQRContent: ({ text }) => text,
+};
 
 export default function TextBox() {
-  const [value, onChangeText] = useState("");
-  const navigation = useNavigation();
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={textContainerStyle}>
-        <TextInput
-          style={textStyle}
-          placeholder="Please Enter Something"
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
-          multiline={true}
-        />
-      </View>
-      <GenerateButton
-        onPress={() => navigation.navigate(PAGES.QR, { data: value })}
-      />
-    </ScrollView>
+    <GenericQRForm {...textBox} />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  }
-});
+

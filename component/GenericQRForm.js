@@ -3,6 +3,7 @@ import {
   View,
   TextInput,
   StyleSheet,
+  ScrollView
 } from "react-native";
 import GenerateButton from "./GenerateButton";
 import textStyle from "../constants/textStyle";
@@ -28,7 +29,7 @@ export default function GenericQRForm({fields, generateQRContent}) {
 
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (
       <View style={textContainerStyle} key={field.name}>
        <View>{field.icon}</View>{
@@ -52,7 +53,7 @@ export default function GenericQRForm({fields, generateQRContent}) {
       </View> )
       )}
       <GenerateButton onPress={()=>navigation.navigate(PAGES.QR,{data:generateQRContent(qrInfo)})} />
-    </View>
+    </ScrollView>
   );
 }
 
