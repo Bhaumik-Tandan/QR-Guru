@@ -9,6 +9,7 @@ import textStyle from "../constants/textStyle";
 import textContainerStyle from "../constants/textContainerStyle";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
+import RNPickerSelect from "react-native-picker-select";
 
 export default function GenericQRForm({fields, generateQRContent}) {
   const [qrInfo, setQrInfo] = useState({});
@@ -24,24 +25,30 @@ export default function GenericQRForm({fields, generateQRContent}) {
   }
   , []);
 
-  useEffect(() => {
-    console.log("qrInfo",generateQRContent(qrInfo));
-  }
-  , [qrInfo]);
 
 
   return (
     <View style={styles.container}>
       {fields.map((field) => (
       <View style={textContainerStyle} key={field.name}>
-       {field.icon}
+       <View>{field.icon}</View>{
+        field.type==="picker"?
+        <RNPickerSelect
+            items={field.options}
+            onValueChange={(text) => setQrInfo((prev) => ({ ...prev, [field.name]: text }))}
+            placeholder={field.placeholder}
+            style={{
+              inputAndroid: textStyle,
+              inputIOS: textStyle,
+            }}
+          />:
         <TextInput
           style={textStyle}
           placeholder={field.placeholder}
           onChangeText={(text) => setQrInfo((prev) => ({ ...prev, [field.name]: text }))}
           value={qrInfo[field.name]}
           multiline={field.multiline}
-        />
+        />}
       </View> )
       )}
       <GenerateButton onPress={()=>navigation.navigate(PAGES.QR,{data:generateQRContent(qrInfo)})} />

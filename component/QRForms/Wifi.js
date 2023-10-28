@@ -23,74 +23,46 @@ import { Entypo } from "@expo/vector-icons";
 import getWifiString from "../../utils/stringGenerator/getWifiString";
 import textContainerStyle from "../../constants/textContainerStyle";
 import textStyle from "../../constants/textStyle";
+import GenericQRForm from "../GenericQRForm";
+
+
+const wifi={
+  fields:[
+      {
+        "name":"name",
+        "placeholder":"Network Name (SSID)",
+        "type":"text",
+        "icon":<Feather name="wifi" size={calcWidth(8)} color="black" />,
+      },
+      {
+          "name":"networkType",
+          "type":"picker",
+          "options":networkOptions,
+          "icon":<MaterialIcons name="security" size={calcWidth(8)} color="black" />,
+          "placeholder":{ label: "Select Security Type", value: "WPA" }
+      },
+      {
+          "name":"password",
+          "placeholder":"Password",
+          "type":"text",
+          "icon":<Entypo name="lock" size={calcWidth(8)} color="black" />
+      }
+  ],
+  generateQRContent:({name, networkType="", password}) =>{
+    let wifiString = `WIFI:S:${name};T:${networkType};`;
+  
+    if (networkType.toLowerCase() !== "none") {
+      wifiString += `P:${password};`;
+    }
+  
+    return wifiString;
+  }
+}
 
 export default function Wifi() {
-  const [name, setName] = useState("");
-  const navigation = useNavigation();
-  const [networkType, setNetworkType] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
-    <View style={styles.container}>
-      <View style={textContainerStyle}>
-        <Feather name="wifi" size={calcWidth(8)} color="black" />
-        <TextInput
-          style={textStyle}
-          placeholder="Network Name (SSID)"
-          onChangeText={(text) => setName(text)}
-          value={name}
-        />
-      </View>
-      <View style={textContainerStyle}>
-        <MaterialIcons name="security" size={calcWidth(8)} color="black" />
-        <View style={textStyle}>
-          <RNPickerSelect
-            items={networkOptions}
-            onValueChange={(value) => setNetworkType(value)}
-            placeholder={{ label: "Select Security Type", value: "WPA" }}
-            style={{
-              inputAndroid: textStyle,
-              inputIOS: textStyle,
-            }}
-          />
-        </View>
-      </View>
-      <View style={textContainerStyle}>
-        <Entypo name="lock" size={calcWidth(8)} color="black" />
-        <TextInput
-          style={textStyle}
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-        />
-      </View>
-      <GenerateButton
-        style={styles.generateButton}
-        onPress={() =>
-          navigation.navigate(PAGES.QR, {
-            data: getWifiString(name, networkType, password),
-          })
-        }
-      />
-    </View>
+    <GenericQRForm {...wifi} />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: calcHeight(5),
-  },
-  button: {
-    marginHorizontal: calcWidth(5),
-    backgroundColor: "rgba(0,0,0,0.1)",
-    borderRadius: calcHeight(1),
-  },
-});
