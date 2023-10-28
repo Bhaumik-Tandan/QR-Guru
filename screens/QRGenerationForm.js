@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { calcHeight } from "../helper/res";
+import BannerAd from "../component/BannerAd";
 
 function QRGenerationForm({
   navigation,
@@ -19,6 +20,7 @@ function QRGenerationForm({
         <View></View>
       </View>
       {component}
+      <BannerAd />
     </View>
   );
 }
