@@ -14,23 +14,23 @@ export default function QRCodeOptions({ navigation }) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={QRTypes}
+        data={Object.keys(QRTypes)}
         numColumns={3}
-        keyExtractor={(item) => item.title}
-        renderItem={({ item }) => (
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => {
+          return (
           <TouchableOpacity
             style={styles.item}
             onPress={() =>
               navigation.navigate(PAGES.GENERATOR_FORM, {
-                type: item.title,
-                component: item.component,
+                type: item
               })
             }
           >
-            {item.icon}
-            <Text>{item.title}</Text>
+            {QRTypes[item].icon}
+            <Text>{item}</Text>
           </TouchableOpacity>
-        )}
+        )}}
       />
     </View>
   );
