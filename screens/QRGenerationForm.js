@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { calcHeight } from "../helper/res";
-import Website from "../component/QRForms/Website";
 
 function QRGenerationForm({
   navigation,

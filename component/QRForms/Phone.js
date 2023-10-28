@@ -1,17 +1,23 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
-import PAGES from "../../constants/pages";
 import GenericQRForm from "../GenericQRForm";
 import { Ionicons } from '@expo/vector-icons'; 
 import { calcWidth } from "../../helper/res";
+
+const phone={
+  fields:[
+    {
+      name:"phone",
+      placeholder:"Phone Number",
+      multiline:false,
+      icon:<Ionicons name="phone-portrait-sharp" size={calcWidth(8)} color="black" />
+    }
+  ],
+  generateQRContent:({phone})=>`tel:${phone}`
+}
 export default function Phone() {
-  const navigation = useNavigation();
 
   return (
-    <GenericQRForm
-  icon={ <Ionicons name="phone-portrait-sharp" size={calcWidth(8)} color="black" />}
-  placeholder="Phone Number"
-  generateQRContent={(value) => navigation.navigate(PAGES.QR, { data: `tel:${value}` })}
+    <GenericQRForm {...phone}
 />
   );
 }

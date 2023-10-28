@@ -1,35 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   TextInput,
   StyleSheet,
 } from "react-native";
-import { Ionicons } from '@expo/vector-icons'; 
 import GenerateButton from "./GenerateButton";
 import textStyle from "../constants/textStyle";
 import textContainerStyle from "../constants/textContainerStyle";
-import { calcWidth } from "../helper/res";
+import { useNavigation } from "@react-navigation/native";
+import PAGES from "../constants/pages";
 
-export default function GenericQRForm({ icon, placeholder, generateQRContent }) {
-  const [value, onChangeText] = useState("");
+export default function GenericQRForm({fields, generateQRContent}) {
+  const [qrInfo, setQrInfo] = useState({});
+  const navigation = useNavigation();
+  
 
-  const handleGenerateQR = () => {
-    generateQRContent(value);
-  };
+  useEffect(() => {
+    const obj = {};
+    fields.forEach((field) => {
+      obj[field.name] = "";
+    });
+    setQrInfo(obj);
+  }
+  , []);
+
+  useEffect(() => {
+    console.log("qrInfo",generateQRContent(qrInfo));
+  }
+  , [qrInfo]);
+
 
   return (
     <View style={styles.container}>
-      <View style={textContainerStyle}>
-       {icon}
+      {fields.map((field) => (
+      <View style={textContainerStyle} key={field.name}>
+       {field.icon}
         <TextInput
           style={textStyle}
-          placeholder={placeholder}
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
-          multiline={true}
+          placeholder={field.placeholder}
+          onChangeText={(text) => setQrInfo((prev) => ({ ...prev, [field.name]: text }))}
+          value={qrInfo[field.name]}
+          multiline={field.multiline}
         />
-      </View>
-      <GenerateButton onPress={handleGenerateQR} />
+      </View> )
+      )}
+      <GenerateButton onPress={()=>navigation.navigate(PAGES.QR,{data:generateQRContent(qrInfo)})} />
     </View>
   );
 }
