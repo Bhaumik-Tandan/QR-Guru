@@ -7,12 +7,10 @@ import {
   Button
 } from "react-native";
 import GenerateButton from "./GenerateButton";
-import textStyle from "../constants/textStyle";
-import textContainerStyle from "../constants/textContainerStyle";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
 import RNPickerSelect from "react-native-picker-select";
-import { calcHeight, calcWidth } from "../helper/res";
+import { calcHeight, calcWidth,getFontSizeByWindowWidth } from "../helper/res";
 
 export default function GenericQRForm({fields, generateQRContent}) {
   const [qrInfo, setQrInfo] = useState({});
@@ -33,7 +31,7 @@ export default function GenericQRForm({fields, generateQRContent}) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {fields.map((field) => (<View>
-      <View style={textContainerStyle} key={field.name}>
+      <View style={styles.textContainerStyle} key={field.name}>
        <View>{field.icon}</View>{
         field.type==="picker"?
         <RNPickerSelect
@@ -41,12 +39,12 @@ export default function GenericQRForm({fields, generateQRContent}) {
             onValueChange={(text) => setQrInfo((prev) => ({ ...prev, [field.name]: text }))}
             placeholder={field.placeholder}
             style={{
-              inputAndroid: textStyle,
-              inputIOS: textStyle,
+              inputAndroid: styles.textStyle,
+              inputIOS: styles.textStyle,
             }}
           />:
         <TextInput
-          style={textStyle}
+          style={styles.textStyle}
           placeholder={field.placeholder}
           onChangeText={(text) => setQrInfo((prev) => ({ ...prev, [field.name]: text }))}
           value={qrInfo[field.name]}
@@ -74,6 +72,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  textContainerStyle:{
+    flexDirection: "row",
+    marginVertical: calcHeight(2),
+    padding: calcHeight(2),
+    backgroundColor: "rgba(0,0,0,0.1)",
+    width: "90%",
+    borderRadius: calcHeight(1),
+  },
+  textStyle:{
+    width: "90%",
+    marginLeft: calcWidth(5),
+    fontSize: getFontSizeByWindowWidth(15),
   },
   buttonContainer: {
     flexDirection: "row",
