@@ -1,10 +1,10 @@
 import React from "react";
-import GenericQRForm from "../../component/GenericQRForm";
 import { Ionicons } from '@expo/vector-icons'; 
 import { calcWidth } from "../../helper/res";
+import { AntDesign } from "@expo/vector-icons";
 
-const phone={
-  fields:[
+const PhoneProps={
+  componentProps:{fields:[
     {
       name:"phone",
       placeholder:"Phone Number",
@@ -13,13 +13,8 @@ const phone={
     }
   ],
   generateQRContent:({phone})=>`tel:${phone}`
+},
+icon: <AntDesign name="phone" size={calcWidth(10)} color="blue" />
 }
-export default function Phone() {
-
-  return (
-    <GenericQRForm {...phone}
-/>
-  );
-}
-
+export default PhoneProps;
 

@@ -1,13 +1,13 @@
 
 import { Entypo } from "@expo/vector-icons";
 import {
-  calcHeight,
   calcWidth,
-  getFontSizeByWindowWidth,
 } from "../../helper/res";
-import GenericQRForm from "../../component/GenericQRForm";
+import { Foundation } from "@expo/vector-icons";
 
-const website={
+const WebsiteProps={
+  icon: <Foundation name="web" size={calcWidth(10)} color="blue" />,
+    componentProps:{
   fields:[
     {
       name:"website",
@@ -29,9 +29,7 @@ const website={
   generateQRContent:({website})=>website
 }
 
-export default function Website() {
-
-  return (
-    <GenericQRForm {...website}/>
-  );
 }
+
+export default WebsiteProps;
+

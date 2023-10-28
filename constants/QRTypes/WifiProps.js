@@ -6,10 +6,13 @@ import { Feather } from "@expo/vector-icons";
 import networkOptions from "../networkOptions";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import GenericQRForm from "../../component/GenericQRForm";
+import { AntDesign } from "@expo/vector-icons";
 
 
-const wifi={
+
+const WifiProps={
+  icon: <AntDesign name="wifi" size={calcWidth(10)} color="blue" />,
+  componentProps:{
   fields:[
       {
         "name":"name",
@@ -41,11 +44,6 @@ const wifi={
     return wifiString;
   }
 }
-
-export default function Wifi() {
-
-  return (
-    <GenericQRForm {...wifi} />
-  );
 }
 
+export default WifiProps;

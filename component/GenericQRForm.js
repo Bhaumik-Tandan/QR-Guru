@@ -30,8 +30,8 @@ export default function GenericQRForm({fields, generateQRContent}) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {fields.map((field) => (<View>
-      <View style={styles.textContainerStyle} key={field.name}>
+      {fields.map((field) => (<View key={field.name}>
+      <View style={styles.textContainerStyle}>
        <View>{field.icon}</View>{
         field.type==="picker"?
         <RNPickerSelect
@@ -53,7 +53,7 @@ export default function GenericQRForm({fields, generateQRContent}) {
       </View>
       {field.buttons&&(<View style={styles.buttonContainer}>
         {field.buttons.map((button)=>(
-          <View style={styles.button}>
+          <View style={styles.button} key={button.title}>
           <Button
             title={button.title}
             onPress={() => setQrInfo((prev) => ({ ...prev, [field.name]: prev[field.name]+button.value }))}

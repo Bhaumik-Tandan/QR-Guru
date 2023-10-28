@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { calcHeight, calcWidth } from "../helper/res";
 import PAGES from "../constants/pages";
-import QRTypes from "../constants/QRForms/QRTypes";
+import QRTypes from "../constants/QRTypes";
 
 export default function QRCodeOptions({ navigation }) {
   return (

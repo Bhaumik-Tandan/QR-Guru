@@ -3,7 +3,8 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { calcHeight } from "../helper/res";
 import BannerAd from "../component/BannerAd";
-import QRTypes from "../constants/QRForms/QRTypes";
+import QRTypes from "../constants/QRTypes";
+import GenericQRForm from "../component/GenericQRForm";
 
 function QRGenerationForm({
   navigation,
@@ -20,7 +21,7 @@ function QRGenerationForm({
         <Text style={styles.title}>{type}</Text>
         <View></View>
       </View>
-      {QRTypes[type].component}
+      <GenericQRForm {...QRTypes[type].componentProps} />
       <BannerAd />
     </View>
   );
