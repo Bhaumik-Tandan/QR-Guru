@@ -2,27 +2,22 @@ import WebsiteProps from "./WebsiteProps";
 import WifiProps from "./WifiProps";
 import TextBoxProps from "./TextBoxProps";
 import PhoneProps from "./PhoneProps";
+import ContactsProps from "./ContactsProps";
+import EmailProps from "./EmailProps";
+import SMSProps from "./SMSProps";
+import CalendarProps from "./CalendarProps";
+import MyCardProps from "./MyCardProps";
 
 const QRTypes = {
-  "Website": WebsiteProps,
-  "Wifi": WifiProps,
-  "Text": TextBoxProps,
-  // "Contacts": {
-  //   icon: <MaterialIcons name="contacts" size={calcWidth(10)} color="blue" />,
-  // },
-  "Phone": PhoneProps,
-  // "Email": {
-  //   icon: <MaterialIcons name="email" size={calcWidth(10)} color="blue" />,
-  // },
-  // "SMS": {
-  //   icon: <MaterialIcons name="sms" size={calcWidth(10)} color="blue" />,
-  // },
-  // "Calendar": {
-  //   icon: <AntDesign name="calendar" size={calcWidth(10)} color="blue" />,
-  // },
-  // "My Card": {
-  //   icon: <AntDesign name="idcard" size={calcWidth(10)} color="blue" />,
-  // },
+  Website: WebsiteProps,
+  Wifi: WifiProps,
+  Text: TextBoxProps,
+  Contacts: ContactsProps,
+  Phone: PhoneProps,
+  Email: EmailProps,
+  SMS: SMSProps,
+  "Calendar": CalendarProps,
+  "My Card": MyCardProps,
   // "Location": {
   //   icon: <Entypo name="location" size={calcWidth(10)} color="blue" />,
   // },
@@ -51,6 +46,5 @@ const QRTypes = {
   //   icon: <FontAwesome5 name="viber" size={calcWidth(10)} color="#665CAC" />,
   // },
 };
-
 
 export default QRTypes;

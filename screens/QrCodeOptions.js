@@ -19,18 +19,19 @@ export default function QRCodeOptions({ navigation }) {
         keyExtractor={(item) => item}
         renderItem={({ item }) => {
           return (
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() =>
-              navigation.navigate(PAGES.GENERATOR_FORM, {
-                type: item
-              })
-            }
-          >
-            {QRTypes[item].icon}
-            <Text>{item}</Text>
-          </TouchableOpacity>
-        )}}
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() =>
+                navigation.navigate(PAGES.GENERATOR_FORM, {
+                  type: item,
+                })
+              }
+            >
+              {QRTypes[item].icon}
+              <Text>{item}</Text>
+            </TouchableOpacity>
+          );
+        }}
       />
     </View>
   );
