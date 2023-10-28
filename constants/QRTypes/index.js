@@ -7,8 +7,18 @@ import EmailProps from "./EmailProps";
 import SMSProps from "./SMSProps";
 import CalendarProps from "./CalendarProps";
 import MyCardProps from "./MyCardProps";
+import LocationProps from "./LocationProps";
+import FacebookProps from "./FaceBookProps";
+import InstagramProps from "./InstagramProps";
+import WhatsappProps from "./WhatsAppProps";
+import YoutubeProps from "./YoutubeProps";
+import TwitterProps from "./TwitterProps";
+import SpotifyProps from "./SpotifyProps";
+import GooglePayProps from "./GooglePayProps";
+import UPIProps from "./UPIProps";
 
 const QRTypes = {
+  GPay:GooglePayProps,
   Website: WebsiteProps,
   Wifi: WifiProps,
   Text: TextBoxProps,
@@ -16,35 +26,16 @@ const QRTypes = {
   Phone: PhoneProps,
   Email: EmailProps,
   SMS: SMSProps,
-  "Calendar": CalendarProps,
+  Calendar: CalendarProps,
+  UPI: UPIProps,
   "My Card": MyCardProps,
-  // "Location": {
-  //   icon: <Entypo name="location" size={calcWidth(10)} color="blue" />,
-  // },
-  // "Facebook": {
-  //   icon: <AntDesign name="facebook-square" size={calcWidth(10)} color="blue" />,
-  // },
-  // "Instagram": {
-  //   icon: <AntDesign name="instagram" size={calcWidth(10)} color="#d62976" />,
-  // },
-  // "Whatsapp": {
-  //   icon: <FontAwesome5 name="whatsapp" size={calcWidth(10)} color="green" />,
-  // },
-  // "Youtube": {
-  //   icon: <AntDesign name="youtube" size={calcWidth(10)} color="red" />,
-  // },
-  // "Twitter": {
-  //   icon: <AntDesign name="twitter" size={calcWidth(10)} color="#00acee" />,
-  // },
-  // "Spotify": {
-  //   icon: <Entypo name="spotify" size={calcWidth(10)} color="#1DB954" />,
-  // },
-  // "Paypal": {
-  //   icon: <FontAwesome5 name="paypal" size={calcWidth(10)} color="#003087" />,
-  // },
-  // "Viber": {
-  //   icon: <FontAwesome5 name="viber" size={calcWidth(10)} color="#665CAC" />,
-  // },
+  "Location": LocationProps,
+  "Facebook": FacebookProps,
+  "Instagram": InstagramProps,
+  "Whatsapp": WhatsappProps,
+  "Youtube": YoutubeProps,
+  "Twitter": TwitterProps,
+  "Spotify": SpotifyProps,
 };
 
 export default QRTypes;

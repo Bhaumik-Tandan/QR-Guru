@@ -78,9 +78,7 @@ export default function GenericQRForm({ fields, generateQRContent }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    marginBottom: calcHeight(10),
+    alignItems: "center"
   },
   textContainerStyle: {
     flexDirection: "row",
