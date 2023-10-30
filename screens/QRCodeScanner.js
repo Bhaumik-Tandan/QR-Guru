@@ -5,10 +5,6 @@ import CameraScanner from "../component/CameraScanner";
 import ScannedResult from "../component/ScannedResult";
 import * as SplashScreen from "expo-splash-screen";
 
-function isUrl(str) {
-  str = str.toLowerCase();
-  return /^(https?|ftp|file|data):\/\//.test(str) || str.includes("//");
-}
 
 const QRCodeScanner = ({navigation}) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -52,7 +48,7 @@ const QRCodeScanner = ({navigation}) => {
   const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     setScannedData(data);
-    if (isUrl(data)) Linking.openURL(data);
+    Linking.openURL(data);
   };
 
   const handleScanAgain = () => {
