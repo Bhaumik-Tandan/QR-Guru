@@ -13,6 +13,7 @@ import * as Sharing from "expo-sharing";
 import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
+import saveFile from "../helper/saveFile";
 
 export default function QRCodeGenerator({
   route: {
@@ -69,6 +70,16 @@ export default function QRCodeGenerator({
       }
     }
   };
+  const saveQR = async () => {
+    if (qrCodeView.current) {
+      try {
+        const uri = await qrCodeView.current.capture();
+        saveFile(uri, "QRCode.png", "image/png");
+      } catch (error) {
+        console.error("Error capturing QR code:", error);
+      }
+    }
+  }
 
   async function selectImage() {
     try {
@@ -95,6 +106,7 @@ export default function QRCodeGenerator({
           captureQrCode={captureQrCode}
           clearLogo={clearLogo}
           logo={logo}
+          saveQR={saveQR}
         />
       )}
     </ScrollView>
