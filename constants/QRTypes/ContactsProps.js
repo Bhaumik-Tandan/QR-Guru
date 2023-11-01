@@ -41,7 +41,7 @@ END:VCARD`;
   },
   topIcon:{
     icon: <AntDesign name="adduser" size={calcWidth(8)} color="black" />,
-    navigateTo: PAGES.SCANNER,
+    navigateTo: PAGES.CONTACTS,
     label:"Select from Contacts"
   }
 };
