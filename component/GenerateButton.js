@@ -10,14 +10,15 @@ function GenerateButton({ onPress }) {
 
 const styles = StyleSheet.create({
   generateButton: {
-    marginVertical: calcHeight(10),
     backgroundColor: "blue",
     padding: calcHeight(2),
     borderRadius: calcHeight(2),
+    alignItems: "center",
+    width: calcWidth(50),
   },
   buttonText: {
     color: "white",
-    fontSize: getFontSizeByWindowWidth(15),
+    fontSize: getFontSizeByWindowWidth(16),
   },
 });
 
