@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
 import RNPickerSelect from "react-native-picker-select";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
-import { FAB } from 'react-native-paper';
 
 export default function GenericQRForm({ fields, generateQRContent }) {
   const [qrInfo, setQrInfo] = useState({});
@@ -77,9 +76,6 @@ export default function GenericQRForm({ fields, generateQRContent }) {
         }
       />
       </View>
-      <View style={styles.fabContainer}>
-        <FAB style={styles.fab} icon="plus" onPress={() => {}} />
-      </View>
     </View>
   );
 }
@@ -116,13 +112,5 @@ const styles = StyleSheet.create({
     marginHorizontal: calcWidth(5),
     backgroundColor: "rgba(0,0,0,0.1)",
     borderRadius: calcHeight(1),
-  },
-  fabContainer: {
-    position: 'absolute',
-    bottom: calcHeight(5), // 5% of the device height
-    right: calcWidth(5), // 5% of the device width
-  },
-  fab: {
-    backgroundColor: 'white',
-  },
+  }
 });

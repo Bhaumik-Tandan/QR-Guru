@@ -5,6 +5,7 @@ import { calcHeight } from "../helper/res";
 import BannerAd from "../component/BannerAd";
 import QRTypes from "../constants/QRTypes";
 import GenericQRForm from "../component/GenericQRForm";
+import { calcWidth } from "../helper/res";
 
 function QRGenerationForm({
   navigation,
@@ -19,7 +20,10 @@ function QRGenerationForm({
           <AntDesign name="arrowleft" size={calcHeight(3)} color="black" />
         </TouchableOpacity>
         <Text style={styles.title}>{type}</Text>
-        <View></View>
+        <TouchableOpacity style={styles.icon} onPress={()=>navigation.navigate(QRTypes[type]?.topIcon?.navigateTo,{})}>
+          {QRTypes[type]?.topIcon?.icon}
+          <Text style={styles.iconLabel}>{QRTypes[type]?.topIcon?.label}</Text>
+      </TouchableOpacity>
       </View>
       <GenericQRForm {...QRTypes[type].componentProps} />
       <BannerAd />
@@ -46,4 +50,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  iconLabel:{
+    fontSize:calcWidth(2),
+    textAlign:"center"
+  },
+  icon:{
+    alignItems:"center"
+  }
 });

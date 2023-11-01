@@ -3,6 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import PAGES from "../pages";
 
 const ContactsProps = {
   icon: <MaterialIcons name="contacts" size={calcWidth(10)} color="blue" />,
@@ -38,6 +39,11 @@ END:VCARD`;
       return vcard;
     },
   },
+  topIcon:{
+    icon: <AntDesign name="adduser" size={calcWidth(8)} color="black" />,
+    navigateTo: PAGES.SCANNER,
+    label:"Select from Contacts"
+  }
 };
 
 export default ContactsProps;
