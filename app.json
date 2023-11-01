@@ -46,6 +46,12 @@
         {
           "photosPermission": "The app needs gallery access for two key features: scanning QR codes from your images and using gallery pictures as QR code backgrounds"
         }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "We need access to your contacts to generate QR code of your contact card"
+        }
       ]
     ]
   },

@@ -7,78 +7,81 @@ import {
   FlatList,
 } from "react-native";
 import * as Contacts from "expo-contacts";
-import { MaterialIcons } from "@expo/vector-icons";
+import ContactsProps from "../../constants/QRTypes/ContactsProps";
 import Loader from "../../component/Loader";
 import PAGES from "../../constants/pages";
 
 export default function GetContact({ navigation }) {
-  const [selectedContacts, setSelectedContacts] = useState([]);
   const [contacts, setContacts] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Initialize loading as true
   useEffect(() => {
     (async () => {
       const { status } = await Contacts.requestPermissionsAsync();
       if (status === "granted") {
-        setLoading(true);
         const { data } = await Contacts.getContactsAsync();
-
         if (data.length > 0) {
+            // sort contacts by name
+            data.sort((a, b) => {
+                if (a.firstName && b.firstName) {
+                    if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+                        return -1;
+                    }
+                    if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+                        return 1;
+                    }
+                    return 0;
+                }
+                return 0;
+            }
+            );
           setContacts(data);
         }
       }
-      setLoading(false);
+      setLoading(false); // Set loading to false when data is loaded
     })();
   }, []);
 
-  const toggleContactSelection = (contact) => {
-    if (selectedContacts.includes(contact)) {
-      setSelectedContacts(selectedContacts.filter((c) => c !== contact));
-    } else {
-      setSelectedContacts([...selectedContacts, contact]);
-    }
+  const handleAddPeople = (a) => {
+    const { generateQRContent } = ContactsProps.componentProps;
+
+    const content = generateQRContent({
+      name: `${a.firstName} ${a.lastName}`,
+      phone: a.phoneNumbers && a.phoneNumbers.length > 0 ? a.phoneNumbers[0].number : "",
+      email: a.emails && a.emails.length > 0 ? a.emails[0].email : "",
+    });
+
+    navigation.navigate(PAGES.QR, {
+      data:content,
+    });
   };
 
-
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <View style={styles.container}>
-      <FlatList
-        data={contacts}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[
-              styles.cardItem,
-              {
-                backgroundColor: selectedContacts.includes(item)
-                  ? "lightgreen"
-                  : "white",
-              },
-            ]}
-            onPress={() => toggleContactSelection(item)}
-          >
-            <MaterialIcons
-              name={
-                selectedContacts.includes(item)
-                  ? "check-box"
-                  : "check-box-outline-blank"
-              }
-              size={30}
-              color={selectedContacts.includes(item) ? "green" : "lightgray"}
-            />
-            <Text
-              style={styles.cardItemText}
-            >{`${item.firstName} ${item.lastName}`}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => handleAddPeople()}
-      >
-        <Text style={styles.buttonText}>Add Person</Text>
-      </TouchableOpacity>
+      {loading ? (
+        <Loader />
+      ) : (
+        <FlatList
+          data={contacts}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.cardItem} onPress={()=>handleAddPeople(item)}>
+              <Text style={styles.cardItemName}>
+                {`${item.firstName} ${item.lastName}`}
+              </Text>
+              <Text style={styles.cardItemDetail}>
+                {item.phoneNumbers && item.phoneNumbers.length > 0
+                  ? item.phoneNumbers[0].number
+                  : "No phone number"}
+              </Text>
+              <Text style={styles.cardItemDetail}>
+                {item.emails && item.emails.length > 0
+                  ? item.emails[0].email
+                  : "No email"}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
+      )}
     </View>
   );
 }
@@ -90,7 +93,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   cardItem: {
-    flexDirection: "row",
     alignItems: "center",
     padding: 16,
     marginBottom: 8,
@@ -98,13 +100,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 2, // Add a shadow to the cards
   },
-  cardItemText: {
-    fontSize: 16,
-    marginLeft: 12,
+  cardItemName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  cardItemDetail: {
+    fontSize: 14,
+    color: "#333",
   },
   addButton: {
     backgroundColor: "#007AFF",
-    color: "white",
     padding: 12,
     borderRadius: 8,
     marginTop: 16,
@@ -113,5 +119,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 16,
+    fontWeight: "bold",
   },
 });
