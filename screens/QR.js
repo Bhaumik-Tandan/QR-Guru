@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
-  View,
   ScrollView,
   StyleSheet,
-  TextInput,
-  TouchableOpacity,
+  View,
   Text,
 } from "react-native";
 import QRDisplay from "../component/QRDisplay";
@@ -14,6 +12,7 @@ import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
+import HorizontalScroll from "../component/HorizontalScrollMenu";
 
 export default function QRCodeGenerator({
   route: {
@@ -94,13 +93,13 @@ export default function QRCodeGenerator({
   }
 
   return (
+    <HorizontalScroll>
     <ScrollView contentContainerStyle={styles.container}>
       <QRDisplay
         qrCodeContent={qrCodeContent}
         logo={logo}
         qrCodeView={qrCodeView}
       />
-      {qrCodeContent && (
         <IconButtons
           selectImage={selectImage}
           captureQrCode={captureQrCode}
@@ -108,8 +107,36 @@ export default function QRCodeGenerator({
           logo={logo}
           saveQR={saveQR}
         />
-      )}
     </ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
+      <QRDisplay
+        qrCodeContent={qrCodeContent}
+        logo={logo}
+        qrCodeView={qrCodeView}
+      />
+        <IconButtons
+          selectImage={selectImage}
+          captureQrCode={captureQrCode}
+          clearLogo={clearLogo}
+          logo={logo}
+          saveQR={saveQR}
+        />
+    </ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
+      <QRDisplay
+        qrCodeContent={qrCodeContent}
+        logo={logo}
+        qrCodeView={qrCodeView}
+      />
+        <IconButtons
+          selectImage={selectImage}
+          captureQrCode={captureQrCode}
+          clearLogo={clearLogo}
+          logo={logo}
+          saveQR={saveQR}
+        />
+    </ScrollView>
+    </HorizontalScroll> 
   );
 }
 
@@ -119,6 +146,7 @@ const styles = StyleSheet.create({
     padding: calcHeight(5),
     alignItems: "center",
     justifyContent: "center", // Center content vertically
+    width: calcWidth(100),
   },
   input: {
     height: calcHeight(10),
