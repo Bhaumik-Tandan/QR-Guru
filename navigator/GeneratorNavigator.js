@@ -20,7 +20,6 @@ function GeneratorNavigator() {
       <Stack.Screen
         name={PAGES.GENERATOR_FORM}
         component={QRGenerationForm}
-        options={{ headerShown: false }}
       />
 
       <Stack.Screen name={PAGES.CONTACTS} component={Contacts} />

@@ -13,18 +13,15 @@ function QRGenerationForm({
     params: { type },
   },
 }) {
+
+  React.useLayoutEffect(() => {
+    console.log("type", type);
+    navigation.setOptions({
+      headerTitle: type,
+    });
+  }, [navigation, type]);
   return (
     <View style={styles.container}>
-      <View style={styles.topNav}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <AntDesign name="arrowleft" size={calcHeight(3)} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.title}>{type}</Text>
-        <TouchableOpacity style={styles.icon} onPress={()=>navigation.navigate(QRTypes[type]?.topIcon?.navigateTo,{})}>
-          {QRTypes[type]?.topIcon?.icon}
-          <Text style={styles.iconLabel}>{QRTypes[type]?.topIcon?.label}</Text>
-      </TouchableOpacity>
-      </View>
       <GenericQRForm {...QRTypes[type].componentProps} />
       <BannerAd />
     </View>

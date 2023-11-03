@@ -93,7 +93,6 @@ export default function QRCodeGenerator({
   }
 
   return (
-    <HorizontalScroll>
     <ScrollView contentContainerStyle={styles.container}>
       <QRDisplay
         qrCodeContent={qrCodeContent}
@@ -108,35 +107,6 @@ export default function QRCodeGenerator({
           saveQR={saveQR}
         />
     </ScrollView>
-    <ScrollView contentContainerStyle={styles.container}>
-      <QRDisplay
-        qrCodeContent={qrCodeContent}
-        logo={logo}
-        qrCodeView={qrCodeView}
-      />
-        <IconButtons
-          selectImage={selectImage}
-          captureQrCode={captureQrCode}
-          clearLogo={clearLogo}
-          logo={logo}
-          saveQR={saveQR}
-        />
-    </ScrollView>
-    <ScrollView contentContainerStyle={styles.container}>
-      <QRDisplay
-        qrCodeContent={qrCodeContent}
-        logo={logo}
-        qrCodeView={qrCodeView}
-      />
-        <IconButtons
-          selectImage={selectImage}
-          captureQrCode={captureQrCode}
-          clearLogo={clearLogo}
-          logo={logo}
-          saveQR={saveQR}
-        />
-    </ScrollView>
-    </HorizontalScroll> 
   );
 }
 
