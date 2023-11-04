@@ -19,18 +19,18 @@ import PayPalProps from "./PayPal";
 import UPIProps from "./UPIProps";
 
 const QRTypes = {
-  Website: WebsiteProps,
-  Wifi: WifiProps,
   Text: TextBoxProps,
   Contacts: ContactsProps,
   Phone: PhoneProps,
+  Location: LocationProps,
+  Website: WebsiteProps,
+  Wifi: WifiProps,
   Email: EmailProps,
   SMS: SMSProps,
   Calendar: CalendarProps,
   UPI: UPIProps,
   PayPal: PayPalProps,
   "My Card": MyCardProps,
-  Location: LocationProps,
   Facebook: FacebookProps,
   Instagram: InstagramProps,
   Whatsapp: WhatsappProps,
