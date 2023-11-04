@@ -21,7 +21,9 @@ const PayPalProps = {
     ],
     generateQRContent: ({ email, amount }) => {
       if (email && amount) {
-        return `https://www.paypal.com/paypalme/yourusername/${encodeURIComponent(email)}/${amount}`;
+        return `https://www.paypal.com/paypalme/yourusername/${encodeURIComponent(
+          email,
+        )}/${amount}`;
       } else {
         return "";
       }

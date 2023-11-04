@@ -70,11 +70,11 @@ export default function GenericQRForm({ fields, generateQRContent }) {
         ))}
       </ScrollView>
       <View style={styles.buttonContainer}>
-      <GenerateButton
-        onPress={() =>
-          navigation.navigate(PAGES.QR, { data: generateQRContent(qrInfo) })
-        }
-      />
+        <GenerateButton
+          onPress={() =>
+            navigation.navigate(PAGES.QR, { data: generateQRContent(qrInfo) })
+          }
+        />
       </View>
     </View>
   );
@@ -112,5 +112,5 @@ const styles = StyleSheet.create({
     marginHorizontal: calcWidth(5),
     backgroundColor: "rgba(0,0,0,0.1)",
     borderRadius: calcHeight(1),
-  }
+  },
 });

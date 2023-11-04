@@ -39,11 +39,11 @@ END:VCARD`;
       return vcard;
     },
   },
-  topIcon:{
+  topIcon: {
     icon: <AntDesign name="adduser" size={calcWidth(8)} color="black" />,
     navigateTo: PAGES.CONTACTS,
-    label:"Select from Contacts"
-  }
+    label: "Select from Contacts",
+  },
 };
 
 export default ContactsProps;

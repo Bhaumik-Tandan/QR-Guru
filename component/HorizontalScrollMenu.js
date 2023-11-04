@@ -1,6 +1,6 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
-import { calcWidth } from '../helper/res';
+import React from "react";
+import { ScrollView } from "react-native";
+import { calcWidth } from "../helper/res";
 
 const HorizontalScroll = ({ children }) => {
   return (

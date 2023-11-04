@@ -17,19 +17,25 @@ const CalendarProps = {
         name: "eventDate",
         placeholder: "Event Date (YYYY-MM-DD)",
         type: "text",
-        icon: <MaterialIcons name="date-range" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="date-range" size={calcWidth(8)} color="black" />
+        ),
       },
       {
         name: "eventTime",
         placeholder: "Event Time (HH:MM)",
         type: "text",
-        icon: <MaterialIcons name="access-time" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="access-time" size={calcWidth(8)} color="black" />
+        ),
       },
       {
         name: "eventLocation",
         placeholder: "Event Location (optional)",
         type: "text",
-        icon: <MaterialIcons name="location-on" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="location-on" size={calcWidth(8)} color="black" />
+        ),
         optional: true,
       },
     ],

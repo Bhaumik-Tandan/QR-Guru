@@ -11,7 +11,6 @@ function QRGenerationForm({
     params: { type },
   },
 }) {
-
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: type,
@@ -19,10 +18,15 @@ function QRGenerationForm({
     // also give promt at right top corner
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={styles.icon} onPress={()=>navigation.navigate(QRTypes[type]?.topIcon?.navigateTo,{})}>
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={() =>
+            navigation.navigate(QRTypes[type]?.topIcon?.navigateTo, {})
+          }
+        >
           {QRTypes[type]?.topIcon?.icon}
           <Text style={styles.iconLabel}>{QRTypes[type]?.topIcon?.label}</Text>
-      </TouchableOpacity>
+        </TouchableOpacity>
       ),
     });
   }, [navigation, type]);
@@ -52,11 +56,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  iconLabel:{
-    fontSize:calcWidth(2),
-    textAlign:"center"
+  iconLabel: {
+    fontSize: calcWidth(2),
+    textAlign: "center",
   },
-  icon:{
-    alignItems:"center"
-  }
+  icon: {
+    alignItems: "center",
+  },
 });

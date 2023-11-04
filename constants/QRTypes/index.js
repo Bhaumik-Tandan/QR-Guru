@@ -1,4 +1,4 @@
-import {Device} from "react-native";
+import { Device } from "react-native";
 import WebsiteProps from "./WebsiteProps";
 import WifiProps from "./WifiProps";
 import TextBoxProps from "./TextBoxProps";
@@ -30,13 +30,13 @@ const QRTypes = {
   UPI: UPIProps,
   PayPal: PayPalProps,
   "My Card": MyCardProps,
-  "Location": LocationProps,
-  "Facebook": FacebookProps,
-  "Instagram": InstagramProps,
-  "Whatsapp": WhatsappProps,
-  "Youtube": YoutubeProps,
-  "Twitter": TwitterProps,
-  "Spotify": SpotifyProps,
+  Location: LocationProps,
+  Facebook: FacebookProps,
+  Instagram: InstagramProps,
+  Whatsapp: WhatsappProps,
+  Youtube: YoutubeProps,
+  Twitter: TwitterProps,
+  Spotify: SpotifyProps,
 };
 
 export default QRTypes;

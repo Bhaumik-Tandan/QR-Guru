@@ -17,16 +17,10 @@ function GeneratorNavigator() {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name={PAGES.GENERATOR_FORM}
-        component={QRGenerationForm}
-      />
+      <Stack.Screen name={PAGES.GENERATOR_FORM} component={QRGenerationForm} />
 
       <Stack.Screen name={PAGES.CONTACTS} component={Contacts} />
-      <Stack.Screen
-        name={PAGES.LOCATION}
-        component={LocationPicker}
-      />
+      <Stack.Screen name={PAGES.LOCATION} component={LocationPicker} />
       <Stack.Screen name={PAGES.QR} component={QR} />
     </Stack.Navigator>
   );

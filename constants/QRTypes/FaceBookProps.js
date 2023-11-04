@@ -10,7 +10,9 @@ const FacebookProps = {
         name: "facebookID",
         placeholder: "Facebook Profile/Page ID",
         type: "text",
-        icon: <AntDesign name="facebook-square" size={calcWidth(8)} color="black" />,
+        icon: (
+          <AntDesign name="facebook-square" size={calcWidth(8)} color="black" />
+        ),
       },
     ],
     generateQRContent: ({ facebookID }) => {

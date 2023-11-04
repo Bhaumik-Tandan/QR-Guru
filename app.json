@@ -52,6 +52,12 @@
         {
           "contactsPermission": "We need access to your contacts to generate QR code of your contact card"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location to generate QR codes."
+        }
       ]
     ]
   },

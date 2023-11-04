@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View, TouchableOpacity, Text,Alert } from 'react-native';
-import * as Location from 'expo-location';
-import PAGES from '../../constants/pages';
-import LocationProps from '../../constants/QRTypes/LocationProps';
+import React, { useState, useRef, useEffect } from "react";
+import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, View, TouchableOpacity, Text, Alert } from "react-native";
+import * as Location from "expo-location";
+import PAGES from "../../constants/pages";
+import LocationProps from "../../constants/QRTypes/LocationProps";
 
-export default function LocationPicker({navigation}) {
-  const [mapType, setMapType] = useState('standard');
+export default function LocationPicker({ navigation }) {
+  const [mapType, setMapType] = useState("standard");
   const [selectedLocation, setSelectedLocation] = useState(null);
   const mapRef = useRef(null);
 
   const toggleMapType = () => {
-    setMapType(mapType === 'standard' ? 'hybrid' : 'standard');
+    setMapType(mapType === "standard" ? "hybrid" : "standard");
   };
 
   const handleMapPress = (event) => {
@@ -25,28 +25,28 @@ export default function LocationPicker({navigation}) {
         {
           text: "Cancel",
           onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
+          style: "cancel",
         },
         {
-            text: "OK", onPress: () => {
-                navigation.navigate(PAGES.QR, {
-                    data: generateQRContent({ latitude, longitude }),
-                });
-            }
-        }
+          text: "OK",
+          onPress: () => {
+            navigation.navigate(PAGES.QR, {
+              data: generateQRContent({ latitude, longitude }),
+            });
+          },
+        },
       ],
-      { cancelable: false }
+      { cancelable: false },
     );
-  }
-  
+  };
 
   useEffect(() => {
     // Get the user's current location and set the map's initial region
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
 
-      if (status !== 'granted') {
-        console.log('Permission to access location was denied');
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
         return;
       }
 
@@ -64,7 +64,6 @@ export default function LocationPicker({navigation}) {
     })();
   }, []);
 
-  
   return (
     <View style={styles.container}>
       <MapView
@@ -98,25 +97,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mapTypeButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 16,
     right: 16,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 5,
     padding: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 3,
   },
   locationInfo: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 16,
     left: 16,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 5,
     padding: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 3,
   },
 });

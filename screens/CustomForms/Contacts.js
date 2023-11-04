@@ -20,20 +20,19 @@ export default function GetContact({ navigation }) {
       if (status === "granted") {
         const { data } = await Contacts.getContactsAsync();
         if (data.length > 0) {
-            // sort contacts by name
-            data.sort((a, b) => {
-                if (a.firstName && b.firstName) {
-                    if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
-                        return -1;
-                    }
-                    if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
-                        return 1;
-                    }
-                    return 0;
-                }
-                return 0;
+          // sort contacts by name
+          data.sort((a, b) => {
+            if (a.firstName && b.firstName) {
+              if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+                return -1;
+              }
+              if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+                return 1;
+              }
+              return 0;
             }
-            );
+            return 0;
+          });
           setContacts(data);
         }
       }
@@ -46,12 +45,15 @@ export default function GetContact({ navigation }) {
 
     const content = generateQRContent({
       name: `${a.firstName} ${a.lastName}`,
-      phone: a.phoneNumbers && a.phoneNumbers.length > 0 ? a.phoneNumbers[0].number : "",
+      phone:
+        a.phoneNumbers && a.phoneNumbers.length > 0
+          ? a.phoneNumbers[0].number
+          : "",
       email: a.emails && a.emails.length > 0 ? a.emails[0].email : "",
     });
 
     navigation.navigate(PAGES.QR, {
-      data:content,
+      data: content,
     });
   };
 
@@ -64,7 +66,10 @@ export default function GetContact({ navigation }) {
           data={contacts}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.cardItem} onPress={()=>handleAddPeople(item)}>
+            <TouchableOpacity
+              style={styles.cardItem}
+              onPress={() => handleAddPeople(item)}
+            >
               <Text style={styles.cardItemName}>
                 {`${item.firstName} ${item.lastName}`}
               </Text>

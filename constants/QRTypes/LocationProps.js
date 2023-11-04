@@ -1,8 +1,8 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Entypo} from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome,MaterialCommunityIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const LocationProps = {
@@ -19,7 +19,9 @@ const LocationProps = {
         name: "longitude",
         placeholder: "Longitude",
         type: "text",
-        icon: <FontAwesome name="map-marker" size={calcWidth(8)} color="black" />,
+        icon: (
+          <FontAwesome name="map-marker" size={calcWidth(8)} color="black" />
+        ),
       },
       {
         name: "locationName",
@@ -39,11 +41,11 @@ const LocationProps = {
       return locationContent;
     },
   },
-  topIcon:{
-    icon: <FontAwesome name="map-marker"  size={calcWidth(8)} color="black" />,
+  topIcon: {
+    icon: <MaterialCommunityIcons name="map-marker-radius" size={calcWidth(8)} color="black" />,
     navigateTo: PAGES.LOCATION,
-    label:"Select from Maps"
-  }
+    label: "Select from Maps",
+  },
 };
 
 export default LocationProps;

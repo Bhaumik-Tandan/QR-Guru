@@ -5,7 +5,7 @@ const PAGES = {
   GENERATOR_FORM: "GeneratorForm",
   QR: "QR",
   CONTACTS: "Contacts",
-  LOCATION: "Location"
+  LOCATION: "Location",
 };
 
 export default PAGES;

@@ -21,7 +21,9 @@ const SpotifyProps = {
     ],
     generateQRContent: ({ artistName, songName }) => {
       if (artistName && songName) {
-        return `https://open.spotify.com/artist/${encodeURIComponent(artistName)}/track/${encodeURIComponent(songName)}`;
+        return `https://open.spotify.com/artist/${encodeURIComponent(
+          artistName,
+        )}/track/${encodeURIComponent(songName)}`;
       } else {
         return "";
       }

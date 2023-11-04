@@ -18,7 +18,9 @@ const SMSProps = {
         name: "message",
         placeholder: "Message Body",
         type: "text",
-        icon: <MaterialIcons name="message" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="message" size={calcWidth(8)} color="black" />
+        ),
         multiline: true,
       },
     ],

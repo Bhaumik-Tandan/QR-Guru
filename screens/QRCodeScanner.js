@@ -5,8 +5,7 @@ import CameraScanner from "../component/CameraScanner";
 import ScannedResult from "../component/ScannedResult";
 import * as SplashScreen from "expo-splash-screen";
 
-
-const QRCodeScanner = ({navigation}) => {
+const QRCodeScanner = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [scannedData, setScannedData] = useState("");
@@ -25,20 +24,19 @@ const QRCodeScanner = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    const unsubscribe = navigation.addListener("focus", () => {
       // do something - for example: reset states, ask for camera permission
       setScanned(false);
       setHasPermission(false);
       (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === "granted"); 
+        const { status } = await BarCodeScanner.requestPermissionsAsync();
+        setHasPermission(status === "granted");
       })();
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
     return unsubscribe;
   }, [navigation]);
-
 
   const requestCameraPermission = async () => {
     const { status } = await BarCodeScanner.requestPermissionsAsync();

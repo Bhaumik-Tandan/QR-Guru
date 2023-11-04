@@ -1,10 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-  Text,
-} from "react-native";
+import { ScrollView, StyleSheet, View, Text } from "react-native";
 import QRDisplay from "../component/QRDisplay";
 import { calcHeight, calcWidth } from "../helper/res";
 import * as Sharing from "expo-sharing";
@@ -77,7 +72,7 @@ export default function QRCodeGenerator({
         console.error("Error capturing QR code:", error);
       }
     }
-  }
+  };
 
   async function selectImage() {
     try {
@@ -98,13 +93,13 @@ export default function QRCodeGenerator({
         logo={logo}
         qrCodeView={qrCodeView}
       />
-        <IconButtons
-          selectImage={selectImage}
-          captureQrCode={captureQrCode}
-          clearLogo={clearLogo}
-          logo={logo}
-          saveQR={saveQR}
-        />
+      <IconButtons
+        selectImage={selectImage}
+        captureQrCode={captureQrCode}
+        clearLogo={clearLogo}
+        logo={logo}
+        saveQR={saveQR}
+      />
     </ScrollView>
   );
 }

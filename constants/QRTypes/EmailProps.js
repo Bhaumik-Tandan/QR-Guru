@@ -17,14 +17,18 @@ const EmailProps = {
         name: "subject",
         placeholder: "Subject (optional)",
         type: "text",
-        icon: <MaterialIcons name="subject" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="subject" size={calcWidth(8)} color="black" />
+        ),
         multiline: true,
       },
       {
         name: "content",
         placeholder: "Content (optional)",
         type: "text",
-        icon: <MaterialIcons name="description" size={calcWidth(8)} color="black" />,
+        icon: (
+          <MaterialIcons name="description" size={calcWidth(8)} color="black" />
+        ),
         multiline: true,
       },
     ],

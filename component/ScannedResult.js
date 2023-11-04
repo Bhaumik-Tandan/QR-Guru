@@ -1,19 +1,23 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
-import * as Linking from 'expo-linking';
+import * as Linking from "expo-linking";
 import copyToClipBoard from "../helper/copyToClipBoard";
 const ScannedResult = ({ scannedData, handleScanAgain }) => {
   const handleSearch = () => {
     Linking.openURL(`https://www.google.com/search?q=${scannedData}`);
-  }
+  };
   const handleCopy = () => {
     copyToClipBoard(scannedData, "Copied to clipboard");
-  }
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.scannedOutput} selectable={true} selectionColor='orange'>
+      <Text
+        style={styles.scannedOutput}
+        selectable={true}
+        selectionColor="orange"
+      >
         {scannedData}
       </Text>
       <View style={styles.buttonContainer}>

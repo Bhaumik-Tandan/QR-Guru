@@ -3,8 +3,13 @@ import { View, TouchableOpacity, StyleSheet, Platform } from "react-native";
 import { EvilIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { calcHeight, calcWidth } from "../helper/res";
 
-
-const IconButtons = ({ selectImage, captureQrCode, clearLogo, logo,saveQR }) => {
+const IconButtons = ({
+  selectImage,
+  captureQrCode,
+  clearLogo,
+  logo,
+  saveQR,
+}) => {
   return (
     <View style={styles.iconContainer}>
       <TouchableOpacity
@@ -13,21 +18,21 @@ const IconButtons = ({ selectImage, captureQrCode, clearLogo, logo,saveQR }) => 
       >
         <EvilIcons name="image" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
-      {Platform.OS === "android" &&
-      <TouchableOpacity
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        onPress={saveQR}
-      >
-        <AntDesign name="save" size={calcWidth(10)} color="black" />
-      </TouchableOpacity>
-}
+      {Platform.OS === "android" && (
+        <TouchableOpacity
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          onPress={saveQR}
+        >
+          <AntDesign name="save" size={calcWidth(10)} color="black" />
+        </TouchableOpacity>
+      )}
       <TouchableOpacity
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={captureQrCode}
       >
         <AntDesign name="sharealt" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
-      
+
       {logo && (
         <TouchableOpacity
           style={{
