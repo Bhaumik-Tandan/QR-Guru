@@ -1,9 +1,14 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { FontAwesome } from "@expo/vector-icons";
+import { Image } from "react-native";
+import upiLogo from "../../assets/logo/upi.png";
 
 const UPIProps = {
-  icon: <FontAwesome name="money" size={calcWidth(10)} color="green" />,
+  icon: <Image source={upiLogo}  style={{
+  width:calcWidth(10),
+  height:calcWidth(10),
+}}/>,
   componentProps: {
     fields: [
       {
