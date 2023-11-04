@@ -15,7 +15,7 @@ import WhatsappProps from "./WhatsAppProps";
 import YoutubeProps from "./YoutubeProps";
 import TwitterProps from "./TwitterProps";
 import SpotifyProps from "./SpotifyProps";
-import GooglePayProps from "./GooglePayProps";
+import PayPalProps from "./PayPal";
 import UPIProps from "./UPIProps";
 
 const QRTypes = {
@@ -28,6 +28,7 @@ const QRTypes = {
   SMS: SMSProps,
   Calendar: CalendarProps,
   UPI: UPIProps,
+  PayPal: PayPalProps,
   "My Card": MyCardProps,
   "Location": LocationProps,
   "Facebook": FacebookProps,
