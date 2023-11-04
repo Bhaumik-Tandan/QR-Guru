@@ -1,8 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
 import { calcHeight } from "../helper/res";
-import BannerAd from "../component/BannerAd";
 import QRTypes from "../constants/QRTypes";
 import GenericQRForm from "../component/GenericQRForm";
 import { calcWidth } from "../helper/res";
@@ -15,7 +13,6 @@ function QRGenerationForm({
 }) {
 
   React.useLayoutEffect(() => {
-    console.log("type", type);
     navigation.setOptions({
       headerTitle: type,
     });
@@ -23,7 +20,6 @@ function QRGenerationForm({
   return (
     <View style={styles.container}>
       <GenericQRForm {...QRTypes[type].componentProps} />
-      <BannerAd />
     </View>
   );
 }

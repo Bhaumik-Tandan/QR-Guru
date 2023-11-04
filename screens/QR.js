@@ -12,7 +12,6 @@ import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
-import HorizontalScroll from "../component/HorizontalScrollMenu";
 
 export default function QRCodeGenerator({
   route: {

@@ -2,7 +2,6 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome"; // Replace 'FontAwesome' with the icon library of your choice
-import BannerAd from "../component/BannerAd";
 import GeneratorNavigator from "./GeneratorNavigator";
 import QRCodeScanner from "../screens/QRCodeScanner";
 import PAGES from "../constants/pages";
@@ -14,7 +13,7 @@ function TabNavigator() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          header: () => <BannerAd />,
+          headerShown: false,
         }}
       >
         <Tab.Screen
