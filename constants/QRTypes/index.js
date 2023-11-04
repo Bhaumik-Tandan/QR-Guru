@@ -1,3 +1,4 @@
+import {Device} from "react-native";
 import WebsiteProps from "./WebsiteProps";
 import WifiProps from "./WifiProps";
 import TextBoxProps from "./TextBoxProps";
@@ -18,7 +19,6 @@ import GooglePayProps from "./GooglePayProps";
 import UPIProps from "./UPIProps";
 
 const QRTypes = {
-  GPay:GooglePayProps,
   Website: WebsiteProps,
   Wifi: WifiProps,
   Text: TextBoxProps,
