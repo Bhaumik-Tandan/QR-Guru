@@ -1,8 +1,9 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo} from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import PAGES from "../pages";
 
 const LocationProps = {
   icon: <MaterialIcons name="location-on" size={calcWidth(10)} color="blue" />,
@@ -38,6 +39,11 @@ const LocationProps = {
       return locationContent;
     },
   },
+  topIcon:{
+    icon: <FontAwesome name="map-marker"  size={calcWidth(8)} color="black" />,
+    navigateTo: PAGES.LOCATION,
+    label:"Select from Maps"
+  }
 };
 
 export default LocationProps;

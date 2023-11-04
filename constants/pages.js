@@ -4,7 +4,8 @@ const PAGES = {
   GENERATOR_OPTIONS: "GeneratorOptions",
   GENERATOR_FORM: "GeneratorForm",
   QR: "QR",
-  CONTACTS: "Contacts"
+  CONTACTS: "Contacts",
+  LOCATION: "Location"
 };
 
 export default PAGES;

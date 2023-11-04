@@ -4,6 +4,7 @@ import QRGenerationForm from "../screens/QRGenerationForm";
 import PAGES from "../constants/pages";
 import QR from "../screens/QR";
 import Contacts from "../screens/CustomForms/Contacts";
+import LocationPicker from "../screens/CustomForms/Location";
 const Stack = createNativeStackNavigator();
 
 function GeneratorNavigator() {
@@ -22,6 +23,10 @@ function GeneratorNavigator() {
       />
 
       <Stack.Screen name={PAGES.CONTACTS} component={Contacts} />
+      <Stack.Screen
+        name={PAGES.LOCATION}
+        component={LocationPicker}
+      />
       <Stack.Screen name={PAGES.QR} component={QR} />
     </Stack.Navigator>
   );

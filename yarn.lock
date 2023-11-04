@@ -2127,6 +2127,11 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@types/geojson@^7946.0.10":
+  version "7946.0.12"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.12.tgz#0307536218d32e6b970bccd1d148b9c4e5b6f10d"
+  integrity sha512-uK2z1ZHJyC0nQRbuovXFt4mzXDwf27vQeUWNhfKGwRcWW429GOhP8HxUHlM6TLH4bzmlv/HlEjpvJh3JfmGsAA==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
@@ -3533,6 +3538,11 @@ expo-linking@^6.0.0:
     invariant "^2.2.4"
     qs "^6.11.0"
     url-parse "^1.5.9"
+
+expo-location@^16.3.0:
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-16.3.0.tgz#efe7a3a0134f8309622f09c96631b50933405a20"
+  integrity sha512-AAiuzfVxyWkARb/QYBL2GgfhbWVb8rMpUlE37Uu+q7mLwZtKwcLMfG6UK2PtpFRVS8QW1baxEOV9SxMbtXsjrw==
 
 expo-modules-autolinking@1.5.1:
   version "1.5.1"
@@ -5791,6 +5801,13 @@ react-native-image-picker@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-7.0.1.tgz#8e7c778fe31867f2facb9e3a8fb21a5d020c5df1"
   integrity sha512-WACwhGCGlHvRzwFS4OjVKbkVMLx95f6g3ouaZ1IQM1LO7zq4Ytn1iBkOja8KkutV10E9B+IitgoWL3VUpuRl7Q==
+
+react-native-maps@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.7.1.tgz#e0b9d68542b4b59b5ca3df375ada7c860fb41f2e"
+  integrity sha512-CHVLzL+Q2jiUGgbt4/vosxVI1SukWyaLGjD62VLgR/wZpnH4Umi9ql1bmKDPWcfj2C1QZwMU0Yc7rXTbvZUIiw==
+  dependencies:
+    "@types/geojson" "^7946.0.10"
 
 react-native-paper@^5.11.1:
   version "5.11.1"
