@@ -84,7 +84,7 @@ const QRDisplay = ({ qrCodeContent,...otherProps }) => {
       ref={qrCodeView}
       style={{ backgroundColor: "#fff" }}
     >
-        <QR qrCodeContent={qrCodeContent} logo={{ uri: logo }} {...otherProps} />
+        <QR qrCodeContent={qrCodeContent} logo={{uri:logo}} {...otherProps} />
       
     </ViewShot>
     <IconButtons
