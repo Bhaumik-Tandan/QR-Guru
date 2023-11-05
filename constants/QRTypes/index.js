@@ -20,6 +20,9 @@ import UPIProps from "./UPIProps";
 import ProductProps from "./ProductProps";
 import CouponProps from "./CouponProps";
 import ApplePayProps from "./ApplePayProps";
+import AppleMusicProps from "./AppleMusicProps";
+import LinkedInProps from "./LinkedInProps";
+import PinterestProps from "./PininterestProps";
 export const QRTypesWithCategory = {
   "Basic":{
   Text: TextBoxProps,
@@ -36,7 +39,7 @@ export const QRTypesWithCategory = {
   Coupon: CouponProps,
   },
   Payment:{
-  ApplePay:ApplePayProps,
+  "Apple Pay":ApplePayProps,
   UPI: UPIProps,
   PayPal: PayPalProps,
   },
@@ -45,8 +48,11 @@ export const QRTypesWithCategory = {
   Instagram: InstagramProps,
   Twitter: TwitterProps,
   WhatsApp: WhatsappProps,
+  LinkedIn: LinkedInProps,
+  Pinterest:PinterestProps,
   Youtube: YoutubeProps,
   Spotify: SpotifyProps,
+  "Apple Music": AppleMusicProps,
   },
 };
 
