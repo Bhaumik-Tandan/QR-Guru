@@ -18,7 +18,8 @@ import SpotifyProps from "./SpotifyProps";
 import PayPalProps from "./PayPal";
 import UPIProps from "./UPIProps";
 
-const QRTypes = {
+export const QRTypesWithCategory = {
+  "Basic":{
   Text: TextBoxProps,
   Contacts: ContactsProps,
   Phone: PhoneProps,
@@ -28,15 +29,31 @@ const QRTypes = {
   Email: EmailProps,
   SMS: SMSProps,
   Calendar: CalendarProps,
+  "My Card": MyCardProps
+  },
+  Payment:{
   UPI: UPIProps,
   PayPal: PayPalProps,
-  "My Card": MyCardProps,
+  },
+  "Social Media":{
   Facebook: FacebookProps,
   Instagram: InstagramProps,
   Whatsapp: WhatsappProps,
   Youtube: YoutubeProps,
   Twitter: TwitterProps,
   Spotify: SpotifyProps,
+  },
 };
+
+
+
+const QRTypes = {};
+
+Object.keys(QRTypesWithCategory).forEach((category) => {
+  Object.keys(QRTypesWithCategory[category]).forEach((type) => {
+    QRTypes[type] = QRTypesWithCategory[category][type];
+  });
+}
+);
 
 export default QRTypes;
