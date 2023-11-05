@@ -25,7 +25,6 @@ const CustomizationOptions = {
     { color: "#A302A3" },
     { color: "#02A302" },
     { color: "#000000" },
-    { color: "#FFFFFF" },
   ]
 };
 

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import CustomizationOptions from '../constants/QRCustomizationOptions';
 import QR from './QR';
-import { calcHeight } from '../helper/res';
+import { calcHeight, calcWidth } from '../helper/res';
 
 function QRTab({ qrData, qrProps, setQRProps }) {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  useEffect(() => {
+  }, [qrData]);
 
   const handleTabPress = (index) => {
     setSelectedTab(index);
@@ -29,18 +32,16 @@ function QRTab({ qrData, qrProps, setQRProps }) {
           </TouchableOpacity>
         ))}
       </View>
-      <ScrollView style={styles.qrCodes}>
+      <ScrollView>
         <View style={styles.qrCodeContainer}>
           {CustomizationOptions[Object.keys(CustomizationOptions)[selectedTab]].map((option, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => setQRProps({ ...qrProps, ...option })}
-              style={[
-                styles.qrCodeItem,
-                selectedTab === index && styles.selectedQR, // Apply selected style conditionally
-              ]}
+              style={
+                styles.qrCodeItem}
             >
-              <QR qrCodeContent={qrData} {...qrProps}{...option} size={calcHeight(10)} />
+              <QR qrCodeContent={qrData} {...qrProps} {...option} size={calcHeight(10)} />
             </TouchableOpacity>
           ))}
         </View>
@@ -57,11 +58,10 @@ const styles = StyleSheet.create({
   tabs: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 10,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffff',
   },
   tabButton: {
-    padding: 10,
+    padding: calcHeight(1),
     borderBottomWidth: 2,
     borderBottomColor: 'transparent',
   },
@@ -74,23 +74,13 @@ const styles = StyleSheet.create({
   activeText: {
     color: 'blue', // Change the color as per your design
   },
-  qrCodes: {
-    flex: 1,
-    padding: 10,
-  },
   qrCodeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start', // Change to 'flex-start' to make items align to the left
+    justifyContent: "space-evenly",
   },
   qrCodeItem: {
-    flexBasis: '50%', // Adjust based on the number of items per row (e.g., 2 items per row)
-    padding: 10,
-  },
-  selectedQR: {
-    borderColor: 'green', // Green border for selected item
-    borderWidth: 2,
-    padding: 8, // Adjust padding as needed
+    margin: calcHeight(1),
   },
 });
 
