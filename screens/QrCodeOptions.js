@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,12 +6,25 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import PAGES from "../constants/pages";
-import QRTypes,{ QRTypesWithCategory} from "../constants/QRTypes"; // Import QRTypes and QRTypesWithCategory
-import { MaterialIcons } from "@expo/vector-icons";
+import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 
 export default function QRCodeOptions({ navigation }) {
+  const [expandedCategories, setExpandedCategories] = useState(Object.keys(QRTypesWithCategory).reduce((acc, category) => {
+      acc[category] = true;
+      return acc;
+    }, {}),
+  );
+
+  const toggleCategory = (category) => {
+    setExpandedCategories({
+      ...expandedCategories,
+      [category]: !expandedCategories[category],
+    });
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -24,30 +37,48 @@ export default function QRCodeOptions({ navigation }) {
       <FlatList
         data={Object.keys(QRTypesWithCategory)}
         keyExtractor={(item) => item}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
             <View>
-              <Text style={styles.categoryTitle}>{item}</Text>
-              <FlatList
-                data={Object.keys(QRTypesWithCategory[item])}
-                numColumns={3}
-                keyExtractor={(subItem) => subItem}
-                renderItem={({ item: subItem }) => {
-                  return (
-                    <TouchableOpacity
-                      style={styles.item}
-                      onPress={() =>
-                        navigation.navigate(PAGES.GENERATOR_FORM, {
-                          type: subItem,
-                        })
-                      }
-                    >
-                      {QRTypes[subItem].icon} 
-                      <Text style={styles.iconTitle}>{subItem}</Text>
-                    </TouchableOpacity>
-                  );
-                }}
-              />
+              <TouchableOpacity
+                style={styles.categoryTitleContainer}
+                onPress={() => toggleCategory(item)}
+              >
+                <Text style={styles.categoryTitle}>{item}</Text>
+                <MaterialIcons
+                  name={
+                    expandedCategories[item]
+                      ? "keyboard-arrow-up"
+                      : "keyboard-arrow-down"
+                  }
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
+              {expandedCategories[item] && (
+                <FlatList
+                  data={Object.keys(QRTypesWithCategory[item])}
+                  numColumns={3}
+                  keyExtractor={(subItem) => subItem}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({ item: subItem }) => {
+                    return (
+                      <TouchableOpacity
+                        style={styles.item}
+                        onPress={() =>
+                          navigation.navigate(PAGES.GENERATOR_FORM, {
+                            type: subItem,
+                          })
+                        }
+                      >
+                        {QRTypes[subItem].icon}
+                        <Text style={styles.iconTitle}>{subItem}</Text>
+                      </TouchableOpacity>
+                    );
+                  }}
+                />
+              )}
             </View>
           );
         }}
@@ -80,6 +111,11 @@ const styles = StyleSheet.create({
   iconTitle: {
     fontSize: getFontSizeByWindowWidth(10),
     textAlign: "center",
+  },
+  categoryTitleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   categoryTitle: {
     fontSize: getFontSizeByWindowWidth(14),
