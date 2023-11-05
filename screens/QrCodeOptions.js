@@ -34,6 +34,12 @@ export default function QRCodeOptions({ navigation }) {
         renderItem={({ item }) => {
           return (
             <View>
+              <View style={{
+                backgroundColor: "#fff",
+                borderRadius: calcHeight(2),
+                marginVertical: calcHeight(1),
+                padding: calcHeight(2),
+              }}>
               <TouchableOpacity
                 style={styles.categoryTitleContainer}
                 onPress={() => toggleCategory(item)}
@@ -49,6 +55,7 @@ export default function QRCodeOptions({ navigation }) {
                   color="black"
                 />
               </TouchableOpacity>
+              </View>
               {expandedCategories[item] && (
                 <FlatList
                   data={Object.keys(QRTypesWithCategory[item])}
@@ -117,7 +124,5 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: getFontSizeByWindowWidth(14),
     fontWeight: "bold",
-    marginTop: calcHeight(5),
-    marginBottom: calcHeight(2),
   },
 });
