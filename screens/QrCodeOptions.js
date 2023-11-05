@@ -63,8 +63,9 @@ export default function QRCodeOptions({ navigation }) {
                   showsVerticalScrollIndicator={false}
                   renderItem={({ item: subItem }) => {
                     return (
+                      <View style={styles.item}>
                       <TouchableOpacity
-                        style={styles.item}
+                      style={styles.icon}
                         onPress={() =>
                           navigation.navigate(PAGES.GENERATOR_FORM, {
                             type: subItem,
@@ -72,8 +73,10 @@ export default function QRCodeOptions({ navigation }) {
                         }
                       >
                         {QRTypes[subItem].icon}
-                        <Text style={styles.iconTitle}>{subItem}</Text>
+                        
                       </TouchableOpacity>
+                      <Text style={styles.iconTitle}>{subItem}</Text>
+                      </View>
                     );
                   }}
                 />
@@ -86,7 +89,7 @@ export default function QRCodeOptions({ navigation }) {
   );
 }
 
-const iconSize = 23;
+const iconSize = 18;
 
 const styles = StyleSheet.create({
   container: {
@@ -96,6 +99,14 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.1)",
   },
   item: {
+    padding: calcHeight(2),
+    alignItems: "center",
+    justifyContent: "center",
+    width: calcWidth(iconSize+11),
+    height: calcWidth(iconSize+5),
+    marginVertical: calcHeight(2),
+  },
+  icon:{
     backgroundColor: "#fff",
     padding: calcHeight(2),
     alignItems: "center",
@@ -103,17 +114,17 @@ const styles = StyleSheet.create({
     borderRadius: calcHeight(iconSize),
     width: calcWidth(iconSize),
     height: calcWidth(iconSize),
-    marginHorizontal: calcHeight(1),
-    marginVertical: calcHeight(1),
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 2,
+
   },
   iconTitle: {
-    fontSize: getFontSizeByWindowWidth(8),
+    fontSize: getFontSizeByWindowWidth(12),
     textAlign: "center",
+    fontWeight: "bold",
   },
   categoryTitleContainer: {
     flexDirection: "row",
@@ -121,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   categoryTitle: {
-    fontSize: getFontSizeByWindowWidth(14),
+    fontSize: getFontSizeByWindowWidth(20),
     fontWeight: "bold",
   },
 });
