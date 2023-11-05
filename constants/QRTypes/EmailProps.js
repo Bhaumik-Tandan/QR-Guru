@@ -1,10 +1,10 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 const EmailProps = {
-  icon: <AntDesign name="mail" size={calcWidth(10)} color="blue" />,
+  icon: <Entypo name="mail" size={calcWidth(10)} color="#000080" />,
   componentProps: {
     fields: [
       {

@@ -1,9 +1,9 @@
 import { Entypo } from "@expo/vector-icons";
 import { calcWidth } from "../../helper/res";
-import { Foundation } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const WebsiteProps = {
-  icon: <Foundation name="web" size={calcWidth(10)} color="blue" />,
+  icon: <MaterialCommunityIcons name="web" size={calcWidth(10)} color="black" />,
   componentProps: {
     fields: [
       {

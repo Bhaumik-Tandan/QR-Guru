@@ -6,7 +6,7 @@ import { FontAwesome,MaterialCommunityIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const LocationProps = {
-  icon: <MaterialIcons name="location-on" size={calcWidth(10)} color="blue" />,
+  icon: <MaterialIcons name="location-on" size={calcWidth(10)} color="green" />,
   componentProps: {
     fields: [
       {

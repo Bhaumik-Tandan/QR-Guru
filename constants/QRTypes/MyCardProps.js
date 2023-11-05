@@ -4,7 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const MyCardProps = {
-  icon: <AntDesign name="idcard" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="idcard" size={calcWidth(10)} color="#008000" />,
   componentProps: {
     fields: [
       {

@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome"; // Replace 'FontAwesom
 import GeneratorNavigator from "./GeneratorNavigator";
 import QRCodeScanner from "../screens/QRCodeScanner";
 import PAGES from "../constants/pages";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,10 @@ function TabNavigator() {
               <Icon name="qrcode" size={size} color={color} /> // Replace 'qrcode' with the icon name you want to use
             ),
             headerShown: false,
-            tabBarLabel: "Generator",
+            tabBarLabel: "Create",
+            tabBarLabelStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
         <Tab.Screen
@@ -32,8 +36,12 @@ function TabNavigator() {
           component={QRCodeScanner}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="camera" size={size} color={color} /> // Replace 'camera' with the icon name you want to use
+              <MaterialCommunityIcons name="line-scan" size={size} color={color} /> // Replace 'camera' with the icon name you want to use
             ),
+            tabBarLabel: "Scan",
+            tabBarLabelStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
       </Tab.Navigator>

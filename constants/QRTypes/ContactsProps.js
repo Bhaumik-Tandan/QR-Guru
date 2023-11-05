@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const ContactsProps = {
-  icon: <MaterialIcons name="contacts" size={calcWidth(10)} color="blue" />,
+  icon: <MaterialIcons name="contacts" size={calcWidth(10)} color="#472731" />,
   componentProps: {
     fields: [
       {

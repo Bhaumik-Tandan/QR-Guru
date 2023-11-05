@@ -27,13 +27,6 @@ export default function QRCodeOptions({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.item}
-        onPress={() => navigation.navigate(PAGES.SCANNER)}
-      >
-        <MaterialIcons name="qr-code-scanner" size={24} color="black" />
-        <Text style={styles.iconTitle}>Scanner</Text>
-      </TouchableOpacity>
       <FlatList
         data={Object.keys(QRTypesWithCategory)}
         keyExtractor={(item) => item}
@@ -45,7 +38,7 @@ export default function QRCodeOptions({ navigation }) {
                 style={styles.categoryTitleContainer}
                 onPress={() => toggleCategory(item)}
               >
-                <Text style={styles.categoryTitle}>{item}</Text>
+                <Text style={styles.categoryTitle}>{item+" QR Codes"}</Text>
                 <MaterialIcons
                   name={
                     expandedCategories[item]

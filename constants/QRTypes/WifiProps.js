@@ -7,7 +7,7 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const WifiProps = {
-  icon: <AntDesign name="wifi" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="wifi" size={calcWidth(10)} color="black" />,
   componentProps: {
     fields: [
       {

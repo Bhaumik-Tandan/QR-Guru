@@ -4,7 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const CalendarProps = {
-  icon: <AntDesign name="calendar" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="calendar" size={calcWidth(10)} color="#008080" />,
   componentProps: {
     fields: [
       {

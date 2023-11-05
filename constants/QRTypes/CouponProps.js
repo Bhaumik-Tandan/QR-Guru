@@ -1,10 +1,10 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { Ionicons} from "@expo/vector-icons";
 
 const CouponProps = {
-  icon: <AntDesign name="tagso" size={calcWidth(10)} color="orange" />,
+  icon: <Ionicons name="ios-pricetags-sharp" size={calcWidth(10)} color="brown" />,
   componentProps: {
     fields: [
       {

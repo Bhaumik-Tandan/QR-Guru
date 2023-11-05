@@ -4,7 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const SMSProps = {
-  icon: <AntDesign name="message1" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="message1" size={calcWidth(10)} color="#00FF00" />,
   componentProps: {
     fields: [
       {
