@@ -87,6 +87,8 @@ export default function QRCodeOptions({ navigation }) {
   );
 }
 
+const iconSize = 23;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -99,9 +101,9 @@ const styles = StyleSheet.create({
     padding: calcHeight(2),
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: calcHeight(25),
-    width: calcWidth(25),
-    height: calcWidth(25),
+    borderRadius: calcHeight(iconSize),
+    width: calcWidth(iconSize),
+    height: calcWidth(iconSize),
     marginHorizontal: calcHeight(1),
     marginVertical: calcHeight(1),
     shadowColor: "rgba(0,0,0,0.1)",

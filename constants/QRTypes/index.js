@@ -17,7 +17,8 @@ import TwitterProps from "./TwitterProps";
 import SpotifyProps from "./SpotifyProps";
 import PayPalProps from "./PayPal";
 import UPIProps from "./UPIProps";
-
+import ProductProps from "./ProductProps";
+import CouponProps from "./CouponProps";
 export const QRTypesWithCategory = {
   "Basic":{
   Text: TextBoxProps,
@@ -29,7 +30,9 @@ export const QRTypesWithCategory = {
   Email: EmailProps,
   SMS: SMSProps,
   Calendar: CalendarProps,
-  "My Card": MyCardProps
+  "My Card": MyCardProps,
+  Product: ProductProps,
+  Coupon: CouponProps,
   },
   Payment:{
   UPI: UPIProps,
