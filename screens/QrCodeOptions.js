@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   iconTitle: {
-    fontSize: getFontSizeByWindowWidth(10),
+    fontSize: getFontSizeByWindowWidth(8),
     textAlign: "center",
   },
   categoryTitleContainer: {

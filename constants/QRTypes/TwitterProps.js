@@ -1,9 +1,14 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
+import twitterLogo from "../../assets/logo/twitter.png";
+import { Image } from "react-native";
 
 const TwitterProps = {
-  icon: <AntDesign name="twitter" size={calcWidth(10)} color="#00acee" />,
+  icon: <Image source={twitterLogo}  style={{
+    width:calcWidth(10),
+    height:calcWidth(10),
+  }}/>,
   componentProps: {
     fields: [
       {
