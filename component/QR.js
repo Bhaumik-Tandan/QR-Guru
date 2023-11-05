@@ -13,29 +13,35 @@ class QR extends Component {
   componentDidUpdate(prevProps) {
     if (
       this.props.qrCodeContent !== prevProps.qrCodeContent ||
-      this.props.logo !== prevProps.logo
+      this.props.logo !== prevProps.logo ||
+      this.props.color !== prevProps.color ||
+      this.props.codeStyle !== prevProps.codeStyle ||
+      this.props.backgroundColor !== prevProps.backgroundColor ||
+      this.props.logoSize !== prevProps.logoSize
     ) {
       this.setState({ showQrCode: false }, () => {
         this.setState({ showQrCode: true });
       });
     }
   }
-
+  
   render() {
-    const { qrCodeContent, logo } = this.props;
+    const { qrCodeContent, logo, color, codeStyle, backgroundColor, logoSize } = this.props;
     const { showQrCode } = this.state;
+
+    const qrProps = {
+      content: qrCodeContent,
+      logo: logo,
+      color: color || "#0802A3",
+      codeStyle: codeStyle || "square",
+      backgroundColor: backgroundColor || "#ffffff",
+      logoSize: logoSize || calcWidth(15),
+    };
 
     return (
       qrCodeContent &&
       showQrCode && (
-        <QRCode
-          content={qrCodeContent}
-          logo={logo}
-          color={"#0802A3"}
-          codeStyle="square"
-          backgroundColor={"#ffffff"}
-          logoSize={calcWidth(15)}
-        />
+        <QRCode {...qrProps} />
       )
     );
   }
