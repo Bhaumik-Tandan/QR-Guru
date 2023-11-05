@@ -26,7 +26,7 @@ class QR extends Component {
   }
 
   render() {
-    const { qrCodeContent, logo, color, codeStyle, backgroundColor, logoSize } =
+    const { qrCodeContent, logo, color, codeStyle, backgroundColor, logoSize,...otherProps } =
       this.props;
     const { showQrCode } = this.state;
 
@@ -38,11 +38,11 @@ class QR extends Component {
       logoSize: logoSize || calcWidth(15),
     };
 
-    if (logo.uri) {
+    if (logo && logo.uri) {
       qrProps.logo = logo;
     }
 
-    return qrCodeContent && showQrCode && <QRCode {...qrProps} />;
+    return qrCodeContent && showQrCode && <QRCode {...qrProps} {...otherProps} />;
   }
 }
 

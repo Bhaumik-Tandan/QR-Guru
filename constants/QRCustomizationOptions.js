@@ -1,5 +1,5 @@
 const CustomizationOptions = {
-  Patter: [
+  Pattern: [
     { codeStyle: "square" },
     { codeStyle: "circle" },
     { codeStyle: "dot" },
@@ -18,3 +18,5 @@ const CustomizationOptions = {
     { outerEyeStyle: "diamond", innerEyeStyle: "diamond" },
   ]
 };
+
+export default CustomizationOptions;
