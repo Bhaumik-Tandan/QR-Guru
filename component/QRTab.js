@@ -40,7 +40,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
                 selectedTab === index && styles.selectedQR, // Apply selected style conditionally
               ]}
             >
-              <QR qrCodeContent={qrData} {...option} size={calcHeight(10)} />
+              <QR qrCodeContent={qrData} {...qrProps}{...option} size={calcHeight(10)} />
             </TouchableOpacity>
           ))}
         </View>
