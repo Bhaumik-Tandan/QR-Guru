@@ -32,12 +32,15 @@ class QR extends Component {
 
     const qrProps = {
       content: qrCodeContent,
-      logo: logo,
       color: color || "#0802A3",
       codeStyle: codeStyle || "square",
       backgroundColor: backgroundColor || "#ffffff",
       logoSize: logoSize || calcWidth(15),
     };
+
+    if (logo.uri) {
+      qrProps.logo = logo;
+    }
 
     return qrCodeContent && showQrCode && <QRCode {...qrProps} />;
   }
