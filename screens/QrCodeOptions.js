@@ -6,7 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { calcHeight, calcWidth } from "../helper/res";
+import { calcHeight, calcWidth,getFontSizeByWindowWidth } from "../helper/res";
 import PAGES from "../constants/pages";
 import QRTypes from "../constants/QRTypes";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -21,7 +21,7 @@ export default function QRCodeOptions({ navigation }) {
               }
             >
               <MaterialIcons name="qr-code-scanner" size={24} color="black" />
-              <Text>Scanner</Text>
+              <Text style={styles.iconTitle}>Scanner</Text>
             </TouchableOpacity>
       <FlatList
         data={Object.keys(QRTypes)}
@@ -38,7 +38,7 @@ export default function QRCodeOptions({ navigation }) {
               }
             >
               {QRTypes[item].icon}
-              <Text>{item}</Text>
+              <Text style={styles.iconTitle}>{item}</Text>
             </TouchableOpacity>
           );
         }}
@@ -52,16 +52,27 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center", // Center content vertically,
+    backgroundColor: "rgba(0,0,0,0.1)",
   },
   item: {
-    backgroundColor: "rgba(0,0,0,0.1)",
+    backgroundColor: "#fff",
     padding: calcHeight(2),
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: calcHeight(27),
-    width: calcWidth(27),
-    height: calcWidth(27),
-    marginHorizontal: calcHeight(1),
-    marginVertical: calcHeight(2),
+    borderRadius: calcHeight(23),
+    width: calcWidth(23),
+    height: calcWidth(23),
+    marginHorizontal: calcHeight(2),
+    marginVertical: calcHeight(3),
+    shadowColor: "rgba(0,0,0,0.1)",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+    shadowColor: "#000",
+  },
+  iconTitle: {
+    fontSize: getFontSizeByWindowWidth(10),
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

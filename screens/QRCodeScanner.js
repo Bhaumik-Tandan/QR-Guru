@@ -3,7 +3,6 @@ import { View, StyleSheet, Linking, Button, Image } from "react-native";
 import * as BarCodeScanner from "expo-barcode-scanner";
 import CameraScanner from "../component/CameraScanner";
 import ScannedResult from "../component/ScannedResult";
-import * as SplashScreen from "expo-splash-screen";
 
 const QRCodeScanner = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -18,7 +17,6 @@ const QRCodeScanner = ({ navigation }) => {
       if (status !== "granted") {
         requestCameraPermission();
       }
-      SplashScreen.hideAsync();
     };
     checkCameraPermission();
   }, []);
