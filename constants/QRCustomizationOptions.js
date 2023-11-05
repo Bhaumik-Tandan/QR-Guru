@@ -16,6 +16,16 @@ const CustomizationOptions = {
     { outerEyeStyle: "diamond", innerEyeStyle: "square" },
     { outerEyeStyle: "diamond", innerEyeStyle: "circle" },
     { outerEyeStyle: "diamond", innerEyeStyle: "diamond" },
+  ],
+  Color:[
+    { color: "#0802A3" },
+    { color: "#A30202" },
+    { color: "#A3A302" },
+    { color: "#02A3A3" },
+    { color: "#A302A3" },
+    { color: "#02A302" },
+    { color: "#000000" },
+    { color: "#FFFFFF" },
   ]
 };
 
