@@ -35,7 +35,6 @@ export default function QRCodeOptions({ navigation }) {
           return (
             <View>
               <View style={{
-                backgroundColor: "#fff",
                 borderRadius: calcHeight(2),
                 marginVertical: calcHeight(1),
                 padding: calcHeight(2),

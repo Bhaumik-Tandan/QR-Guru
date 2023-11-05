@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { calcHeight } from "../helper/res";
 import QRTypes from "../constants/QRTypes";
@@ -15,7 +15,7 @@ function QRGenerationForm({
     navigation.setOptions({
       headerTitle: type,
     });
-    // also give promt at right top corner
+
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -30,6 +30,7 @@ function QRGenerationForm({
       ),
     });
   }, [navigation, type]);
+
   return (
     <View style={styles.container}>
       <GenericQRForm {...QRTypes[type].componentProps} />

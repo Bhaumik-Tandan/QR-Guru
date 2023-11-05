@@ -4,11 +4,19 @@ import GenerateButton from "./GenerateButton";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
 import RNPickerSelect from "react-native-picker-select";
+// import * as ClipBoard from "expo-clipboard";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 
 export default function GenericQRForm({ fields, generateQRContent }) {
   const [qrInfo, setQrInfo] = useState({});
   const navigation = useNavigation();
+
+//   useEffect(() => {
+//     ClipBoard.getStringAsync().then((text) => {
+//       console.log(text);
+//     });
+// }
+// , []);
 
   useEffect(() => {
     const obj = {};
