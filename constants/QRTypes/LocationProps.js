@@ -4,6 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome,MaterialCommunityIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
+import { Platform } from "react-native";
 
 const LocationProps = {
   icon: <MaterialIcons name="location-on" size={calcWidth(10)} color="green" />,
@@ -41,11 +42,11 @@ const LocationProps = {
       return locationContent;
     },
   },
-  topIcon: {
+  topIcon: Platform.OS === "ios" ? {
     icon: <MaterialCommunityIcons name="map-marker-radius" size={calcWidth(8)} color="black" />,
     navigateTo: PAGES.LOCATION,
     label: "Select from Maps",
-  },
+  } : null,
 };
 
 export default LocationProps;
