@@ -12,23 +12,29 @@ const ProductProps = {
         placeholder: "Product Name",
         type: "text",
         icon: (
-          <MaterialIcons name="shopping-cart" size={calcWidth(8)} color="black" />
+          <MaterialIcons
+            name="shopping-cart"
+            size={calcWidth(8)}
+            color="black"
+          />
         ),
       },
       {
         name: "productCode",
         placeholder: "Product Code",
         type: "text",
-        icon: (
-          <MaterialIcons name="code" size={calcWidth(8)} color="black" />
-        ),
+        icon: <MaterialIcons name="code" size={calcWidth(8)} color="black" />,
       },
       {
         name: "price",
         placeholder: "Price",
         type: "number",
         icon: (
-          <MaterialIcons name="monetization-on" size={calcWidth(8)} color="black" />
+          <MaterialIcons
+            name="monetization-on"
+            size={calcWidth(8)}
+            color="black"
+          />
         ),
       },
     ],

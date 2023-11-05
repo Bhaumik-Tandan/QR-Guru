@@ -5,10 +5,15 @@ import { Image } from "react-native";
 import upiLogo from "../../assets/logo/upi.png";
 
 const UPIProps = {
-  icon: <Image source={upiLogo}  style={{
-  width:calcWidth(10),
-  height:calcWidth(10),
-}}/>,
+  icon: (
+    <Image
+      source={upiLogo}
+      style={{
+        width: calcWidth(10),
+        height: calcWidth(10),
+      }}
+    />
+  ),
   componentProps: {
     fields: [
       {

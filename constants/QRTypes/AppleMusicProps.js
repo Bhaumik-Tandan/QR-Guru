@@ -10,9 +10,7 @@ const AppleMusicProps = {
         name: "appleMusicID",
         placeholder: "Apple Music Profile/Playlist ID",
         type: "text",
-        icon: (
-          <AntDesign name="apple1" size={calcWidth(8)} color="white" />
-        ),
+        icon: <AntDesign name="apple1" size={calcWidth(8)} color="white" />,
       },
     ],
     generateQRContent: ({ appleMusicID }) => {

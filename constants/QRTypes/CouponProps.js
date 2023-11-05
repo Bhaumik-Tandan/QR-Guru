@@ -1,10 +1,12 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Ionicons} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const CouponProps = {
-  icon: <Ionicons name="ios-pricetags-sharp" size={calcWidth(10)} color="brown" />,
+  icon: (
+    <Ionicons name="ios-pricetags-sharp" size={calcWidth(10)} color="brown" />
+  ),
   componentProps: {
     fields: [
       {
@@ -12,7 +14,11 @@ const CouponProps = {
         placeholder: "Coupon Code",
         type: "text",
         icon: (
-          <MaterialIcons name="confirmation-number" size={calcWidth(8)} color="black" />
+          <MaterialIcons
+            name="confirmation-number"
+            size={calcWidth(8)}
+            color="black"
+          />
         ),
       },
       {
@@ -27,9 +33,7 @@ const CouponProps = {
         name: "expirationDate",
         placeholder: "Expiration Date",
         type: "text",
-        icon: (
-          <MaterialIcons name="event" size={calcWidth(8)} color="black" />
-        ),
+        icon: <MaterialIcons name="event" size={calcWidth(8)} color="black" />,
       },
     ],
     generateQRContent: ({ couponCode, discount, expirationDate }) => {

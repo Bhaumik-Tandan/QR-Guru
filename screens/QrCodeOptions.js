@@ -12,7 +12,8 @@ import PAGES from "../constants/pages";
 import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 
 export default function QRCodeOptions({ navigation }) {
-  const [expandedCategories, setExpandedCategories] = useState(Object.keys(QRTypesWithCategory).reduce((acc, category) => {
+  const [expandedCategories, setExpandedCategories] = useState(
+    Object.keys(QRTypesWithCategory).reduce((acc, category) => {
       acc[category] = true;
       return acc;
     }, {}),
@@ -24,7 +25,6 @@ export default function QRCodeOptions({ navigation }) {
       [category]: !expandedCategories[category],
     });
   };
-
 
   return (
     <View style={styles.container}>
@@ -74,8 +74,8 @@ export default function QRCodeOptions({ navigation }) {
                           }
                         >
                           <View style={{ alignItems: "center" }}>
-                          {QRTypes[subItem].icon}
-                        </View>
+                            {QRTypes[subItem].icon}
+                          </View>
                         </TouchableOpacity>
                         <Text style={styles.iconTitle}>{subItem}</Text>
                       </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   iconTitle: {
-    flex:1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     fontSize: getFontSizeByWindowWidth(12),

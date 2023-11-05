@@ -11,12 +11,12 @@ export default function GenericQRForm({ fields, generateQRContent }) {
   const [qrInfo, setQrInfo] = useState({});
   const navigation = useNavigation();
 
-//   useEffect(() => {
-//     ClipBoard.getStringAsync().then((text) => {
-//       console.log(text);
-//     });
-// }
-// , []);
+  //   useEffect(() => {
+  //     ClipBoard.getStringAsync().then((text) => {
+  //       console.log(text);
+  //     });
+  // }
+  // , []);
 
   useEffect(() => {
     const obj = {};

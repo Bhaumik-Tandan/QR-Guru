@@ -1,9 +1,9 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { Entypo,AntDesign } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const ApplePayProps = {
-  icon: <AntDesign name="apple1"  size={calcWidth(10)} color="#000" />,
+  icon: <AntDesign name="apple1" size={calcWidth(10)} color="#000" />,
   componentProps: {
     fields: [
       {
@@ -21,7 +21,9 @@ const ApplePayProps = {
     ],
     generateQRContent: ({ email, amount }) => {
       if (email && amount) {
-        return `https://www.apple.com/apple-pay/${encodeURIComponent(email)}/${amount}`;
+        return `https://www.apple.com/apple-pay/${encodeURIComponent(
+          email,
+        )}/${amount}`;
       } else {
         return "";
       }

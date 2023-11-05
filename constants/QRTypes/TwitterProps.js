@@ -5,10 +5,15 @@ import twitterLogo from "../../assets/logo/twitter.png";
 import { Image } from "react-native";
 
 const TwitterProps = {
-  icon: <Image source={twitterLogo}  style={{
-    width:calcWidth(10),
-    height:calcWidth(10),
-  }}/>,
+  icon: (
+    <Image
+      source={twitterLogo}
+      style={{
+        width: calcWidth(10),
+        height: calcWidth(10),
+      }}
+    />
+  ),
   componentProps: {
     fields: [
       {

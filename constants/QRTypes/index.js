@@ -24,39 +24,37 @@ import AppleMusicProps from "./AppleMusicProps";
 import LinkedInProps from "./LinkedInProps";
 import PinterestProps from "./PininterestProps";
 export const QRTypesWithCategory = {
-  "Basic":{
-  Text: TextBoxProps,
-  Contacts: ContactsProps,
-  Phone: PhoneProps,
-  Location: LocationProps,
-  Website: WebsiteProps,
-  Email: EmailProps,
-  Wifi: WifiProps,
-  SMS: SMSProps,
-  Calendar: CalendarProps,
-  "My Card": MyCardProps,
-  Product: ProductProps,
-  Coupon: CouponProps,
+  Basic: {
+    Text: TextBoxProps,
+    Contacts: ContactsProps,
+    Phone: PhoneProps,
+    Location: LocationProps,
+    Website: WebsiteProps,
+    Email: EmailProps,
+    Wifi: WifiProps,
+    SMS: SMSProps,
+    Calendar: CalendarProps,
+    "My Card": MyCardProps,
+    Product: ProductProps,
+    Coupon: CouponProps,
   },
-  Payment:{
-  "Apple Pay":ApplePayProps,
-  UPI: UPIProps,
-  PayPal: PayPalProps,
+  Payment: {
+    "Apple Pay": ApplePayProps,
+    UPI: UPIProps,
+    PayPal: PayPalProps,
   },
-  "Social Media":{
-  Facebook: FacebookProps,
-  Instagram: InstagramProps,
-  Twitter: TwitterProps,
-  WhatsApp: WhatsappProps,
-  LinkedIn: LinkedInProps,
-  Pinterest:PinterestProps,
-  Youtube: YoutubeProps,
-  Spotify: SpotifyProps,
-  "Apple Music": AppleMusicProps,
+  "Social Media": {
+    Facebook: FacebookProps,
+    Instagram: InstagramProps,
+    Twitter: TwitterProps,
+    WhatsApp: WhatsappProps,
+    LinkedIn: LinkedInProps,
+    Pinterest: PinterestProps,
+    Youtube: YoutubeProps,
+    Spotify: SpotifyProps,
+    "Apple Music": AppleMusicProps,
   },
 };
-
-
 
 const QRTypes = {};
 
@@ -64,7 +62,6 @@ Object.keys(QRTypesWithCategory).forEach((category) => {
   Object.keys(QRTypesWithCategory[category]).forEach((type) => {
     QRTypes[type] = QRTypesWithCategory[category][type];
   });
-}
-);
+});
 
 export default QRTypes;

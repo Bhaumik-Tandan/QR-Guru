@@ -5,8 +5,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import GeneratorNavigator from "./GeneratorNavigator";
 import QRCodeScanner from "../screens/QRCodeScanner";
 import PAGES from "../constants/pages";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { calcHeight, calcWidth,getFontSizeByWindowWidth } from "../helper/res";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +18,7 @@ function TabNavigator() {
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: getFontSizeByWindowWidth(12), // Adjust the font size to your preference
-            fontWeight: 'bold',
+            fontWeight: "bold",
           },
           tabBarStyle: {
             height: calcHeight(10), // Adjust the height to your preference
@@ -30,7 +30,7 @@ function TabNavigator() {
           component={GeneratorNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="qrcode" size={size+calcHeight(1)} color={color} />
+              <Icon name="qrcode" size={size + calcHeight(1)} color={color} />
             ),
             tabBarLabel: "Create",
           }}
@@ -40,7 +40,11 @@ function TabNavigator() {
           component={QRCodeScanner}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="line-scan" size={size+calcHeight(1)} color={color} />
+              <MaterialCommunityIcons
+                name="line-scan"
+                size={size + calcHeight(1)}
+                color={color}
+              />
             ),
             tabBarLabel: "Scan",
           }}
