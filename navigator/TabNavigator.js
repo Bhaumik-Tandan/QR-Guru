@@ -17,15 +17,6 @@ function TabNavigator() {
         }}
       >
         <Tab.Screen
-          name={PAGES.SCANNER}
-          component={QRCodeScanner}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <Icon name="camera" size={size} color={color} /> // Replace 'camera' with the icon name you want to use
-            ),
-          }}
-        />
-        <Tab.Screen
           name={PAGES.GENERATOR_NAVIGATOR}
           component={GeneratorNavigator}
           options={{
@@ -34,6 +25,15 @@ function TabNavigator() {
             ),
             headerShown: false,
             tabBarLabel: "Generator",
+          }}
+        />
+        <Tab.Screen
+          name={PAGES.SCANNER}
+          component={QRCodeScanner}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="camera" size={size} color={color} /> // Replace 'camera' with the icon name you want to use
+            ),
           }}
         />
       </Tab.Navigator>

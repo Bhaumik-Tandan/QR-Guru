@@ -9,10 +9,20 @@ import {
 import { calcHeight, calcWidth } from "../helper/res";
 import PAGES from "../constants/pages";
 import QRTypes from "../constants/QRTypes";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function QRCodeOptions({ navigation }) {
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+              style={styles.item}
+              onPress={() =>
+                navigation.navigate(PAGES.SCANNER)
+              }
+            >
+              <MaterialIcons name="qr-code-scanner" size={24} color="black" />
+              <Text>Scanner</Text>
+            </TouchableOpacity>
       <FlatList
         data={Object.keys(QRTypes)}
         numColumns={3}
