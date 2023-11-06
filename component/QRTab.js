@@ -18,6 +18,12 @@ function QRTab({ qrData, qrProps, setQRProps }) {
 
   const tabNames = Object.keys(CustomizationOptions);
 
+  const handleScroll = (event) => {
+    const { contentOffset } = event.nativeEvent;
+    const index = Math.round(contentOffset.x / windowWidth);
+    setSelectedTab(index);
+  };
+
   return (
     <View style={styles.container}>
       <QRCodeTabs
@@ -30,6 +36,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        onScroll={handleScroll}
       >
         {tabNames.map((tabName, index) => (
           <View key={index} style={{ width: windowWidth }}>
