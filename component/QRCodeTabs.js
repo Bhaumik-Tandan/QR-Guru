@@ -5,9 +5,6 @@ function QRCodeTabs({
   tabNames,
   selectedTab,
   handleTabPress,
-  qrProps,
-  qrData,
-  setQRProps,
 }) {
   return (
     <View style={styles.tabs}>
