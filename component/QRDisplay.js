@@ -103,7 +103,7 @@ export default QRDisplay;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: calcHeight(5),
+    padding: calcHeight(10),
     alignItems: "center",
     justifyContent: "center", // Center content vertically
     width: calcWidth(100),
