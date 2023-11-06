@@ -1,16 +1,20 @@
-import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { calcHeight } from '../helper/res';
-function QRCodeTabs({ tabNames, selectedTab, handleTabPress, qrProps, qrData, setQRProps }) {
+import React from "react";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { calcHeight } from "../helper/res";
+function QRCodeTabs({
+  tabNames,
+  selectedTab,
+  handleTabPress,
+  qrProps,
+  qrData,
+  setQRProps,
+}) {
   return (
     <View style={styles.tabs}>
       {tabNames.map((tabName, index) => (
         <TouchableOpacity
           key={index}
-          style={[
-            styles.tabButton,
-            selectedTab === index && styles.activeTab,
-          ]}
+          style={[styles.tabButton, selectedTab === index && styles.activeTab]}
           onPress={() => handleTabPress(index)}
         >
           <Text style={selectedTab === index ? styles.activeText : styles.text}>
@@ -24,23 +28,23 @@ function QRCodeTabs({ tabNames, selectedTab, handleTabPress, qrProps, qrData, se
 
 const styles = StyleSheet.create({
   tabs: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#ffff',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#ffff",
   },
   tabButton: {
     padding: calcHeight(1),
     borderBottomWidth: 2,
-    borderBottomColor: 'transparent',
+    borderBottomColor: "transparent",
   },
   activeTab: {
-    borderBottomColor: 'blue',
+    borderBottomColor: "blue",
   },
   text: {
-    color: 'black',
+    color: "black",
   },
   activeText: {
-    color: 'blue',
+    color: "blue",
   },
 });
 

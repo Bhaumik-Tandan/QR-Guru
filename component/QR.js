@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { QRCode } from "react-native-custom-qr-codes-expo";
 import { calcWidth } from "../helper/res";
+import defaultQRProps from "../constants/defaultQRProps";
 
 class QR extends Component {
   constructor(props) {
@@ -26,23 +27,32 @@ class QR extends Component {
   }
 
   render() {
-    const { qrCodeContent, logo, color, codeStyle, backgroundColor, logoSize,...otherProps } =
-      this.props;
+    const {
+      qrCodeContent,
+      logo,
+      color,
+      codeStyle,
+      backgroundColor,
+      logoSize,
+      ...otherProps
+    } = this.props;
     const { showQrCode } = this.state;
 
     const qrProps = {
       content: qrCodeContent,
-      color: color || "#0802A3",
-      codeStyle: codeStyle || "square",
-      backgroundColor: backgroundColor || "#ffffff",
-      logoSize: logoSize || calcWidth(15),
+      color: color || defaultQRProps.color,
+      codeStyle: codeStyle || defaultQRProps.codeStyle,
+      backgroundColor: backgroundColor || defaultQRProps.backgroundColor,
+      logoSize: logoSize || defaultQRProps.logoSize
     };
 
     if (logo && logo.uri) {
       qrProps.logo = logo;
     }
 
-    return qrCodeContent && showQrCode && <QRCode {...qrProps} {...otherProps} />;
+    return (
+      qrCodeContent && showQrCode && <QRCode {...qrProps} {...otherProps} />
+    );
   }
 }
 

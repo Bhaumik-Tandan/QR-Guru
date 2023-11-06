@@ -9,7 +9,7 @@ import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
 
-const QRDisplay = ({ qrCodeContent,...otherProps }) => {
+const QRDisplay = ({ qrCodeContent, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
 
@@ -79,15 +79,18 @@ const QRDisplay = ({ qrCodeContent,...otherProps }) => {
   }
   return (
     <ScrollView contentContainerStyle={styles.container}>
-    <ViewShot
-      options={{ format: "jpg", quality: 0.9 }}
-      ref={qrCodeView}
-      style={{ backgroundColor: "#fff" }}
-    >
-        <QR qrCodeContent={qrCodeContent} logo={{uri:logo}} {...otherProps} />
-      
-    </ViewShot>
-    <IconButtons
+      <ViewShot
+        options={{ format: "jpg", quality: 0.9 }}
+        ref={qrCodeView}
+        style={{ backgroundColor: "#fff" }}
+      >
+        <QR
+          qrCodeContent={qrCodeContent}
+          logo={{ uri: logo }}
+          {...otherProps}
+        />
+      </ViewShot>
+      <IconButtons
         selectImage={selectImage}
         captureQrCode={captureQrCode}
         clearLogo={clearLogo}
@@ -107,5 +110,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center", // Center content vertically
     width: calcWidth(100),
-  }
+  },
 });

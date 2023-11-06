@@ -17,7 +17,7 @@ const CustomizationOptions = {
     { outerEyeStyle: "diamond", innerEyeStyle: "circle" },
     { outerEyeStyle: "diamond", innerEyeStyle: "diamond" },
   ],
-  Color:[
+  Color: [
     { color: "#0802A3" },
     { color: "#A30202" },
     { color: "#A3A302" },
@@ -25,7 +25,7 @@ const CustomizationOptions = {
     { color: "#A302A3" },
     { color: "#02A302" },
     { color: "#000000" },
-  ]
+  ],
 };
 
 export default CustomizationOptions;

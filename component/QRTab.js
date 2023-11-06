@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
-import CustomizationOptions from '../constants/QRCustomizationOptions';
-import QRCodeTabItem from './QRCodeTabItem';
-import QRCodeTabs from './QRCodeTabs';
+import React, { useEffect, useState } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
+import CustomizationOptions from "../constants/QRCustomizationOptions";
+import QRCodeTabItem from "./QRCodeTabItem";
+import QRCodeTabs from "./QRCodeTabs";
 
 function QRTab({ qrData, qrProps, setQRProps }) {
   const [selectedTab, setSelectedTab] = useState(0);
 
-  useEffect(() => {
-    // Your useEffect logic here
-  }, [qrData]);
 
   const handleTabPress = (index) => {
     setSelectedTab(index);
@@ -44,12 +41,12 @@ function QRTab({ qrData, qrProps, setQRProps }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   qrCodeContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
   },
 });
 
