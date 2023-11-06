@@ -1,28 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, ScrollView, StyleSheet, Dimensions } from "react-native";
+import { View, FlatList, StyleSheet, Dimensions } from "react-native";
 import CustomizationOptions from "../constants/QRCustomizationOptions";
 import QRCodeTabItem from "./QRCodeTabItem";
 import QRCodeTabs from "./QRCodeTabs";
 
 function QRTab({ qrData, qrProps, setQRProps }) {
   const [selectedTab, setSelectedTab] = useState(0);
-  const scrollViewRef = useRef(null);
   const windowWidth = Dimensions.get("window").width;
 
   const handleTabPress = (index) => {
     setSelectedTab(index);
-    if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: index * windowWidth, animated: true });
-    }
+    flatListRef.current.scrollToIndex({ index, animated: true });
   };
 
   const tabNames = Object.keys(CustomizationOptions);
 
-  const handleScroll = (event) => {
-    const { contentOffset } = event.nativeEvent;
-    const index = Math.round(contentOffset.x / windowWidth);
-    setSelectedTab(index);
-  };
+  const flatListRef = useRef(null);
 
   return (
     <View style={styles.container}>
@@ -31,17 +24,16 @@ function QRTab({ qrData, qrProps, setQRProps }) {
         selectedTab={selectedTab}
         handleTabPress={handleTabPress}
       />
-      <ScrollView
-        ref={scrollViewRef}
+      <FlatList
+        ref={flatListRef}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        onScroll={handleScroll}
-      >
-        {tabNames.map((tabName, index) => (
-          <View key={index} style={{ width: windowWidth }}>
+        data={tabNames}
+        renderItem={({ item, index }) => (
+          <View style={{ width: windowWidth }}>
             <View style={styles.qrCodeContainer}>
-              {CustomizationOptions[tabName].map((option, optionIndex) => (
+              {CustomizationOptions[item].map((option, optionIndex) => (
                 <QRCodeTabItem
                   key={optionIndex}
                   qrProps={qrProps}
@@ -52,8 +44,15 @@ function QRTab({ qrData, qrProps, setQRProps }) {
               ))}
             </View>
           </View>
-        ))}
-      </ScrollView>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+        onMomentumScrollEnd={(event) => {
+          const index = Math.round(
+            event.nativeEvent.contentOffset.x / windowWidth
+          );
+          setSelectedTab(index);
+        }}
+      />
     </View>
   );
 }
