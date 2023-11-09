@@ -1,5 +1,5 @@
 import React from "react";
-import { calcWidth } from "../../helper/res";
+import { calcHeight, calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -48,7 +48,7 @@ const LocationProps = {
           icon: (
             <MaterialCommunityIcons
               name="map-marker-radius"
-              size={calcWidth(8)}
+              size={calcHeight(2)}
               color="black"
             />
           ),

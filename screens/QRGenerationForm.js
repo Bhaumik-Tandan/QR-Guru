@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   iconLabel: {
-    fontSize: calcWidth(2),
+    fontSize: calcHeight(1),
     textAlign: "center",
   },
   icon: {
