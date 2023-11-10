@@ -1,6 +1,6 @@
 import { calcWidth } from "../helper/res";
 const defaultQRProps = {
-  color: "#0802A3",
+  color: "#000000",
   codeStyle: "square",
   backgroundColor: "#ffffff",
   logoSize: calcWidth(15),

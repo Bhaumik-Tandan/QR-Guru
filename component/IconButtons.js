@@ -1,7 +1,9 @@
-import React from "react";
-import { View, TouchableOpacity, StyleSheet, Platform } from "react-native";
+import React,{useState} from "react";
+import { View, TouchableOpacity, StyleSheet, Platform,Text } from "react-native";
 import { EvilIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { calcHeight, calcWidth } from "../helper/res";
+import QRCustomizationOptions from "../constants/QRCustomizationOptions";
+
 
 const IconButtons = ({
   selectImage,
@@ -10,8 +12,15 @@ const IconButtons = ({
   logo,
   saveQR,
 }) => {
+  const [editMenu, setEditMenu] = useState(false);
   return (
     <View style={styles.iconContainer}>
+      <TouchableOpacity
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        onPress={()=>{}}
+      >
+        <AntDesign name="edit" size={calcWidth(10)} color="black" />
+      </TouchableOpacity>
       <TouchableOpacity
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={selectImage}
@@ -30,7 +39,7 @@ const IconButtons = ({
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={captureQrCode}
       >
-        <AntDesign name="sharealt" size={calcWidth(10)} color="black" />
+        <EvilIcons name="share-apple" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
 
       {logo && (
@@ -57,5 +66,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     margin: calcHeight(5), // Add margin above the icons
     width: "100%",
-  },
+  }
 });
