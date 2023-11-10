@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import { calcHeight } from "../helper/res";
 import QR from "./QR";
 
@@ -12,6 +12,7 @@ function areValuesEqual(obj1, obj2) {
 
   return true;
 }
+
 function QRCodeTabItem({ qrProps, option, qrData, setQRProps }) {
   return (
     <TouchableOpacity
@@ -22,12 +23,15 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps }) {
         borderWidth: calcHeight(0.2),
       }}
     >
-      <QR
-        qrCodeContent={qrData}
-        {...qrProps}
-        {...option}
-        size={calcHeight(10)}
-      />
+      <View style={styles.container}>
+        <QR
+          qrCodeContent={qrData}
+          {...qrProps}
+          {...option}
+          size={calcHeight(5)}
+        />
+        <Text style={styles.optionName}>{option.name}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -35,6 +39,12 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps }) {
 const styles = StyleSheet.create({
   qrCodeItem: {
     margin: calcHeight(1),
+  },
+  container: {
+    alignItems: "center", // Align items in the center vertically
+  },
+  optionName: {
+    alignSelf: "center",
   },
 });
 

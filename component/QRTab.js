@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, FlatList, StyleSheet, Dimensions } from "react-native";
+import { View, FlatList, StyleSheet, Dimensions,ScrollView } from "react-native";
 import CustomizationOptions from "../constants/QRCustomizationOptions";
 import QRCodeTabItem from "./QRCodeTabItem";
 import QRCodeTabs from "./QRCodeTabs";
@@ -32,7 +32,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
         data={tabNames}
         renderItem={({ item, index }) => (
           <View style={{ width: windowWidth }}>
-            <View style={styles.qrCodeContainer}>
+            <ScrollView contentContainerStyle={styles.qrCodeContainer}>
               {CustomizationOptions[item].map((option, optionIndex) => (
                 <QRCodeTabItem
                   key={optionIndex}
@@ -42,7 +42,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
                   setQRProps={setQRProps}
                 />
               ))}
-            </View>
+            </ScrollView>
           </View>
         )}
         keyExtractor={(item, index) => index.toString()}

@@ -17,12 +17,6 @@ const IconButtons = ({
     <View style={styles.iconContainer}>
       <TouchableOpacity
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        onPress={()=>{}}
-      >
-        <AntDesign name="edit" size={calcWidth(10)} color="black" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={selectImage}
       >
         <EvilIcons name="image" size={calcWidth(10)} color="black" />
