@@ -20,17 +20,23 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps }) {
       onPress={() => setQRProps({ ...qrProps, ...option })}
       style={{
         ...styles.qrCodeItem,
-        borderColor: areValuesEqual(qrProps, option) ? "green" : "transparent",
-        borderWidth: calcHeight(0.2),
       }}
     >
       <View style={styles.container}>
+        <View  style={
+            {
+              borderColor: areValuesEqual(qrProps, option) ? "green" : "transparent",
+              borderWidth: calcHeight(0.2),
+              padding: calcHeight(0.5),
+            }
+          }>
         <QR
           qrCodeContent={qrData}
           {...qrProps}
           {...option}
           size={calcHeight(5)}
         />
+        </View>
         <Text style={styles.optionName}>{option.name}</Text>
       </View>
     </TouchableOpacity>
