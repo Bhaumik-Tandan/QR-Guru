@@ -8,10 +8,13 @@ import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
+import {useNavigation} from "@react-navigation/native";
 
-const QRDisplay = ({ qrCodeContent, ...otherProps }) => {
+const QRDisplay = ({ qrCodeContent,displayData,type, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
+
+
 
   const clearLogo = () => {
     setLogo(null);
@@ -79,6 +82,7 @@ const QRDisplay = ({ qrCodeContent, ...otherProps }) => {
   }
   return (
     <ScrollView contentContainerStyle={styles.container}>
+       <Text>{type}</Text>
       <ViewShot
         options={{ format: "jpg", quality: 0.9 }}
         ref={qrCodeView}
@@ -90,6 +94,7 @@ const QRDisplay = ({ qrCodeContent, ...otherProps }) => {
           {...otherProps}
         />
       </ViewShot>
+      <Text>{displayData}</Text>
       <IconButtons
         selectImage={selectImage}
         captureQrCode={captureQrCode}
@@ -106,7 +111,7 @@ export default QRDisplay;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: calcHeight(10),
+    padding: calcHeight(15),
     alignItems: "center",
     justifyContent: "center", // Center content vertically
     width: calcWidth(100),

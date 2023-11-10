@@ -33,7 +33,7 @@ function QRGenerationForm({
 
   return (
     <View style={styles.container}>
-      <GenericQRForm {...QRTypes[type].componentProps} />
+      <GenericQRForm {...QRTypes[type].componentProps} type={type} />
     </View>
   );
 }

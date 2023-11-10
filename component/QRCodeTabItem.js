@@ -4,7 +4,6 @@ import { calcHeight } from "../helper/res";
 import QR from "./QR";
 
 function areValuesEqual(obj1, obj2) {
-  console.log(obj1, obj2);
   for (const key in obj2) {
     if(key==="name") continue;
     if (obj2[key] !== obj1[key]) {

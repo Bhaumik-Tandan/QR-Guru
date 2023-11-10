@@ -54,6 +54,8 @@ export default function GetContact({ navigation }) {
 
     navigation.navigate(PAGES.QR, {
       data: content,
+      displayData: `${a.firstName} ${a.lastName}`,
+      type: "Contact"
     });
   };
 

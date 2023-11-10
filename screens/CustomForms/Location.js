@@ -32,6 +32,8 @@ export default function LocationPicker({ navigation }) {
           onPress: () => {
             navigation.navigate(PAGES.QR, {
               data: generateQRContent({ latitude, longitude }),
+              displayData: `${latitude} ${longitude}`,
+              type: "Location",
             });
           },
         },
