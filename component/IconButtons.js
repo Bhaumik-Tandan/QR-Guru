@@ -14,6 +14,7 @@ const IconButtons = ({
   logo,
   downloadQR,
   editQR,
+  saveQR
 }) => {
   return (
     <TouchableOpacity onPress={() => {}} style={styles.iconContainer}>
@@ -25,7 +26,7 @@ const IconButtons = ({
         <IconItem icon={<Ionicons name="ios-download" size={calcWidth(10)} color="black" />} text="Download" onPress={downloadQR} />
       )}
 
-      <IconItem icon={<AntDesign name="save" size={calcWidth(10)} color="black" />} text="Save" onPress={captureQrCode} />
+      <IconItem icon={<AntDesign name="save" size={calcWidth(10)} color="black" />} text="Save" onPress={saveQR} />
 
       <IconItem icon={<EvilIcons name="share-apple" size={calcWidth(10)} color="black" />} text="Share" onPress={captureQrCode} />
 

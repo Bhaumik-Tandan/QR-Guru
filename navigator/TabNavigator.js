@@ -7,7 +7,7 @@ import QRCodeScanner from "../screens/QRCodeScanner";
 import PAGES from "../constants/pages";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
-
+import SavedQrCodes from "../screens/SavedQrCodes";
 const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
@@ -47,6 +47,16 @@ function TabNavigator() {
               />
             ),
             tabBarLabel: "Scan",
+          }}
+        />
+        <Tab.Screen
+          name={PAGES.SAVED_QR_CODES}
+          component={SavedQrCodes}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="list" size={size + calcHeight(1)} color={color} />
+            ),
+            tabBarLabel: "Saved",
           }}
         />
       </Tab.Navigator>

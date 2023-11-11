@@ -10,14 +10,45 @@ import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
-
-const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
+import {setLocalStoreData,getLocalStoreData} from "../helper/localStorage";
+import {SAVED_QR} from "../constants/localStorageKeys";
+import getUUID from "../helper/getUUID";
+const QRDisplay = ({ qrCodeContent, displayData, type,savedId, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
   const navigation = useNavigation();
   const clearLogo = () => {
     setLogo(null);
   };
+
+  const saveQrCode = async () => {
+    const qrData={
+      displayData,
+      type,
+      props:otherProps,
+      data:qrCodeContent,
+      id:savedId?savedId:getUUID(),
+    };
+
+    const savedQrCodes=await getLocalStoreData(SAVED_QR);
+
+
+    if(savedQrCodes){
+      const index=savedQrCodes.findIndex((item)=>item.id==qrData.id);
+      if(index!=-1){
+        savedQrCodes[index]=qrData;
+        await setLocalStoreData(SAVED_QR,savedQrCodes);
+      }
+      else{
+        await setLocalStoreData(SAVED_QR,[...savedQrCodes,qrData]);
+      }
+
+    }else{
+      await setLocalStoreData(SAVED_QR,[qrData]);
+    }
+
+    alert("QR Code Saved");
+  }
 
   const editQR = ()=>{
     navigation.navigate(PAGES.QR_EDIT,{
@@ -110,6 +141,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
         logo={logo}
         downloadQR={downloadQR}
         editQR={editQR}
+        saveQR={saveQrCode}
       />
     </ScrollView>
   );
