@@ -16,14 +16,15 @@ const IconButtons = ({
   clearLogo,
   logo,
   saveQR,
+  editQR,
 }) => {
-  const navigation = useNavigation();
+  
   return (
     <View style={styles.iconContainer}>
 
 <TouchableOpacity 
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        onPress={()=>navigation.navigate(PAGES.QR_EDIT,{data:"sdf"})}
+        onPress={editQR}
       >
         <AntDesign name="edit" size={calcWidth(10)} color="black" />
       </TouchableOpacity>

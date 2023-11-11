@@ -9,14 +9,24 @@ import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
 import { useNavigation } from "@react-navigation/native";
+import PAGES from "../constants/pages";
 
 const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
-
+  const navigation = useNavigation();
   const clearLogo = () => {
     setLogo(null);
   };
+
+  const editQR = ()=>{
+    navigation.navigate(PAGES.QR_EDIT,{
+      data:qrCodeContent,
+      propOverRide:otherProps,
+      type:type,
+      displayData:displayData,
+    })}
+
 
   const shareQrCode = async (imageUri) => {
     const shareOptions = {
@@ -99,6 +109,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
         clearLogo={clearLogo}
         logo={logo}
         saveQR={saveQR}
+        editQR={editQR}
       />
     </ScrollView>
   );

@@ -6,11 +6,17 @@ import QRTab from "../component/QRTab";
 
 export default function QRCodeGenerator({
   route: {
-    params: { data, displayData, type },
+    params: { data, displayData, type,propOverRide },
   },
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [qrProps, setQRProps] = useState(defaultQRProps);
+
+  useEffect(() => {  
+    if(propOverRide)
+setQRProps(propOverRide);
+}
+,[propOverRide]);
 
   useEffect(() => {
     setQRCodeContent(data);

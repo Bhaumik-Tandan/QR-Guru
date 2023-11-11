@@ -23,7 +23,11 @@ function GeneratorNavigator() {
       <Stack.Screen name={PAGES.CONTACTS} component={Contacts} />
       <Stack.Screen name={PAGES.LOCATION} component={LocationPicker} />
       <Stack.Screen name={PAGES.QR} component={QR} />
-      <Stack.Screen name={PAGES.QR_EDIT} component={QREdit} />
+      <Stack.Screen name={PAGES.QR_EDIT} component={QREdit} 
+      options={{
+        headerShown: false,
+      }}
+      />
     </Stack.Navigator>
   );
 }
