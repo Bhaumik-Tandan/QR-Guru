@@ -14,7 +14,7 @@ const IconButtons = ({
   logo,
   downloadQR,
   editQR,
-  saveQR
+  saveQR,
 }) => {
   return (
     <TouchableOpacity onPress={() => {}} style={styles.iconContainer}>

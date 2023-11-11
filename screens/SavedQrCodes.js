@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, FlatList,TouchableOpacity } from 'react-native';
 import { getLocalStoreData } from '../helper/localStorage';
-import { calcHeight } from '../helper/res';
 import PAGES from '../constants/pages';
 
 const SavedQrCodes = ({navigation}) => {

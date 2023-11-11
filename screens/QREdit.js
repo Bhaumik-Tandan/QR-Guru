@@ -10,7 +10,7 @@ import PAGES from "../constants/pages";
 
 export default function QREdit({
   route: {
-    params: { data, propOverRide, type, displayData },
+    params: { data, propOverRide, type, displayData,id },
   },
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
@@ -64,6 +64,7 @@ export default function QREdit({
               propOverRide:qrProps,
               type:type,
               displayData:displayData,
+              id
             })
         }}
       >

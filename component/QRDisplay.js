@@ -13,7 +13,7 @@ import PAGES from "../constants/pages";
 import {setLocalStoreData,getLocalStoreData} from "../helper/localStorage";
 import {SAVED_QR} from "../constants/localStorageKeys";
 import getUUID from "../helper/getUUID";
-const QRDisplay = ({ qrCodeContent, displayData, type,savedId, ...otherProps }) => {
+const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const qrCodeView = useRef(null);
   const navigation = useNavigation();
@@ -21,34 +21,42 @@ const QRDisplay = ({ qrCodeContent, displayData, type,savedId, ...otherProps }) 
     setLogo(null);
   };
 
+  const [savedId, setSavedId] = useState("");
+
+  useEffect(() => { 
+    if(id){
+      setSavedId(id);
+    }
+    else
+    setSavedId(getUUID());
+  }
+  , [id]);
+
   const saveQrCode = async () => {
-    const qrData={
+    const qrData = {
       displayData,
       type,
-      props:otherProps,
-      data:qrCodeContent,
-      id:savedId?savedId:getUUID(),
+      props: otherProps,
+      data: qrCodeContent,
+      id: savedId
     };
 
-    const savedQrCodes=await getLocalStoreData(SAVED_QR);
-
-
-    if(savedQrCodes){
-      const index=savedQrCodes.findIndex((item)=>item.id==qrData.id);
-      if(index!=-1){
-        savedQrCodes[index]=qrData;
-        await setLocalStoreData(SAVED_QR,savedQrCodes);
-      }
-      else{
-        await setLocalStoreData(SAVED_QR,[...savedQrCodes,qrData]);
-      }
-
-    }else{
-      await setLocalStoreData(SAVED_QR,[qrData]);
+  
+    const savedQrCodes = await getLocalStoreData(SAVED_QR) || [];
+  
+    const index = savedQrCodes.findIndex((item) => item.id === qrData.id);
+  
+    if (index > -1) {
+      savedQrCodes[index] = qrData;
+    } else {
+      savedQrCodes.push(qrData);
     }
-
+  
+    await setLocalStoreData(SAVED_QR, savedQrCodes);
+  
     alert("QR Code Saved");
-  }
+  };
+  
 
   const editQR = ()=>{
     navigation.navigate(PAGES.QR_EDIT,{
@@ -56,6 +64,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type,savedId, ...otherProps }) 
       propOverRide:otherProps,
       type:type,
       displayData:displayData,
+      id:savedId
     })}
 
 
