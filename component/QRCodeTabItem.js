@@ -5,7 +5,7 @@ import QR from "./QR";
 
 function areValuesEqual(obj1, obj2) {
   for (const key in obj2) {
-    if(key==="name") continue;
+    if (key === "name") continue;
     if (obj2[key] !== obj1[key]) {
       return false;
     }
@@ -23,19 +23,21 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps }) {
       }}
     >
       <View style={styles.container}>
-        <View  style={
-            {
-              borderColor: areValuesEqual(qrProps, option) ? "green" : "transparent",
-              borderWidth: calcHeight(0.2),
-              padding: calcHeight(0.5),
-            }
-          }>
-        <QR
-          qrCodeContent={qrData}
-          {...qrProps}
-          {...option}
-          size={calcHeight(5)}
-        />
+        <View
+          style={{
+            borderColor: areValuesEqual(qrProps, option)
+              ? "green"
+              : "transparent",
+            borderWidth: calcHeight(0.2),
+            padding: calcHeight(0.5),
+          }}
+        >
+          <QR
+            qrCodeContent={qrData}
+            {...qrProps}
+            {...option}
+            size={calcHeight(5)}
+          />
         </View>
         <Text style={styles.optionName}>{option.name}</Text>
       </View>

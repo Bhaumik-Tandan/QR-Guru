@@ -1,11 +1,7 @@
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { calcHeight } from "../helper/res";
-function QRCodeTabs({
-  tabNames,
-  selectedTab,
-  handleTabPress,
-}) {
+function QRCodeTabs({ tabNames, selectedTab, handleTabPress }) {
   return (
     <View style={styles.tabs}>
       {tabNames.map((tabName, index) => (

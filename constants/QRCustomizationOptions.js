@@ -8,14 +8,42 @@ const CustomizationOptions = {
   ],
   Eyes: [
     { outerEyeStyle: "square", innerEyeStyle: "square", name: "Square In-Out" },
-    { outerEyeStyle: "square", innerEyeStyle: "circle", name: "Square In-Circle Out" },
-    { outerEyeStyle: "square", innerEyeStyle: "diamond", name: "Square In-Diamond Out" },
-    { outerEyeStyle: "circle", innerEyeStyle: "square", name: "Circle In-Square Out" },
+    {
+      outerEyeStyle: "square",
+      innerEyeStyle: "circle",
+      name: "Square In-Circle Out",
+    },
+    {
+      outerEyeStyle: "square",
+      innerEyeStyle: "diamond",
+      name: "Square In-Diamond Out",
+    },
+    {
+      outerEyeStyle: "circle",
+      innerEyeStyle: "square",
+      name: "Circle In-Square Out",
+    },
     { outerEyeStyle: "circle", innerEyeStyle: "circle", name: "Circle In-Out" },
-    { outerEyeStyle: "circle", innerEyeStyle: "diamond", name: "Circle In-Diamond Out" },
-    { outerEyeStyle: "diamond", innerEyeStyle: "square", name: "Diamond In-Square Out" },
-    { outerEyeStyle: "diamond", innerEyeStyle: "circle", name: "Diamond In-Circle Out" },
-    { outerEyeStyle: "diamond", innerEyeStyle: "diamond", name: "Diamond In-Out" },
+    {
+      outerEyeStyle: "circle",
+      innerEyeStyle: "diamond",
+      name: "Circle In-Diamond Out",
+    },
+    {
+      outerEyeStyle: "diamond",
+      innerEyeStyle: "square",
+      name: "Diamond In-Square Out",
+    },
+    {
+      outerEyeStyle: "diamond",
+      innerEyeStyle: "circle",
+      name: "Diamond In-Circle Out",
+    },
+    {
+      outerEyeStyle: "diamond",
+      innerEyeStyle: "diamond",
+      name: "Diamond In-Out",
+    },
   ],
   Color: [
     { color: "#0802A3", name: "Blue" },

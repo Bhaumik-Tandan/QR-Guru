@@ -1,5 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, FlatList, StyleSheet, Dimensions,ScrollView } from "react-native";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import CustomizationOptions from "../constants/QRCustomizationOptions";
 import QRCodeTabItem from "./QRCodeTabItem";
 import QRCodeTabs from "./QRCodeTabs";
@@ -48,7 +54,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
         keyExtractor={(item, index) => index.toString()}
         onMomentumScrollEnd={(event) => {
           const index = Math.round(
-            event.nativeEvent.contentOffset.x / windowWidth
+            event.nativeEvent.contentOffset.x / windowWidth,
           );
           setSelectedTab(index);
         }}

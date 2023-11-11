@@ -10,7 +10,17 @@ import { MaterialIcons } from "@expo/vector-icons";
 import PAGES from "../constants/pages";
 import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 import getClipBoard from "../helper/getClipBoard";
-import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
+import {
+  calcHeight,
+  calcWidth,
+  getFontSizeByWindowWidth,
+} from "../helper/res";
+import { ClipboardPasteButton } from "expo-clipboard";
+import * as Clipboard from "expo-clipboard";
+import { Platform } from "react-native";
+
+const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
+const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
 export default function QRCodeOptions({ navigation }) {
   const [expandedCategories, setExpandedCategories] = useState(
@@ -27,83 +37,109 @@ export default function QRCodeOptions({ navigation }) {
     });
   };
 
-  const renderCategoryItem = ({ item }) => (
-    <View style={{ flex: 1 }}>
-      <View style={styles.categoryContainer}>
+  const renderCategoryItem = ({ item }) => {
+    const isExpanded = expandedCategories[item];
+
+    return (
+      <View style={{ flex: 1 }}>
+        <View style={styles.categoryContainer}>
+          <TouchableOpacity
+            style={styles.categoryTitleContainer}
+            onPress={() => toggleCategory(item)}
+          >
+            <Text style={styles.categoryTitle}>{`${item} QR Codes`}</Text>
+            <MaterialIcons
+              name={isExpanded ? "keyboard-arrow-up" : "keyboard-arrow-down"}
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        </View>
+        {isExpanded && renderSubCategories(item)}
+      </View>
+    );
+  };
+
+  const renderSubCategories = (category) => {
+    return (
+      <FlatList
+        data={Object.keys(QRTypesWithCategory[category])}
+        numColumns={3}
+        keyExtractor={(subItem) => subItem}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item: subItem }) => (
+          <View style={styles.item}>
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={() =>
+                navigation.navigate(PAGES.GENERATOR_FORM, { type: subItem })
+              }
+            >
+              <View style={styles.iconContainer}>
+                {QRTypes[subItem].icon}
+              </View>
+            </TouchableOpacity>
+            <Text style={styles.iconTitle}>{subItem}</Text>
+          </View>
+        )}
+      />
+    );
+  };
+
+  const renderCopyButton = () => {
+    if (Platform.OS === "android") {
+      return (
         <TouchableOpacity
-          style={styles.categoryTitleContainer}
-          onPress={() => toggleCategory(item)}
-        >
-          <Text style={styles.categoryTitle}>{item + " QR Codes"}</Text>
-          <MaterialIcons
-            name={
-              expandedCategories[item]
-                ? "keyboard-arrow-up"
-                : "keyboard-arrow-down"
+          onPress={async () => {
+            try {
+              const text = await getClipBoard();
+
+              if (text) {
+                navigation.navigate(PAGES.QR, {
+                  type: "Text",
+                  data: text,
+                  displayData: text,
+                });
+              } else {
+                alert("Clipboard is empty");
+              }
+            } catch (error) {
+              console.error("Error accessing clipboard:", error);
             }
-            size={24}
-            color="black"
+          }}
+          style={styles.copyButton}
+        >
+          <Text style={styles.copyButtonText}>Copy from the Clipboard</Text>
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={calcHeight(3)}
+            style={styles.arrowIcon}
           />
         </TouchableOpacity>
-      </View>
-      {expandedCategories[item] && renderSubCategories(item)}
-    </View>
-  );
+      );
+    } else if (Clipboard.isPasteButtonAvailable) {
+      return (
+        <ClipboardPasteButton
+          style={styles.copyButtonIOS}
+          title="Copy from the Clipboard"
+          onPress={async ({ text }) => {
+            navigation.navigate(PAGES.QR, {
+              type: "Text",
+              data: text,
+              displayData: text,
+            });
+          }}
+        />
+      );
+    }
 
-  const renderSubCategories = (category) => (
-    <FlatList
-      data={Object.keys(QRTypesWithCategory[category])}
-      numColumns={3}
-      keyExtractor={(subItem) => subItem}
-      showsVerticalScrollIndicator={false}
-      renderItem={({ item: subItem }) => (
-        <View style={styles.item}>
-          <TouchableOpacity
-            style={styles.icon}
-            onPress={() =>
-              navigation.navigate(PAGES.GENERATOR_FORM, { type: subItem })
-            }
-          >
-            <View style={styles.iconContainer}>{QRTypes[subItem].icon}</View>
-          </TouchableOpacity>
-          <Text style={styles.iconTitle}>{subItem}</Text>
-        </View>
-      )}
-    />
-  );
+    return null;
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Create QR</Text>
-      <TouchableOpacity
-  onPress={async () => {
-    try {
-      const text = await getClipBoard();
-
-      if (text) {
-        navigation.navigate(PAGES.QR, {
-          type: "Text",
-          data: text,
-          displayData: text,
-        });
-      } else {
-        alert("Clipboard is empty");
-      }
-    } catch (error) {
-      console.error("Error accessing clipboard:", error);
-    }
-  }}
-  style={styles.copyButton}
->
-  <Text style={styles.copyButtonText}>Copy from the Clipboard</Text>
-  <MaterialIcons
-    name="keyboard-arrow-right"
-    size={calcHeight(3)}
-    style={styles.arrowIcon}
-  />
-</TouchableOpacity>
-
-
+      {renderCopyButton()}
       <FlatList
         data={Object.keys(QRTypesWithCategory)}
         keyExtractor={(item) => item}
@@ -127,8 +163,8 @@ const styles = StyleSheet.create({
     marginVertical: calcHeight(2),
   },
   copyButton: {
-    backgroundColor: "#F8F8F8", // A common iOS blue color
-    borderRadius: calcWidth(2),
+    backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
+    borderRadius: COPY_BUTTON_BORDER_RADIUS,
     marginTop: calcHeight(2),
     marginHorizontal: calcWidth(2),
     paddingVertical: calcHeight(2),
@@ -142,18 +178,22 @@ const styles = StyleSheet.create({
     shadowRadius: calcWidth(1),
     elevation: calcWidth(1),
   },
-  
   copyButtonText: {
     fontSize: getFontSizeByWindowWidth(15),
-    fontWeight: "600", // Slightly reduced boldness for a more subtle look
+    fontWeight: "600",
   },
-  
+  copyButtonIOS: {
+      height: 40,
+      width: calcWidth(90),
+      marginHorizontal: calcWidth(2),
+      backgroundColor:  COPY_BUTTON_BACKGROUND_COLOR,
+      foregroundColor: "#000",
+      cornerStyle: "rounded",
+      displayIfContentAvailable: true
+    },
   arrowIcon: {
     marginLeft: calcWidth(2),
   },
-  
-  
-  
   item: {
     flex: 1,
     padding: calcHeight(2),

@@ -43,7 +43,7 @@ class QR extends Component {
       color: color || defaultQRProps.color,
       codeStyle: codeStyle || defaultQRProps.codeStyle,
       backgroundColor: backgroundColor || defaultQRProps.backgroundColor,
-      logoSize: logoSize || defaultQRProps.logoSize
+      logoSize: logoSize || defaultQRProps.logoSize,
     };
 
     if (logo && logo.uri) {

@@ -6,7 +6,7 @@ import QRTab from "../component/QRTab";
 
 export default function QRCodeGenerator({
   route: {
-    params: { data,displayData,type },
+    params: { data, displayData, type },
   },
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
@@ -19,7 +19,12 @@ export default function QRCodeGenerator({
   return (
     <View style={styles.container}>
       <QRTab qrData={qrCodeContent} qrProps={qrProps} setQRProps={setQRProps} />
-      <QRDisplay qrCodeContent={qrCodeContent} {...qrProps} displayData={displayData} type={type}/>
+      <QRDisplay
+        qrCodeContent={qrCodeContent}
+        {...qrProps}
+        displayData={displayData}
+        type={type}
+      />
     </View>
   );
 }

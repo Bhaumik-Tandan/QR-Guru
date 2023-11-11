@@ -1,9 +1,14 @@
-import React,{useState} from "react";
-import { View, TouchableOpacity, StyleSheet, Platform,Text } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Platform,
+  Text,
+} from "react-native";
 import { EvilIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { calcHeight, calcWidth } from "../helper/res";
 import QRCustomizationOptions from "../constants/QRCustomizationOptions";
-
 
 const IconButtons = ({
   selectImage,
@@ -60,5 +65,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     margin: calcHeight(5), // Add margin above the icons
     width: "100%",
-  }
+  },
 });
