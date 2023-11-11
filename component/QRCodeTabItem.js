@@ -36,7 +36,7 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps,sync }) {
             qrCodeContent={qrData}
             {...(sync?qrProps:{})}
             {...option}
-            size={calcHeight(10)}
+            size={calcHeight(15)}
           />
         </View>
         <Text style={styles.optionName}>{option.name}</Text>

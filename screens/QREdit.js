@@ -29,39 +29,23 @@ export default function QREdit({
 
   return (
     <View style={styles.container}>
-
       <QRTab qrData={qrCodeContent}
        setQRProps={setQRProps}
        qrProps={qrProps}
        sync={syncOn}
         />
-         <TouchableOpacity
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
         style={styles.syncButton}
         onPress={() => {
             setSyncOn((prev)=>!prev);
         }}
       >
         <MaterialIcons name={syncOn?"sync-disabled":"sync"} size={calcHeight(5)} color="red" />
-        <Text>{syncOn?"Cancel":"Sync All"}</Text>
+        <Text>{syncOn?"Sync Off":"Sync On"}</Text>
       </TouchableOpacity>
 
-      <View style={styles.QR}>
-        <QR qrCodeContent={qrCodeContent} {...qrProps} />
-        <Text 
-        style={{
-            fontSize:calcHeight(2),
-            fontWeight:"bold",
-            marginBottom:calcHeight(1),
-        }}
-        >Preview</Text>
-      </View>
-      <View style={{
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        flex: 1,
-      
-      }}>
+   
         
       <TouchableOpacity
         style={styles.button}
@@ -70,6 +54,7 @@ export default function QREdit({
         }}
       >
         <Entypo name="circle-with-cross" size={calcHeight(7)} color="red" />
+        <Text>Cancel</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
@@ -83,19 +68,16 @@ export default function QREdit({
         }}
       >
         <AntDesign name="checkcircle" size={calcHeight(6)} color="blue" />
+        <Text>Done</Text>
       </TouchableOpacity>
       </View>
-    </View>
+      </View> 
   );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-      },
-      QR: {
-        justifyContent: "center",
-        alignItems: "center",
       },
       syncButton: {
         alignItems: "center",
@@ -111,5 +93,9 @@ const styles = StyleSheet.create({
       button: {
         alignItems: "center",
         justifyContent: "center",
+      },
+      buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
       },
 });

@@ -66,7 +66,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
       }
     }
   };
-  const saveQR = async () => {
+  const downloadQR = async () => {
     if (qrCodeView.current) {
       try {
         const uri = await qrCodeView.current.capture();
@@ -108,7 +108,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type, ...otherProps }) => {
         captureQrCode={captureQrCode}
         clearLogo={clearLogo}
         logo={logo}
-        saveQR={saveQR}
+        downloadQR={downloadQR}
         editQR={editQR}
       />
     </ScrollView>
