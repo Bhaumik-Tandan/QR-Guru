@@ -30,7 +30,7 @@ const SavedQrCodes = ({navigation}) => {
     await setLocalStoreData("SAVED_QR", savedQrCodes);
     setSavedQrCodes(savedQrCodes);
   }
-  
+
   const deleteItem = async (id) => {
     // ask are you sure
     Alert.alert(
@@ -41,7 +41,10 @@ const SavedQrCodes = ({navigation}) => {
           text: "Cancel",
           style: "cancel"
         },
-        { text: "OK", onPress: () => deleteItemConfirm(id) }
+        { text: "OK", onPress: () => deleteItemConfirm(id),
+        // make it red
+        style: "destructive"
+       }
       ],
       { cancelable: false }
     );
