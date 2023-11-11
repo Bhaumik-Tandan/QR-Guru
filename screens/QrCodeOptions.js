@@ -232,5 +232,6 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: getFontSizeByWindowWidth(18),
     fontWeight: "bold",
+    marginLeft: calcWidth(5),
   },
 });

@@ -13,8 +13,10 @@ import PAGES from "../constants/pages";
 import {setLocalStoreData,getLocalStoreData} from "../helper/localStorage";
 import {SAVED_QR} from "../constants/localStorageKeys";
 import getUUID from "../helper/getUUID";
+import {useSavedQR} from "../SavedQRContext";
 const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
+  const {saveQr} = useSavedQR();
   const qrCodeView = useRef(null);
   const navigation = useNavigation();
   const clearLogo = () => {
@@ -40,21 +42,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
       data: qrCodeContent,
       id: savedId
     };
-
-  
-    const savedQrCodes = await getLocalStoreData(SAVED_QR) || [];
-  
-    const index = savedQrCodes.findIndex((item) => item.id === qrData.id);
-  
-    if (index > -1) {
-      savedQrCodes[index] = qrData;
-    } else {
-      savedQrCodes.push(qrData);
-    }
-  
-    await setLocalStoreData(SAVED_QR, savedQrCodes);
-  
-    alert("QR Code Saved");
+    saveQr(qrData);
   };
   
 

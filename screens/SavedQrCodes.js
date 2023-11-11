@@ -5,31 +5,25 @@ import PAGES from '../constants/pages';
 import { AntDesign } from '@expo/vector-icons'; 
 import { calcHeight } from '../helper/res';
 import { SAVED_QR } from '../constants/localStorageKeys';
-
+import { useSavedQR } from '../SavedQRContext';
 
 const SavedQrCodes = ({navigation}) => {
+  const { savedQR,deleteSavedQR } = useSavedQR();
   const [savedQrCodes, setSavedQrCodes] = useState([]);
 
   useEffect(() => {
-    const getSavedQrCodes = async () => {
-      const data = await getLocalStoreData("SAVED_QR");
-      setSavedQrCodes(data);
-    };
-
-    getSavedQrCodes();
-    return () => {};
-  }, []);
-
-
-  const deleteItemConfirm = async (id) => {
-    const savedQrCodes = await getLocalStoreData("SAVED_QR");
-    const index = savedQrCodes.findIndex((item) => item.id === id);
-    if (index > -1) {
-      savedQrCodes.splice(index, 1);
-    }
-    await setLocalStoreData("SAVED_QR", savedQrCodes);
-    setSavedQrCodes(savedQrCodes);
+    setSavedQrCodes(savedQR);
   }
+  , [savedQR]);
+
+  const deleteConfirm = (id) => {
+    setSavedQrCodes((prev)=>{
+      return prev.filter((item)=>item.id!==id)
+    });
+    deleteSavedQR(id);
+  }
+
+
 
   const deleteItem = async (id) => {
     // ask are you sure
@@ -41,7 +35,7 @@ const SavedQrCodes = ({navigation}) => {
           text: "Cancel",
           style: "cancel"
         },
-        { text: "OK", onPress: () => deleteItemConfirm(id),
+        { text: "OK", onPress: () => deleteConfirm(id),
         // make it red
         style: "destructive"
        }
