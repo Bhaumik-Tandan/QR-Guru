@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import defaultQRProps from "../constants/defaultQRProps";
 import QRTab from "../component/QRTab";
 import QR from "../component/QR";
-import { AntDesign,Entypo } from '@expo/vector-icons'; 
+import { AntDesign,Entypo,MaterialIcons  } from '@expo/vector-icons'; 
 import { calcHeight } from "../helper/res";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
@@ -15,6 +15,7 @@ export default function QREdit({
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [qrProps, setQRProps] = useState(defaultQRProps);
+  const [syncOn,setSyncOn] = useState(false);
 
     useEffect(() => {  
         if(propOverRide)
@@ -28,7 +29,20 @@ export default function QREdit({
 
   return (
     <View style={styles.container}>
-      <QRTab qrData={qrCodeContent} qrProps={qrProps} setQRProps={setQRProps} />
+
+      <QRTab qrData={qrCodeContent}
+       setQRProps={setQRProps}
+       qrProps={syncOn?qrProps:{}}
+        />
+         <TouchableOpacity
+        style={styles.saveButton}
+        onPress={() => {
+            setSyncOn((prev)=>!prev);
+        }}
+      >
+        <MaterialIcons name={syncOn?"sync-disabled":"sync"} size={calcHeight(5)} color="red" />
+        <Text>{syncOn?"Cancel":"Sync All"}</Text>
+      </TouchableOpacity>
 
       <View style={styles.QR}>
         <QR qrCodeContent={qrCodeContent} {...qrProps} />
