@@ -10,7 +10,7 @@ import CustomizationOptions from "../constants/QRCustomizationOptions";
 import QRCodeTabItem from "./QRCodeTabItem";
 import QRCodeTabs from "./QRCodeTabs";
 
-function QRTab({ qrData, qrProps, setQRProps }) {
+function QRTab({ qrData, qrProps, setQRProps,sync }) {
   const [selectedTab, setSelectedTab] = useState(0);
   const windowWidth = Dimensions.get("window").width;
 
@@ -46,6 +46,7 @@ function QRTab({ qrData, qrProps, setQRProps }) {
                   option={option}
                   qrData={qrData}
                   setQRProps={setQRProps}
+                  sync={sync}
                 />
               ))}
             </ScrollView>

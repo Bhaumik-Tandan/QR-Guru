@@ -32,10 +32,11 @@ export default function QREdit({
 
       <QRTab qrData={qrCodeContent}
        setQRProps={setQRProps}
-       qrProps={syncOn?qrProps:{}}
+       qrProps={qrProps}
+       sync={syncOn}
         />
          <TouchableOpacity
-        style={styles.saveButton}
+        style={styles.syncButton}
         onPress={() => {
             setSyncOn((prev)=>!prev);
         }}
@@ -46,6 +47,13 @@ export default function QREdit({
 
       <View style={styles.QR}>
         <QR qrCodeContent={qrCodeContent} {...qrProps} />
+        <Text 
+        style={{
+            fontSize:calcHeight(2),
+            fontWeight:"bold",
+            marginBottom:calcHeight(1),
+        }}
+        >Preview</Text>
       </View>
       <View style={{
         flexDirection: "row",
@@ -54,16 +62,17 @@ export default function QREdit({
         flex: 1,
       
       }}>
+        
       <TouchableOpacity
-        style={styles.saveButton}
+        style={styles.button}
         onPress={() => {
             navigation.goBack();
         }}
       >
-        <Entypo name="circle-with-cross" size={calcHeight(10)} color="red" />
+        <Entypo name="circle-with-cross" size={calcHeight(7)} color="red" />
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.saveButton}
+        style={styles.button}
         onPress={() => {
             navigation.navigate(PAGES.QR,{
               data:qrCodeContent,
@@ -73,7 +82,7 @@ export default function QREdit({
             })
         }}
       >
-        <AntDesign name="checkcircle" size={calcHeight(8)} color="blue" />
+        <AntDesign name="checkcircle" size={calcHeight(6)} color="blue" />
       </TouchableOpacity>
       </View>
     </View>
@@ -81,19 +90,26 @@ export default function QREdit({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  QR: {
-    flex: 2, // Adjust the flex value as needed
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  saveButton: {
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 10,
-    margin: 10, // Add margin for spacing
-    borderRadius: 5, // Add border radius for rounded corners
-  },
+    container: {
+        flex: 1,
+      },
+      QR: {
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      syncButton: {
+        alignItems: "center",
+        justifyContent: "center",
+        margin: calcHeight(2),
+      },
+      actionButtons: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        flex: 1,
+      },
+      button: {
+        alignItems: "center",
+        justifyContent: "center",
+      },
 });
