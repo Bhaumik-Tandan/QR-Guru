@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import { EvilIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { calcHeight, calcWidth } from "../helper/res";
-import QRCustomizationOptions from "../constants/QRCustomizationOptions";
-
+import PAGES from "../constants/pages";
+import { useNavigation } from "@react-navigation/native";
 const IconButtons = ({
   selectImage,
   captureQrCode,
@@ -17,16 +17,24 @@ const IconButtons = ({
   logo,
   saveQR,
 }) => {
-  const [editMenu, setEditMenu] = useState(false);
+  const navigation = useNavigation();
   return (
     <View style={styles.iconContainer}>
+
+<TouchableOpacity 
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        onPress={()=>navigation.navigate(PAGES.QR_EDIT,{data:"sdf"})}
+      >
+        <AntDesign name="edit" size={calcWidth(10)} color="black" />
+      </TouchableOpacity>
       <TouchableOpacity
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={selectImage}
       >
         <EvilIcons name="image" size={calcWidth(10)} color="black" />
       </TouchableOpacity>
-      {Platform.OS === "android" && (
+      
+            {Platform.OS === "android" && (
         <TouchableOpacity
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           onPress={saveQR}

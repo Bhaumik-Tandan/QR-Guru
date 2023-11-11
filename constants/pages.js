@@ -6,6 +6,7 @@ const PAGES = {
   QR: "QR",
   CONTACTS: "Contacts",
   LOCATION: "Location",
+  QR_EDIT: "QR Edit",
 };
 
 export default PAGES;
