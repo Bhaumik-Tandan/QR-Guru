@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, FlatList,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, FlatList,TouchableOpacity,Alert } from 'react-native';
 import { getLocalStoreData,setLocalStoreData } from '../helper/localStorage';
 import PAGES from '../constants/pages';
 import { AntDesign } from '@expo/vector-icons'; 
@@ -20,7 +20,8 @@ const SavedQrCodes = ({navigation}) => {
     return () => {};
   }, []);
 
-  const deleteItem = async (id) => {
+
+  const deleteItemConfirm = async (id) => {
     const savedQrCodes = await getLocalStoreData("SAVED_QR");
     const index = savedQrCodes.findIndex((item) => item.id === id);
     if (index > -1) {
@@ -28,6 +29,23 @@ const SavedQrCodes = ({navigation}) => {
     }
     await setLocalStoreData("SAVED_QR", savedQrCodes);
     setSavedQrCodes(savedQrCodes);
+  }
+  
+  const deleteItem = async (id) => {
+    // ask are you sure
+    Alert.alert(
+      "Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => deleteItemConfirm(id) }
+      ],
+      { cancelable: false }
+    );
+
   }
 
   const renderQrCodeItem = ({ item }) => (
