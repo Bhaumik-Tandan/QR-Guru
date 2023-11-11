@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, FlatList,TouchableOpacity } from 'react-native';
-import { getLocalStoreData } from '../helper/localStorage';
+import { getLocalStoreData,setLocalStoreData } from '../helper/localStorage';
 import PAGES from '../constants/pages';
+import { AntDesign } from '@expo/vector-icons'; 
+import { calcHeight } from '../helper/res';
+import { SAVED_QR } from '../constants/localStorageKeys';
+
 
 const SavedQrCodes = ({navigation}) => {
   const [savedQrCodes, setSavedQrCodes] = useState([]);
@@ -16,6 +20,16 @@ const SavedQrCodes = ({navigation}) => {
     return () => {};
   }, []);
 
+  const deleteItem = async (id) => {
+    const savedQrCodes = await getLocalStoreData("SAVED_QR");
+    const index = savedQrCodes.findIndex((item) => item.id === id);
+    if (index > -1) {
+      savedQrCodes.splice(index, 1);
+    }
+    await setLocalStoreData("SAVED_QR", savedQrCodes);
+    setSavedQrCodes(savedQrCodes);
+  }
+
   const renderQrCodeItem = ({ item }) => (
     <TouchableOpacity style={styles.qrCodeItem}
     onPress={()=>{
@@ -28,9 +42,18 @@ const SavedQrCodes = ({navigation}) => {
         })
     }
     }
-    >
+    ><View>
       <Text style={styles.qrCodeText}>{item.displayData}</Text>
       <Text>{item.type}</Text>
+      </View>
+      <TouchableOpacity
+      onPress={()=>{deleteItem(item.id)}}>
+        <AntDesign name="delete" size={calcHeight(5)} color="red" />
+
+        
+      </TouchableOpacity>
+
+
     </TouchableOpacity>
   );
 
@@ -62,6 +85,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   qrCodeText: {
     fontSize: 16,
