@@ -10,7 +10,7 @@ import CustomizationOptions from "../constants/QRCustomizationOptions";
 import QRCodeTabItem from "./QRCodeTabItem";
 import QRCodeTabs from "./QRCodeTabs";
 
-function QRTab({ qrData, qrProps, setQRProps,sync }) {
+function QRTab({ qrData, qrProps, setQRProps, sync }) {
   const [selectedTab, setSelectedTab] = useState(0);
   const windowWidth = Dimensions.get("window").width;
 

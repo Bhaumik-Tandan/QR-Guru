@@ -4,7 +4,8 @@ const defaultQRProps = {
   codeStyle: "square",
   backgroundColor: "#ffffff",
   logoSize: calcWidth(15),
-  outerEyeStyle: "square", innerEyeStyle: "square"
+  outerEyeStyle: "square",
+  innerEyeStyle: "square",
 };
 
 export default defaultQRProps;

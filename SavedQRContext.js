@@ -13,24 +13,22 @@ export const SavedQRProvider = ({ children }) => {
     getSavedQR();
   }, []);
 
+  const saveQr = async (qrData) => {
+    const savedQrCodes = (await getLocalStoreData(SAVED_QR)) || [];
 
-  const saveQr= async (qrData) => {
-    const savedQrCodes = await getLocalStoreData(SAVED_QR) || [];
-  
     const index = savedQrCodes.findIndex((item) => item.id === qrData.id);
-  
+
     if (index > -1) {
       savedQrCodes[index] = qrData;
     } else {
       savedQrCodes.push(qrData);
     }
-  
+
     await setLocalStoreData(SAVED_QR, savedQrCodes);
     setSavedQR(savedQrCodes);
-  
-    alert("QR Code Saved");
-  }
 
+    alert("QR Code Saved");
+  };
 
   const deleteSavedQR = async (id) => {
     const savedQrCodes = savedQR;
@@ -40,7 +38,7 @@ export const SavedQRProvider = ({ children }) => {
     }
     await setLocalStoreData(SAVED_QR, savedQrCodes);
     setSavedQR(savedQrCodes);
-  }
+  };
 
   return (
     <SavedQRContext.Provider
@@ -48,7 +46,7 @@ export const SavedQRProvider = ({ children }) => {
         savedQR,
         setSavedQR,
         saveQr,
-        deleteSavedQR
+        deleteSavedQR,
       }}
     >
       {children}

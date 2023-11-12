@@ -10,11 +10,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import PAGES from "../constants/pages";
 import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 import getClipBoard from "../helper/getClipBoard";
-import {
-  calcHeight,
-  calcWidth,
-  getFontSizeByWindowWidth,
-} from "../helper/res";
+import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import { ClipboardPasteButton } from "expo-clipboard";
 import * as Clipboard from "expo-clipboard";
 import { Platform } from "react-native";
@@ -27,7 +23,7 @@ export default function QRCodeOptions({ navigation }) {
     Object.keys(QRTypesWithCategory).reduce((acc, category) => {
       acc[category] = true;
       return acc;
-    }, {})
+    }, {}),
   );
 
   const toggleCategory = (category) => {
@@ -75,9 +71,7 @@ export default function QRCodeOptions({ navigation }) {
                 navigation.navigate(PAGES.GENERATOR_FORM, { type: subItem })
               }
             >
-              <View style={styles.iconContainer}>
-                {QRTypes[subItem].icon}
-              </View>
+              <View style={styles.iconContainer}>{QRTypes[subItem].icon}</View>
             </TouchableOpacity>
             <Text style={styles.iconTitle}>{subItem}</Text>
           </View>
@@ -183,14 +177,14 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   copyButtonIOS: {
-      height: 40,
-      width: calcWidth(90),
-      marginHorizontal: calcWidth(2),
-      backgroundColor:  COPY_BUTTON_BACKGROUND_COLOR,
-      foregroundColor: "#000",
-      cornerStyle: "rounded",
-      displayIfContentAvailable: true
-    },
+    height: 40,
+    width: calcWidth(90),
+    marginHorizontal: calcWidth(2),
+    backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
+    foregroundColor: "#000",
+    cornerStyle: "rounded",
+    displayIfContentAvailable: true,
+  },
   arrowIcon: {
     marginLeft: calcWidth(2),
   },

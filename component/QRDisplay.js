@@ -10,13 +10,13 @@ import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
-import {setLocalStoreData,getLocalStoreData} from "../helper/localStorage";
-import {SAVED_QR} from "../constants/localStorageKeys";
+import { setLocalStoreData, getLocalStoreData } from "../helper/localStorage";
+import { SAVED_QR } from "../constants/localStorageKeys";
 import getUUID from "../helper/getUUID";
-import {useSavedQR} from "../SavedQRContext";
-const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
+import { useSavedQR } from "../SavedQRContext";
+const QRDisplay = ({ qrCodeContent, displayData, type, id, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
-  const {saveQr} = useSavedQR();
+  const { saveQr } = useSavedQR();
   const qrCodeView = useRef(null);
   const navigation = useNavigation();
   const clearLogo = () => {
@@ -25,14 +25,11 @@ const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
 
   const [savedId, setSavedId] = useState("");
 
-  useEffect(() => { 
-    if(id){
+  useEffect(() => {
+    if (id) {
       setSavedId(id);
-    }
-    else
-    setSavedId(getUUID());
-  }
-  , [id]);
+    } else setSavedId(getUUID());
+  }, [id]);
 
   const saveQrCode = async () => {
     const qrData = {
@@ -40,21 +37,20 @@ const QRDisplay = ({ qrCodeContent, displayData, type,id, ...otherProps }) => {
       type,
       props: otherProps,
       data: qrCodeContent,
-      id: savedId
+      id: savedId,
     };
     saveQr(qrData);
   };
-  
 
-  const editQR = ()=>{
-    navigation.navigate(PAGES.QR_EDIT,{
-      data:qrCodeContent,
-      propOverRide:otherProps,
-      type:type,
-      displayData:displayData,
-      id:savedId
-    })}
-
+  const editQR = () => {
+    navigation.navigate(PAGES.QR_EDIT, {
+      data: qrCodeContent,
+      propOverRide: otherProps,
+      type: type,
+      displayData: displayData,
+      id: savedId,
+    });
+  };
 
   const shareQrCode = async (imageUri) => {
     const shareOptions = {

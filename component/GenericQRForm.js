@@ -47,7 +47,12 @@ export default function GenericQRForm({ fields, generateQRContent, type }) {
                 />
               ) : (
                 <TextInput
-                  style={styles.textStyle}
+                  style={[
+                    styles.textStyle,
+                    {
+                      height: field.multiline ? calcHeight(20) : calcHeight(5),
+                    },
+                  ]}
                   placeholder={field.placeholder}
                   onChangeText={(text) =>
                     setQrInfo((prev) => ({ ...prev, [field.name]: text }))

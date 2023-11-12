@@ -13,8 +13,8 @@ export default function App() {
       }}
     >
       <SavedQRProvider>
-      <StatusBar style="auto" />
-      <TabNavigator />
+        <StatusBar style="auto" />
+        <TabNavigator />
       </SavedQRProvider>
     </SafeAreaProvider>
   );

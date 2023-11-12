@@ -14,7 +14,7 @@ function areValuesEqual(obj1, obj2) {
   return true;
 }
 
-function QRCodeTabItem({ qrProps, option, qrData, setQRProps,sync }) {
+function QRCodeTabItem({ qrProps, option, qrData, setQRProps, sync }) {
   return (
     <TouchableOpacity
       onPress={() => setQRProps({ ...qrProps, ...option })}
@@ -34,7 +34,7 @@ function QRCodeTabItem({ qrProps, option, qrData, setQRProps,sync }) {
         >
           <QR
             qrCodeContent={qrData}
-            {...(sync?qrProps:{})}
+            {...(sync ? qrProps : {})}
             {...option}
             size={calcHeight(15)}
           />

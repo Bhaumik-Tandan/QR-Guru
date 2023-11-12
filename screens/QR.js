@@ -5,17 +5,15 @@ import defaultQRProps from "../constants/defaultQRProps";
 
 export default function QRCodeGenerator({
   route: {
-    params: { data, displayData, type,propOverRide,id },
+    params: { data, displayData, type, propOverRide, id },
   },
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [qrProps, setQRProps] = useState(defaultQRProps);
 
-  useEffect(() => {  
-    if(propOverRide)
-setQRProps(propOverRide);
-}
-,[propOverRide]);
+  useEffect(() => {
+    if (propOverRide) setQRProps(propOverRide);
+  }, [propOverRide]);
 
   useEffect(() => {
     setQRCodeContent(data);
