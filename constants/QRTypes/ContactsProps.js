@@ -8,26 +8,6 @@ import PAGES from "../pages";
 const ContactsProps = {
   icon: <MaterialIcons name="contacts" size={calcWidth(10)} color="#472731" />,
   componentProps: {
-    fields: [
-      {
-        name: "name",
-        placeholder: "Name",
-        type: "text",
-        icon: <Feather name="user" size={calcWidth(8)} color="black" />,
-      },
-      {
-        name: "phone",
-        placeholder: "Phone Number",
-        type: "text",
-        icon: <MaterialIcons name="phone" size={calcWidth(8)} color="black" />,
-      },
-      {
-        name: "email",
-        placeholder: "Email",
-        type: "text",
-        icon: <AntDesign name="mail" size={calcWidth(8)} color="black" />,
-      },
-    ],
     generateQRContent: ({ name, phone, email }) => {
       const vcard = `BEGIN:VCARD
 VERSION:3.0
@@ -39,11 +19,7 @@ END:VCARD`;
       return vcard;
     },
   },
-  topIcon: {
-    icon: <AntDesign name="adduser" size={calcWidth(8)} color="black" />,
-    navigateTo: PAGES.CONTACTS,
-    label: "Select from Contacts",
-  },
+  navigateTo: PAGES.CONTACTS,
 };
 
 export default ContactsProps;

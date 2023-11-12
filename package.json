@@ -33,6 +33,7 @@
     "react-native": "0.72.5",
     "react-native-custom-qr-codes-expo": "^2.2.0",
     "react-native-dotenv": "^3.4.9",
+    "react-native-elements": "^3.4.3",
     "react-native-fs": "^2.20.0",
     "react-native-google-mobile-ads": "^12.3.0",
     "react-native-image-picker": "^7.0.1",
