@@ -16,19 +16,6 @@ function QRGenerationForm({
       headerTitle: type,
     });
 
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          style={styles.icon}
-          onPress={() =>
-            navigation.navigate(QRTypes[type]?.topIcon?.navigateTo, {})
-          }
-        >
-          {QRTypes[type]?.topIcon?.icon}
-          <Text style={styles.iconLabel}>{QRTypes[type]?.topIcon?.label}</Text>
-        </TouchableOpacity>
-      ),
-    });
   }, [navigation, type]);
 
   return (
