@@ -120,6 +120,7 @@ export default function QRCodeOptions({ navigation }) {
           style={styles.copyButtonIOS}
           title="Copy from the Clipboard"
           onPress={async ({ text }) => {
+            pushEvent("Clipboard");
             navigation.navigate(PAGES.QR, {
               type: "Text",
               data: text,
