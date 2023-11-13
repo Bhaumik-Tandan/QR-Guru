@@ -10,8 +10,7 @@ import IconButtons from "../component/IconButtons";
 import saveFile from "../helper/saveFile";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
-import { setLocalStoreData, getLocalStoreData } from "../helper/localStorage";
-import { SAVED_QR } from "../constants/localStorageKeys";
+import pushEvent from "../helper/pushEvent";
 import getUUID from "../helper/getUUID";
 import { useSavedQR } from "../SavedQRContext";
 const QRDisplay = ({ qrCodeContent, displayData, type, id, ...otherProps }) => {

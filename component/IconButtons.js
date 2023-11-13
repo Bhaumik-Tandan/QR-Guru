@@ -4,7 +4,7 @@ import { EvilIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons"; // Import Ionicons
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import { useNavigation } from "@react-navigation/native";
-
+import pushEvent from "../helper/pushEvent";
 // ... (your imports)
 
 const IconButtons = ({
@@ -67,7 +67,9 @@ const IconButtons = ({
 
 const IconItem = ({ icon, text, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.iconItem}>
+    <TouchableOpacity onPress={()=>{onPress();
+      pushEvent(text);
+    }} style={styles.iconItem}>
       {icon}
       <Text style={styles.iconText}>{text}</Text>
     </TouchableOpacity>

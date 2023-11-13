@@ -14,6 +14,7 @@ import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import { ClipboardPasteButton } from "expo-clipboard";
 import * as Clipboard from "expo-clipboard";
 import { Platform } from "react-native";
+import pushEvent from "../helper/pushEvent";
 
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
@@ -68,6 +69,7 @@ export default function QRCodeOptions({ navigation }) {
             <TouchableOpacity
               style={styles.icon}
               onPress={() =>{
+                pushEvent(subItem);
                 const navigateTo = QRTypesWithCategory[category][subItem].navigateTo || PAGES.GENERATOR_FORM;
                 navigation.navigate(navigateTo, { type: subItem })
               }}
