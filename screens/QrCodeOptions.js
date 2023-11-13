@@ -15,6 +15,7 @@ import { ClipboardPasteButton } from "expo-clipboard";
 import * as Clipboard from "expo-clipboard";
 import { Platform } from "react-native";
 import pushEvent from "../helper/pushEvent";
+import TutorialModal from "../component/Tutorial/TutorialModal";
 
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
@@ -26,6 +27,10 @@ export default function QRCodeOptions({ navigation }) {
       return acc;
     }, {}),
   );
+  const [isTutorialVisible, setIsTutorialVisible] = useState(true);
+  onCloseTutorial = () => {
+    setIsTutorialVisible(false);
+  };
 
   const toggleCategory = (category) => {
     setExpandedCategories({
@@ -142,6 +147,10 @@ export default function QRCodeOptions({ navigation }) {
         keyExtractor={(item) => item}
         showsVerticalScrollIndicator={false}
         renderItem={renderCategoryItem}
+      />
+      <TutorialModal
+        isVisible={isTutorialVisible}
+        onClose={onCloseTutorial}
       />
     </View>
   );
