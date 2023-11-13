@@ -54,7 +54,7 @@ function TabNavigator() {
           component={SavedQrCodes}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="list" size={size + calcHeight(1)} color={color} />
+              <Icon name="bookmark" size={size + calcHeight(1)} color={color} />
             ),
             tabBarLabel: "Saved",
           }}

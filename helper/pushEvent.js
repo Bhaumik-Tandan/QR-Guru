@@ -1,4 +1,5 @@
 function pushEvent(event) {
+    if(process.env.ENV!=='production') return;
     const API_URL = process.env.API_URL;
     fetch(`${API_URL}/event`, {
         method: 'POST',
