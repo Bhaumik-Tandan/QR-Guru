@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -16,7 +16,8 @@ import * as Clipboard from "expo-clipboard";
 import { Platform } from "react-native";
 import pushEvent from "../helper/pushEvent";
 import TutorialModal from "../component/Tutorial/TutorialModal";
-
+import {getLocalStoreData, setLocalStoreData} from "../helper/localStorage";
+import { TUTORIAL } from "../constants/localStorageKeys";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -27,10 +28,20 @@ export default function QRCodeOptions({ navigation }) {
       return acc;
     }, {}),
   );
-  const [isTutorialVisible, setIsTutorialVisible] = useState(true);
+  const [isTutorialVisible, setIsTutorialVisible] = useState(false);
   onCloseTutorial = () => {
     setIsTutorialVisible(false);
   };
+
+  useEffect(() => {
+    getLocalStoreData(TUTORIAL).then((tutorial) => {
+      if (!tutorial) {
+        setIsTutorialVisible(true);
+        setLocalStoreData(TUTORIAL, true);
+      }
+    });
+  }, []);
+
 
   const toggleCategory = (category) => {
     setExpandedCategories({
