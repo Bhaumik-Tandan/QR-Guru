@@ -6,6 +6,7 @@ import QR from "../screens/QR";
 import Contacts from "../screens/CustomForms/Contacts";
 import LocationPicker from "../screens/CustomForms/Location";
 import QREdit from "../screens/QREdit";
+import Phone from "../screens/CustomForms/Phone";
 const Stack = createNativeStackNavigator();
 
 function GeneratorNavigator() {
@@ -30,6 +31,7 @@ function GeneratorNavigator() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name={PAGES.PHONE} component={Phone} />
     </Stack.Navigator>
   );
 }

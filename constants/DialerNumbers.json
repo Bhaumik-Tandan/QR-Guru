@@ -1,0 +1,47 @@
+[
+        {
+            "text": "1"
+        },
+        {
+            "text": "2",
+            "subtext": "A B C"
+        },
+        {
+            "text": "3",
+            "subtext": "D E F"
+        },
+        {
+            "text": "4",
+            "subtext": "G H I"
+        },
+        {
+            "text": "5",
+            "subtext": "J K L"
+        },
+        {
+            "text": "6",
+            "subtext": "M N O"
+        },
+        {
+            "text": "7",
+            "subtext": "P Q R S"
+        },
+        {
+            "text": "8",
+            "subtext": "T U V"
+        },
+        {
+            "text": "9",
+            "subtext": "W X Y Z" 
+        },
+        {
+            "text": "*"
+        },
+        {
+            "text": "0",
+            "subtext": "+"
+        },
+        {
+            "text": "#"
+        }
+    ]

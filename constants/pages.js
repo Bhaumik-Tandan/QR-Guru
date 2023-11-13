@@ -8,6 +8,7 @@ const PAGES = {
   LOCATION: "Location",
   QR_EDIT: "QR Edit",
   SAVED_QR_CODES: "Saved QR Codes",
+  PHONE: "Phone",
 };
 
 export default PAGES;
