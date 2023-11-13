@@ -118,7 +118,6 @@ export default function QRCodeOptions({ navigation }) {
       return (
         <ClipboardPasteButton
           style={styles.copyButtonIOS}
-          title="Copy from the Clipboard"
           onPress={async ({ text }) => {
             pushEvent("Clipboard");
             navigation.navigate(PAGES.QR, {
@@ -127,7 +126,7 @@ export default function QRCodeOptions({ navigation }) {
               displayData: text,
             });
           }}
-        />
+       />
       );
     }
 
@@ -181,13 +180,12 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   copyButtonIOS: {
-    height: 40,
+    height: calcHeight(8),
     width: calcWidth(90),
     marginHorizontal: calcWidth(2),
+    alignSelf: "center",
     backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
-    foregroundColor: "#000",
-    cornerStyle: "rounded",
-    displayIfContentAvailable: true,
+    foregroundColor: "#000"
   },
   arrowIcon: {
     marginLeft: calcWidth(2),

@@ -78,7 +78,8 @@
         "enterpriseProvisioning": "universal"
       },
       "env": {
-        "ENV": "production"
+        "ENV": "production",
+        "API_URL":"https://qr-express.cyclic.app"
       }
     }
   },
