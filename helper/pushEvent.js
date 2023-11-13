@@ -1,6 +1,7 @@
 import { ENV,API_URL } from "@env";
 function pushEvent(event) {
     if(ENV!=='production') return;
+    console.log("ENV",ENV);
     
     fetch(`${API_URL}/event`, {
         method: 'POST',
