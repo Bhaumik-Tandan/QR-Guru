@@ -1,10 +1,9 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
+import { MaterialIcons,Feather } from "@expo/vector-icons";
 
 const EmailProps = {
-  icon: <Entypo name="mail" size={calcWidth(10)} color="#000080" />,
+  icon: <Feather name="mail" size={calcWidth(10)} color="#000080" />,
   componentProps: {
     fields: [
       {

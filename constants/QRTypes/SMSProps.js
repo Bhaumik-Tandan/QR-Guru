@@ -1,10 +1,10 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign,Feather } from "@expo/vector-icons";
 
 const SMSProps = {
-  icon: <AntDesign name="message1" size={calcWidth(10)} color="#00FF00" />,
+  icon: <Feather name="message-circle" size={calcWidth(10)} color="#00FF00" />,
   componentProps: {
     fields: [
       {

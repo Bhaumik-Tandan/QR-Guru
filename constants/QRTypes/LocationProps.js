@@ -1,10 +1,10 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons,EvilIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const LocationProps = {
-  icon: <MaterialIcons name="location-on" size={calcWidth(10)} color="green" />,
+  icon: <EvilIcons name="location" size={calcWidth(10)} color="green" />,
   componentProps: {
     generateQRContent: ({ latitude, longitude, locationName }) => {
       let locationContent = `geo:${latitude},${longitude}`;
