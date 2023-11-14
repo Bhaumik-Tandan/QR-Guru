@@ -20,7 +20,6 @@ const EmailProps = {
         icon: (
           <MaterialIcons name="subject" size={calcWidth(8)} color="black" />
         ),
-        multiline: true,
       },
       {
         name: "content",
