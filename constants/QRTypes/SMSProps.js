@@ -1,7 +1,7 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
 import { MaterialIcons } from "@expo/vector-icons";
-import { AntDesign,Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const SMSProps = {
   icon: <Feather name="message-circle" size={calcWidth(10)} color="#00FF00" />,
