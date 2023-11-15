@@ -16,12 +16,6 @@ export default function GenericQRForm({
   const [qrInfo, setQrInfo] = useState({});
   const navigation = useNavigation();
 
-  //   useEffect(() => {
-  //     ClipBoard.getStringAsync().then((text) => {
-  //       console.log(text);
-  //     });
-  // }
-  // , []);
 
   useEffect(() => {
     const obj = {};
@@ -29,7 +23,7 @@ export default function GenericQRForm({
       obj[field.name] = field.initialValue || "";
     });
     setQrInfo(obj);
-  }, []);
+  }, [getDisplayContent]);
 
   return (
     <View style={styles.container}>

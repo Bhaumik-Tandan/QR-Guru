@@ -40,6 +40,24 @@ const SMSProps = {
 
       return qrContent;
     },
+    getDisplayContent: ({ phone, message }) => {
+      // Assuming there's a maximum character limit for the small place
+      const maxCharacters = 50; // Adjust this based on your requirements
+    
+      // Truncate or format the message to fit the small place
+      const truncatedMessage = message.length > maxCharacters
+        ? `${message.slice(0, maxCharacters)}...`
+        : message;
+    
+      // Create the display content as a plain string
+      const displayContent = `${phone}\n${truncatedMessage}`;
+    
+      // You can return the display content or use it as needed
+      return displayContent;
+    },
+    
+  
+  
   },
 };
 
