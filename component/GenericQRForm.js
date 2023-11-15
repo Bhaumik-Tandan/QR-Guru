@@ -86,7 +86,7 @@ export default function GenericQRForm({
           onPress={() =>
             navigation.navigate(PAGES.QR, {
               data: generateQRContent(qrInfo),
-              displayData: getDisplayContent(qrInfo),
+              displayData: getDisplayContent?getDisplayContent(qrInfo):qrInfo[Object.keys(qrInfo)[0]],
               type,
             })
           }
