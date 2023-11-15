@@ -5,6 +5,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import PAGES from "../constants/pages";
@@ -18,6 +19,7 @@ import pushEvent from "../helper/pushEvent";
 import TutorialModal from "../component/Tutorial/TutorialModal";
 import { getLocalStoreData, setLocalStoreData } from "../helper/localStorage";
 import { TUTORIAL } from "../constants/localStorageKeys";
+import BannerAd from "../component/BannerAd";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -152,6 +154,8 @@ export default function QRCodeOptions({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <BannerAd />
+      <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={styles.heading}>Create QR</Text>
       {renderCopyButton()}
       <FlatList
@@ -160,6 +164,7 @@ export default function QRCodeOptions({ navigation }) {
         showsVerticalScrollIndicator={false}
         renderItem={renderCategoryItem}
       />
+      </ScrollView>
       <TutorialModal isVisible={isTutorialVisible} onClose={onCloseTutorial} />
     </View>
   );
