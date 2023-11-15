@@ -20,7 +20,6 @@ export default function QRCodeGenerator({
   }, [data]);
 
   return (
-    <View style={styles.container}>
       <QRDisplay
         qrCodeContent={qrCodeContent}
         {...qrProps}
@@ -28,12 +27,5 @@ export default function QRCodeGenerator({
         type={type}
         id={id}
       />
-    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

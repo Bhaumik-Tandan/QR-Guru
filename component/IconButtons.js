@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginVertical: calcHeight(5),
     width: "100%",
   },
   iconItem: {

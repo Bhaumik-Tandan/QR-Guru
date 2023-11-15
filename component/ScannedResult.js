@@ -1,10 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import * as Linking from "expo-linking";
 import copyToClipBoard from "../helper/copyToClipBoard";
+import pushEvent from "../helper/pushEvent";
 const ScannedResult = ({ scannedData, handleScanAgain }) => {
+  useEffect(() => {
+    pushEvent(`Scanned ${scannedData}`);
+  }
+  ,[])
+  
   const handleSearch = () => {
     Linking.openURL(`https://www.google.com/search?q=${scannedData}`);
   };
@@ -38,13 +44,6 @@ const renderIconButton = (iconName, text, onPress) => (
   </TouchableOpacity>
 );
 
-const handleCopy = () => {
-  // Implement your copy functionality here
-};
-
-const handleSearch = () => {
-  // Implement your search functionality here
-};
 
 const styles = StyleSheet.create({
   container: {
