@@ -11,6 +11,13 @@ const TextBoxProps = {
       },
     ],
     generateQRContent: ({ text }) => text,
+    getDisplayContent:   ({ text }) => {
+      text = text.replace(/\n/g, " ");
+      return text.length > 30 ? text.substring(0, 30) + "..." : text;
+    
+  },
+  
+  
   },
 };
 

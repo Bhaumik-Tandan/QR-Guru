@@ -5,6 +5,20 @@ import * as Location from "expo-location";
 import PAGES from "../../constants/pages";
 import LocationProps from "../../constants/QRTypes/LocationProps";
 
+
+const getDisplayData = ({ latitude, longitude }) => {
+  // Determine the cardinal direction based on latitude and longitude
+  let latitudeDirection = latitude >= 0 ? 'N' : 'S';
+  let longitudeDirection = longitude >= 0 ? 'E' : 'W';
+
+  // Format the display data
+  const displayData = `${Math.abs(latitude).toFixed(2)}° ${latitudeDirection}\n${Math.abs(longitude).toFixed(2)}° ${longitudeDirection}`;
+
+  return displayData;
+};
+
+
+
 export default function LocationPicker({ navigation }) {
   const [mapType, setMapType] = useState("standard");
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -32,7 +46,7 @@ export default function LocationPicker({ navigation }) {
           onPress: () => {
             navigation.navigate(PAGES.QR, {
               data: generateQRContent({ latitude, longitude }),
-              displayData: `${latitude} ${longitude}`,
+              displayData: getDisplayData({ latitude, longitude }),
               type: "Location",
             });
           },

@@ -7,7 +7,7 @@ import RNPickerSelect from "react-native-picker-select";
 // import * as ClipBoard from "expo-clipboard";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 
-export default function GenericQRForm({ fields, generateQRContent, type }) {
+export default function GenericQRForm({ fields, generateQRContent, type,getDisplayContent }) {
   const [qrInfo, setQrInfo] = useState({});
   const navigation = useNavigation();
 
@@ -87,7 +87,7 @@ export default function GenericQRForm({ fields, generateQRContent, type }) {
           onPress={() =>
             navigation.navigate(PAGES.QR, {
               data: generateQRContent(qrInfo),
-              displayData: qrInfo[Object.keys(qrInfo)[0]],
+              displayData: getDisplayContent(qrInfo),
               type,
             })
           }
