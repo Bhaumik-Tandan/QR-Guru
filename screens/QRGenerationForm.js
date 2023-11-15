@@ -15,7 +15,6 @@ function QRGenerationForm({
     navigation.setOptions({
       headerTitle: type,
     });
-
   }, [navigation, type]);
 
   return (

@@ -30,7 +30,7 @@ export const QRTypesWithCategory = {
     Email: EmailProps,
     Wifi: WifiProps,
     SMS: SMSProps,
-    "My Card": MyCardProps
+    "My Card": MyCardProps,
   },
   Payment: {
     "Apple Pay": ApplePayProps,

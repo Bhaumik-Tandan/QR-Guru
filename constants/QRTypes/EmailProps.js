@@ -1,6 +1,6 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { MaterialIcons,Feather } from "@expo/vector-icons";
+import { MaterialIcons, Feather } from "@expo/vector-icons";
 
 const EmailProps = {
   icon: <Feather name="mail" size={calcWidth(10)} color="#000080" />,
@@ -42,6 +42,22 @@ const EmailProps = {
       }
 
       return qrContent;
+    },
+    getDisplayContent: ({ email, subject }) => {
+      // Define a maximum length for the subject
+      const maxSubjectLength = 20; // You can adjust this based on your requirements
+
+      // Trim the subject if it's longer than the maximum length
+      const trimmedSubject =
+        subject.length > maxSubjectLength
+          ? `${subject.substring(0, maxSubjectLength)}...`
+          : subject;
+
+      // Your logic here to retrieve or generate display content based on email and subject
+      const displayContent = `${email}\n${trimmedSubject}`;
+
+      // You can return the display content or perform other operations
+      return displayContent;
     },
   },
 };

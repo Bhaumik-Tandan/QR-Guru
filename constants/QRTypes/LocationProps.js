@@ -1,6 +1,6 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { MaterialIcons,EvilIcons } from "@expo/vector-icons";
+import { MaterialIcons, EvilIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const LocationProps = {

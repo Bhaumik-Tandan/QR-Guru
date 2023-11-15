@@ -16,7 +16,7 @@ import * as Clipboard from "expo-clipboard";
 import { Platform } from "react-native";
 import pushEvent from "../helper/pushEvent";
 import TutorialModal from "../component/Tutorial/TutorialModal";
-import {getLocalStoreData, setLocalStoreData} from "../helper/localStorage";
+import { getLocalStoreData, setLocalStoreData } from "../helper/localStorage";
 import { TUTORIAL } from "../constants/localStorageKeys";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
@@ -41,7 +41,6 @@ export default function QRCodeOptions({ navigation }) {
       }
     });
   }, []);
-
 
   const toggleCategory = (category) => {
     setExpandedCategories({
@@ -84,10 +83,12 @@ export default function QRCodeOptions({ navigation }) {
           <View style={styles.item}>
             <TouchableOpacity
               style={styles.icon}
-              onPress={() =>{
+              onPress={() => {
                 pushEvent(subItem);
-                const navigateTo = QRTypesWithCategory[category][subItem].navigateTo || PAGES.GENERATOR_FORM;
-                navigation.navigate(navigateTo, { type: subItem })
+                const navigateTo =
+                  QRTypesWithCategory[category][subItem].navigateTo ||
+                  PAGES.GENERATOR_FORM;
+                navigation.navigate(navigateTo, { type: subItem });
               }}
             >
               <View style={styles.iconContainer}>{QRTypes[subItem].icon}</View>
@@ -142,7 +143,7 @@ export default function QRCodeOptions({ navigation }) {
               displayData: text,
             });
           }}
-       />
+        />
       );
     }
 
@@ -159,10 +160,7 @@ export default function QRCodeOptions({ navigation }) {
         showsVerticalScrollIndicator={false}
         renderItem={renderCategoryItem}
       />
-      <TutorialModal
-        isVisible={isTutorialVisible}
-        onClose={onCloseTutorial}
-      />
+      <TutorialModal isVisible={isTutorialVisible} onClose={onCloseTutorial} />
     </View>
   );
 }
@@ -205,7 +203,7 @@ const styles = StyleSheet.create({
     marginHorizontal: calcWidth(2),
     alignSelf: "center",
     backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
-    foregroundColor: "#000"
+    foregroundColor: "#000",
   },
   arrowIcon: {
     marginLeft: calcWidth(2),

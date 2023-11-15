@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
 import getUUID from "../helper/getUUID";
 import { useSavedQR } from "../SavedQRContext";
-import { calcHeight,getFontSizeByWindowWidth } from "../helper/res";
+import { calcHeight, getFontSizeByWindowWidth } from "../helper/res";
 
 const QRDisplay = ({ qrCodeContent, displayData, type, id, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
@@ -148,12 +148,12 @@ const styles = StyleSheet.create({
     fontSize: getFontSizeByWindowWidth(20),
     fontWeight: "bold",
     marginTop: calcHeight(5),
-    marginBottom:calcHeight(1)
+    marginBottom: calcHeight(1),
   },
   displayData: {
     fontSize: getFontSizeByWindowWidth(15),
     marginTop: calcHeight(1),
-    marginBottom:calcHeight(1)
+    marginBottom: calcHeight(1),
   },
 });
 

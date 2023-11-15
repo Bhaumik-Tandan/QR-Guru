@@ -20,12 +20,12 @@ export default function QRCodeGenerator({
   }, [data]);
 
   return (
-      <QRDisplay
-        qrCodeContent={qrCodeContent}
-        {...qrProps}
-        displayData={displayData}
-        type={type}
-        id={id}
-      />
+    <QRDisplay
+      qrCodeContent={qrCodeContent}
+      {...qrProps}
+      displayData={displayData}
+      type={type}
+      id={id}
+    />
   );
 }

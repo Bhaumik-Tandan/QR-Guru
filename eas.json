@@ -79,7 +79,7 @@
       },
       "env": {
         "ENV": "production",
-        "API_URL":"https://qr-express.cyclic.app"
+        "API_URL": "https://qr-express.cyclic.app"
       }
     }
   },

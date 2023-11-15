@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
@@ -8,9 +8,8 @@ import pushEvent from "../helper/pushEvent";
 const ScannedResult = ({ scannedData, handleScanAgain }) => {
   useEffect(() => {
     pushEvent(`Scanned ${scannedData}`);
-  }
-  ,[])
-  
+  }, []);
+
   const handleSearch = () => {
     Linking.openURL(`https://www.google.com/search?q=${scannedData}`);
   };
@@ -43,7 +42,6 @@ const renderIconButton = (iconName, text, onPress) => (
     </Text>
   </TouchableOpacity>
 );
-
 
 const styles = StyleSheet.create({
   container: {

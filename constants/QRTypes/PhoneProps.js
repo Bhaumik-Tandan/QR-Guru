@@ -9,6 +9,6 @@ const PhoneProps = {
     generateQRContent: ({ phone }) => `tel:${phone}`,
   },
   icon: <AntDesign name="phone" size={calcWidth(10)} color="blue" />,
-  navigateTo: PAGES.PHONE
+  navigateTo: PAGES.PHONE,
 };
 export default PhoneProps;

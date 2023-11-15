@@ -10,12 +10,12 @@ import * as Contacts from "expo-contacts";
 import ContactsProps from "../../constants/QRTypes/ContactsProps";
 import Loader from "../../component/Loader";
 import PAGES from "../../constants/pages";
-import { SearchBar } from 'react-native-elements';
+import { SearchBar } from "react-native-elements";
 
 export default function GetContact({ navigation }) {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -25,7 +25,9 @@ export default function GetContact({ navigation }) {
         if (data.length > 0) {
           data.sort((a, b) => {
             if (a.firstName && b.firstName) {
-              return a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase());
+              return a.firstName
+                .toLowerCase()
+                .localeCompare(b.firstName.toLowerCase());
             }
             return 0;
           });
@@ -40,7 +42,10 @@ export default function GetContact({ navigation }) {
     const { generateQRContent } = ContactsProps.componentProps;
     const content = generateQRContent({
       name: `${a.firstName} ${a.lastName}`,
-      phone: a.phoneNumbers && a.phoneNumbers.length > 0 ? a.phoneNumbers[0].number : "",
+      phone:
+        a.phoneNumbers && a.phoneNumbers.length > 0
+          ? a.phoneNumbers[0].number
+          : "",
       email: a.emails && a.emails.length > 0 ? a.emails[0].email : "",
     });
     navigation.navigate(PAGES.QR, {
@@ -51,22 +56,29 @@ export default function GetContact({ navigation }) {
   };
 
   const renderContactItem = ({ item }) => (
-    <TouchableOpacity style={styles.cardItem} onPress={() => handleAddPeople(item)}>
+    <TouchableOpacity
+      style={styles.cardItem}
+      onPress={() => handleAddPeople(item)}
+    >
       <Text style={styles.cardItemName}>
         {item.firstName ? `${item.firstName} ${item.lastName}` : "No name"}
       </Text>
       <Text style={styles.cardItemDetail}>
-        {item.phoneNumbers && item.phoneNumbers.length > 0 ? item.phoneNumbers[0].number : "No phone number"}
+        {item.phoneNumbers && item.phoneNumbers.length > 0
+          ? item.phoneNumbers[0].number
+          : "No phone number"}
       </Text>
       <Text style={styles.cardItemDetail}>
-        {item.emails && item.emails.length > 0 ? item.emails[0].email : "No email"}
+        {item.emails && item.emails.length > 0
+          ? item.emails[0].email
+          : "No email"}
       </Text>
     </TouchableOpacity>
   );
 
   const filterContacts = () => {
-    return contacts.filter(contact =>
-      contact.firstName.toLowerCase().includes(search.toLowerCase())
+    return contacts.filter((contact) =>
+      contact.firstName.toLowerCase().includes(search.toLowerCase()),
     );
   };
 
@@ -89,8 +101,6 @@ export default function GetContact({ navigation }) {
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

@@ -26,11 +26,11 @@ const WebsiteProps = {
       },
     ],
     generateQRContent: ({ website }) => website,
-    getDisplayContent:   ({ website:url }) => {
-    url = url.replace(/(^\w+:|^)\/\//, "");
+    getDisplayContent: ({ website: url }) => {
+      url = url.replace(/(^\w+:|^)\/\//, "");
 
-    return url.length > 30 ? url.substring(0, 30) + "..." : url;
-  },
+      return url.length > 30 ? url.substring(0, 30) + "..." : url;
+    },
   },
 };
 

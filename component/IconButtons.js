@@ -67,9 +67,13 @@ const IconButtons = ({
 
 const IconItem = ({ icon, text, onPress }) => {
   return (
-    <TouchableOpacity onPress={()=>{onPress();
-      pushEvent(text);
-    }} style={styles.iconItem}>
+    <TouchableOpacity
+      onPress={() => {
+        onPress();
+        pushEvent(text);
+      }}
+      style={styles.iconItem}
+    >
       {icon}
       <Text style={styles.iconText}>{text}</Text>
     </TouchableOpacity>
