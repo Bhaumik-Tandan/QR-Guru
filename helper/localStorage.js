@@ -33,4 +33,5 @@ export const getLocalStoreData = async (key) => {
 };
 
 // removeLocalStoreData('SAVED_QR');
+// removeLocalStoreData('"TUTORIAL"');
 export default { setLocalStoreData, getLocalStoreData, removeLocalStoreData };
