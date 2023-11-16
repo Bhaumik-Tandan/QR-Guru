@@ -154,7 +154,7 @@ export default function QRCodeOptions({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <BannerAd />
+      {/* <BannerAd /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={styles.heading}>Create QR</Text>
       {renderCopyButton()}
