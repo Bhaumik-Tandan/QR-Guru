@@ -66,7 +66,11 @@ export default function QRCodeOptions({ navigation }) {
         keyExtractor={(subItem) => subItem}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: subItem }) => (
-          <TouchableOpacity style={styles.icon}>
+          <TouchableOpacity style={styles.icon}  onPress={() =>{
+            pushEvent(subItem);
+            const navigateTo = QRTypesWithCategory[category][subItem].navigateTo || PAGES.GENERATOR_FORM;
+            navigation.navigate(navigateTo, { type: subItem })
+          }}>
             {QRTypes[subItem].icon}
             <Text style={styles.iconTitle}>{subItem}</Text>
             <View style={styles.arrowContainer}>
