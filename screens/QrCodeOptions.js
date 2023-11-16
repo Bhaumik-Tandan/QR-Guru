@@ -48,8 +48,13 @@ export default function QRCodeOptions({ navigation }) {
   const renderCategoryItem = ({ item }) => {
 
     return (
+      <View style={{
+        marginBottom:calcHeight(5)
+      }}>
+        <Text style={styles.categoryTitle}>{item}</Text>
       <View style={styles.categoryContainer}>
         {renderSubCategories(item)}
+        </View>
       </View>
     );
   };
@@ -215,5 +220,10 @@ const styles = StyleSheet.create({
     margin: calcHeight(2),
     borderRadius:calcWidth(2.5),
     backgroundColor:"white"
+  },
+  categoryTitle: {
+    fontSize: getFontSizeByWindowWidth(20),
+    fontWeight: "bold",
+    marginLeft:calcWidth(3)
   },
 });
