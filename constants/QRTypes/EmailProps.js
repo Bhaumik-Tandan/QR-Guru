@@ -46,22 +46,22 @@ const EmailProps = {
     getDisplayContent: ({ phone, message }) => {
       // Define a maximum length for the message
       const maxMessageLength = 50; // You can adjust this based on your requirements
-    
+
       // Remove line breaks from the message
-      const cleanedMessage = message.replace(/\n/g, ' ');
-    
+      const cleanedMessage = message.replace(/\n/g, " ");
+
       // Trim the message if it's longer than the maximum length
       const truncatedMessage =
         cleanedMessage.length > maxMessageLength
           ? `${cleanedMessage.substring(0, maxMessageLength)}...`
           : cleanedMessage;
-    
+
       // Your logic here to retrieve or generate display content based on phone and truncated message
       const displayContent = `Phone: ${phone} - Message: ${truncatedMessage}`;
-    
+
       // You can return the display content or perform other operations
       return displayContent;
-    },    
+    },
   },
 };
 

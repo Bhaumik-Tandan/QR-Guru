@@ -16,7 +16,6 @@ export default function GenericQRForm({
   const [qrInfo, setQrInfo] = useState({});
   const navigation = useNavigation();
 
-
   useEffect(() => {
     const obj = {};
     fields.forEach((field) => {
@@ -86,7 +85,9 @@ export default function GenericQRForm({
           onPress={() =>
             navigation.navigate(PAGES.QR, {
               data: generateQRContent(qrInfo),
-              displayData: getDisplayContent?getDisplayContent(qrInfo):qrInfo[Object.keys(qrInfo)[0]],
+              displayData: getDisplayContent
+                ? getDisplayContent(qrInfo)
+                : qrInfo[Object.keys(qrInfo)[0]],
               type,
             })
           }

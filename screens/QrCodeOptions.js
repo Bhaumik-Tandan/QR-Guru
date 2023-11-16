@@ -19,7 +19,7 @@ import pushEvent from "../helper/pushEvent";
 import TutorialModal from "../component/Tutorial/TutorialModal";
 import { getLocalStoreData, setLocalStoreData } from "../helper/localStorage";
 import { TUTORIAL } from "../constants/localStorageKeys";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -140,9 +140,9 @@ export default function QRCodeOptions({ navigation }) {
           style={styles.copyButtonIOS}
           onPress={async ({ text }) => {
             pushEvent("Clipboard");
-            const url=isURL(text);
+            const url = isURL(text);
             navigation.navigate(PAGES.QR, {
-              type: url?"Website":"Text",
+              type: url ? "Website" : "Text",
               data: text,
               displayData: text,
             });
@@ -159,18 +159,15 @@ export default function QRCodeOptions({ navigation }) {
   return (
     <View style={styles.container}>
       {/* <BannerAd /> */}
-      <View style={styles.clipBoardContainer
-      }>
-        {renderCopyButton()}
-      </View>
+      <View style={styles.clipBoardContainer}>{renderCopyButton()}</View>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <Text style={styles.heading}>Create QR</Text>
-      <FlatList
-        data={Object.keys(QRTypesWithCategory)}
-        keyExtractor={(item) => item}
-        showsVerticalScrollIndicator={false}
-        renderItem={renderCategoryItem}
-      />
+        <Text style={styles.heading}>Create QR</Text>
+        <FlatList
+          data={Object.keys(QRTypesWithCategory)}
+          keyExtractor={(item) => item}
+          showsVerticalScrollIndicator={false}
+          renderItem={renderCategoryItem}
+        />
       </ScrollView>
       <TutorialModal isVisible={isTutorialVisible} onClose={onCloseTutorial} />
     </View>
@@ -203,11 +200,11 @@ const styles = StyleSheet.create({
     shadowRadius: calcWidth(1),
     elevation: calcWidth(1),
   },
-  clipBoardContainer:{
-    position:"absolute",
+  clipBoardContainer: {
+    position: "absolute",
     zIndex: 5,
-    bottom:calcHeight(5),
-    right:calcWidth(3),
+    bottom: calcHeight(5),
+    right: calcWidth(3),
   },
   copyButtonIOS: {
     height: calcHeight(8),
@@ -255,5 +252,5 @@ const styles = StyleSheet.create({
     fontSize: getFontSizeByWindowWidth(18),
     fontWeight: "bold",
     marginLeft: calcWidth(5),
-  }
+  },
 });

@@ -12,7 +12,6 @@ import Loader from "../../component/Loader";
 import PAGES from "../../constants/pages";
 import { SearchBar } from "react-native-elements";
 
-
 export default function GetContact({ navigation }) {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -62,7 +61,9 @@ export default function GetContact({ navigation }) {
       onPress={() => handleAddPeople(item)}
     >
       <Text style={styles.cardItemName}>
-        {item.firstName ? `${item.firstName} ${item.lastName || ""}` : "No name"}
+        {item.firstName
+          ? `${item.firstName} ${item.lastName || ""}`
+          : "No name"}
       </Text>
       <Text style={styles.cardItemDetail}>
         {item.phoneNumbers && item.phoneNumbers.length > 0
@@ -108,7 +109,6 @@ export default function GetContact({ navigation }) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import DialerNumber from "../../component/DialerNumber";
 import DialerNumbers from "../../constants/DialerNumbers";
 import {
@@ -55,7 +55,8 @@ export default function Phone({ navigation }) {
             });
           }}
         >
-          <FontAwesome name="phone" size={calcWidth(10)} color="white" />
+          {/* <FontAwesome name="phone" size={calcWidth(10)} color="white" /> */}
+          <AntDesign name="qrcode" size={calcWidth(10)} color="white" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setPhoneNumber((prev) => prev.slice(0, -1))}
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     marginVertical: calcWidth(10),
   },
   dialerButton: {
-    backgroundColor: "#38c45c",
+    backgroundColor: "blue",
     width: calcWidth(DIALER_SIZE),
     height: calcWidth(DIALER_SIZE),
     borderRadius: calcWidth(DIALER_SIZE / 2),

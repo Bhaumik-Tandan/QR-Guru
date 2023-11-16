@@ -41,7 +41,7 @@ const WifiProps = {
 
       return wifiString;
     },
-    getDisplayContent: ({ name }) => name
+    getDisplayContent: ({ name }) => name,
   },
 };
 
