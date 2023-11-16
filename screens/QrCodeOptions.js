@@ -23,6 +23,12 @@ import BannerAd from "../component/BannerAd";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
+const isURL = (text) => {
+  // Regular expression to check if the text is a valid URL
+  const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  return urlRegex.test(text);
+};
+
 export default function QRCodeOptions({ navigation }) {
   const [expandedCategories, setExpandedCategories] = useState(
     Object.keys(QRTypesWithCategory).reduce((acc, category) => {
@@ -139,10 +145,11 @@ export default function QRCodeOptions({ navigation }) {
           style={styles.copyButtonIOS}
           onPress={async ({ text }) => {
             pushEvent("Clipboard");
+            const url=isURL(text);
             navigation.navigate(PAGES.QR, {
-              type: "Text",
+              type: url?"Website":"Text",
               data: text,
-              displayData: text,
+              displayData: PAGES.QR,
             });
           }}
         />
