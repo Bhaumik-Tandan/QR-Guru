@@ -149,7 +149,7 @@ export default function QRCodeOptions({ navigation }) {
             navigation.navigate(PAGES.QR, {
               type: url?"Website":"Text",
               data: text,
-              displayData: PAGES.QR,
+              displayData: text,
             });
           }}
         />
