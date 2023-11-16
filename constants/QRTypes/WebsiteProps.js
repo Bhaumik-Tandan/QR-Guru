@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const WebsiteProps = {
   icon: (
-    <MaterialCommunityIcons name="web" size={calcWidth(10)} color="black" />
+    <MaterialCommunityIcons name="web" size={calcWidth(5)} color="black" />
   ),
   componentProps: {
     fields: [

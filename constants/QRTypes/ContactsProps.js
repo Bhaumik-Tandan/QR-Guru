@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const ContactsProps = {
-  icon: <AntDesign name="contacts" size={calcWidth(10)} color="#472731" />,
+  icon: <AntDesign name="contacts" size={calcWidth(5)} color="#472731" />,
   componentProps: {
     generateQRContent: ({ name, phone, email }) => {
       const vcard = `BEGIN:VCARD

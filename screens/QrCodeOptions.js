@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import PAGES from "../constants/pages";
 import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 import getClipBoard from "../helper/getClipBoard";
@@ -22,20 +21,15 @@ import { TUTORIAL } from "../constants/localStorageKeys";
 import { FontAwesome } from "@expo/vector-icons";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 const isURL = (text) => {
-  // Regular expression to check if the text is a valid URL
   const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
   return urlRegex.test(text);
 };
 
 export default function QRCodeOptions({ navigation }) {
-  const [expandedCategories, setExpandedCategories] = useState(
-    Object.keys(QRTypesWithCategory).reduce((acc, category) => {
-      acc[category] = true;
-      return acc;
-    }, {}),
-  );
+
   const [isTutorialVisible, setIsTutorialVisible] = useState(false);
   onCloseTutorial = () => {
     setIsTutorialVisible(false);
@@ -50,32 +44,12 @@ export default function QRCodeOptions({ navigation }) {
     });
   }, []);
 
-  const toggleCategory = (category) => {
-    setExpandedCategories({
-      ...expandedCategories,
-      [category]: !expandedCategories[category],
-    });
-  };
 
   const renderCategoryItem = ({ item }) => {
-    const isExpanded = expandedCategories[item];
 
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.categoryContainer}>
-          <TouchableOpacity
-            style={styles.categoryTitleContainer}
-            onPress={() => toggleCategory(item)}
-          >
-            <Text style={styles.categoryTitle}>{`${item} QR Codes`}</Text>
-            <MaterialIcons
-              name={isExpanded ? "keyboard-arrow-up" : "keyboard-arrow-down"}
-              size={24}
-              color="black"
-            />
-          </TouchableOpacity>
-        </View>
-        {isExpanded && renderSubCategories(item)}
+      <View style={styles.categoryContainer}>
+        {renderSubCategories(item)}
       </View>
     );
   };
@@ -84,29 +58,21 @@ export default function QRCodeOptions({ navigation }) {
     return (
       <FlatList
         data={Object.keys(QRTypesWithCategory[category])}
-        numColumns={3}
         keyExtractor={(subItem) => subItem}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: subItem }) => (
-          <View style={styles.item}>
-            <TouchableOpacity
-              style={styles.icon}
-              onPress={() => {
-                pushEvent(subItem);
-                const navigateTo =
-                  QRTypesWithCategory[category][subItem].navigateTo ||
-                  PAGES.GENERATOR_FORM;
-                navigation.navigate(navigateTo, { type: subItem });
-              }}
-            >
-              <View style={styles.iconContainer}>{QRTypes[subItem].icon}</View>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.icon}>
+            {QRTypes[subItem].icon}
             <Text style={styles.iconTitle}>{subItem}</Text>
-          </View>
+            <View style={styles.arrowContainer}>
+              <MaterialIcons name="keyboard-arrow-right" size={24} color="black" style={styles.arrow} />
+            </View>
+          </TouchableOpacity>
         )}
       />
     );
   };
+  
 
   const renderCopyButton = () => {
     if (Platform.OS === "android") {
@@ -158,7 +124,6 @@ export default function QRCodeOptions({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <BannerAd /> */}
       <View style={styles.clipBoardContainer}>{renderCopyButton()}</View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.heading}>Create QR</Text>
@@ -216,41 +181,38 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1,
-    padding: calcHeight(2),
     justifyContent: "center",
   },
   icon: {
     padding: calcHeight(2),
-    borderRadius: calcHeight(18),
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  iconContainer: {
-    alignItems: "center",
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 2,
+  elevation: 2,
+  flexDirection: "row",
+  borderBottomColor: "grey",
+  borderBottomWidth: calcWidth(0.1),
+  alignItems: "center", // Center the content horizontally
   },
   iconTitle: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: getFontSizeByWindowWidth(12),
-    textAlign: "center",
-    fontWeight: "bold",
-    marginTop: calcHeight(1),
+  fontSize: getFontSizeByWindowWidth(12),
+  textAlign: "left", // Align the text to the left
+  marginLeft: calcWidth(5), // Add left margin for spacing,
+  },
+  arrowContainer: {
+    flex: 1,
+    alignItems: "flex-end", // Align the arrow to the right
+  },
+  
+  // Update the styles for the arrow
+  arrow: {
+    marginLeft: "auto", // Use marginLeft: "auto" to push it to the right
   },
   categoryContainer: {
-    marginVertical: calcHeight(2),
-  },
-  categoryTitleContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  categoryTitle: {
-    fontSize: getFontSizeByWindowWidth(18),
-    fontWeight: "bold",
-    marginLeft: calcWidth(5),
+    margin: calcHeight(2),
+    borderRadius:calcWidth(2.5),
+    backgroundColor:"white"
   },
 });

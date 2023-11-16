@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 
 const EmailProps = {
-  icon: <Feather name="mail" size={calcWidth(10)} color="#000080" />,
+  icon: <Feather name="mail" size={calcWidth(5)} color="#000080" />,
   componentProps: {
     fields: [
       {

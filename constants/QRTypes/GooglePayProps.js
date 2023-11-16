@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const GooglePayProps = {
-  icon: <AntDesign name="google" size={calcWidth(10)} color="green" />,
+  icon: <AntDesign name="google" size={calcWidth(5)} color="green" />,
   componentProps: {
     fields: [
       {

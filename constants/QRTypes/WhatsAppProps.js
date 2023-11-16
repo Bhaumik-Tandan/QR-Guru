@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const WhatsappProps = {
-  icon: <FontAwesome5 name="whatsapp" size={calcWidth(10)} color="green" />,
+  icon: <FontAwesome5 name="whatsapp" size={calcWidth(5)} color="green" />,
   componentProps: {
     fields: [
       {

@@ -9,8 +9,8 @@ const UPIProps = {
     <Image
       source={upiLogo}
       style={{
-        width: calcWidth(10),
-        height: calcWidth(10),
+        width: calcWidth(5),
+        height: calcWidth(5),
       }}
     />
   ),

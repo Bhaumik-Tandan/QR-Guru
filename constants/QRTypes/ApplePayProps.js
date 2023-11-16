@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const ApplePayProps = {
-  icon: <AntDesign name="apple1" size={calcWidth(10)} color="#000" />,
+  icon: <AntDesign name="apple1" size={calcWidth(5)} color="#000" />,
   componentProps: {
     fields: [
       {

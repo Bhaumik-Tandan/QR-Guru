@@ -4,7 +4,7 @@ import { MaterialIcons, EvilIcons } from "@expo/vector-icons";
 import PAGES from "../pages";
 
 const LocationProps = {
-  icon: <EvilIcons name="location" size={calcWidth(10)} color="green" />,
+  icon: <EvilIcons name="location" size={calcWidth(5)} color="green" />,
   componentProps: {
     generateQRContent: ({ latitude, longitude, locationName }) => {
       let locationContent = `geo:${latitude},${longitude}`;

@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { Entypo } from "@expo/vector-icons";
 
 const SpotifyProps = {
-  icon: <Entypo name="spotify" size={calcWidth(10)} color="#1DB954" />,
+  icon: <Entypo name="spotify" size={calcWidth(5)} color="#1DB954" />,
   componentProps: {
     fields: [
       {

@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const AppleMusicProps = {
-  icon: <AntDesign name="apple1" size={calcWidth(10)} color="black" />,
+  icon: <AntDesign name="apple1" size={calcWidth(5)} color="black" />,
   componentProps: {
     fields: [
       {

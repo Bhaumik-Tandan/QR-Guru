@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const InstagramProps = {
-  icon: <AntDesign name="instagram" size={calcWidth(10)} color="#d62976" />,
+  icon: <AntDesign name="instagram" size={calcWidth(5)} color="#d62976" />,
   componentProps: {
     fields: [
       {

@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const FacebookProps = {
-  icon: <AntDesign name="facebook-square" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="facebook-square" size={calcWidth(5)} color="blue" />,
   componentProps: {
     fields: [
       {

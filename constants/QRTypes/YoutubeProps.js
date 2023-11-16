@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const YoutubeProps = {
-  icon: <AntDesign name="youtube" size={calcWidth(10)} color="red" />,
+  icon: <AntDesign name="youtube" size={calcWidth(5)} color="red" />,
   componentProps: {
     fields: [
       {

@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { Entypo } from "@expo/vector-icons";
 
 const PayPalProps = {
-  icon: <Entypo name="paypal" size={calcWidth(10)} color="#003087" />,
+  icon: <Entypo name="paypal" size={calcWidth(5)} color="#003087" />,
   componentProps: {
     fields: [
       {

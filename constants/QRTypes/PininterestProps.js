@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
 const PinterestProps = {
-  icon: <Entypo name="pinterest" size={calcWidth(10)} color="red" />,
+  icon: <Entypo name="pinterest" size={calcWidth(5)} color="red" />,
   componentProps: {
     fields: [
       {

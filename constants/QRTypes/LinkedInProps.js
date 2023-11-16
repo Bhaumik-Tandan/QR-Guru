@@ -3,7 +3,7 @@ import { calcWidth } from "../../helper/res";
 import { AntDesign } from "@expo/vector-icons";
 
 const LinkedInProps = {
-  icon: <AntDesign name="linkedin-square" size={calcWidth(10)} color="blue" />,
+  icon: <AntDesign name="linkedin-square" size={calcWidth(5)} color="blue" />,
   componentProps: {
     fields: [
       {
