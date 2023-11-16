@@ -105,6 +105,12 @@ export default function QRCodeOptions({ navigation }) {
         <ClipboardPasteButton
           style={styles.copyButtonIOS}
           onPress={async ({ text }) => {
+            if(text.length>1273)
+            {
+              alert("Text too large");
+              return;
+            }
+
             pushEvent("Clipboard");
             const url = isURL(text);
             navigation.navigate(PAGES.QR, {
@@ -113,7 +119,6 @@ export default function QRCodeOptions({ navigation }) {
               displayData: text,
             });
           }}
-          // disable Paste Test
           displayMode="iconOnly"
         />
       );
@@ -178,10 +183,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "blue",
     foregroundColor: "#000",
-  },
-  item: {
-    flex: 1,
-    justifyContent: "center",
   },
   icon: {
     padding: calcHeight(2),
