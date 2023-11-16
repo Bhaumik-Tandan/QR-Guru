@@ -152,6 +152,8 @@ export default function QRCodeOptions({ navigation }) {
               displayData: text,
             });
           }}
+          // disable Paste Test
+          displayMode="iconOnly"
         />
       );
     }
@@ -162,9 +164,12 @@ export default function QRCodeOptions({ navigation }) {
   return (
     <View style={styles.container}>
       {/* <BannerAd /> */}
+      <View style={styles.clipBoardContainer
+      }>
+        {renderCopyButton()}
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={styles.heading}>Create QR</Text>
-      {renderCopyButton()}
       <FlatList
         data={Object.keys(QRTypesWithCategory)}
         keyExtractor={(item) => item}
@@ -192,7 +197,6 @@ const styles = StyleSheet.create({
   copyButton: {
     backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
     borderRadius: COPY_BUTTON_BORDER_RADIUS,
-    marginTop: calcHeight(2),
     marginHorizontal: calcWidth(2),
     paddingVertical: calcHeight(2),
     flexDirection: "row",
@@ -200,7 +204,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: calcWidth(2),
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: calcHeight(0.5) },
     shadowOpacity: 0.1,
     shadowRadius: calcWidth(1),
     elevation: calcWidth(1),
@@ -209,12 +212,18 @@ const styles = StyleSheet.create({
     fontSize: getFontSizeByWindowWidth(15),
     fontWeight: "600",
   },
+  clipBoardContainer:{
+    position:"absolute",
+    zIndex: 5,
+    bottom:calcHeight(5),
+    right:calcWidth(3),
+  },
   copyButtonIOS: {
     height: calcHeight(8),
-    width: calcWidth(90),
+    width: calcWidth(15),
     marginHorizontal: calcWidth(2),
     alignSelf: "center",
-    backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
+    backgroundColor: "blue",
     foregroundColor: "#000",
   },
   arrowIcon: {
@@ -226,7 +235,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    backgroundColor: "#fff",
     padding: calcHeight(2),
     borderRadius: calcHeight(18),
     shadowColor: "#000",
@@ -259,5 +267,5 @@ const styles = StyleSheet.create({
     fontSize: getFontSizeByWindowWidth(18),
     fontWeight: "bold",
     marginLeft: calcWidth(5),
-  },
+  }
 });
