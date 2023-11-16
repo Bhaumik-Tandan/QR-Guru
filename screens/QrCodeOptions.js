@@ -19,7 +19,7 @@ import pushEvent from "../helper/pushEvent";
 import TutorialModal from "../component/Tutorial/TutorialModal";
 import { getLocalStoreData, setLocalStoreData } from "../helper/localStorage";
 import { TUTORIAL } from "../constants/localStorageKeys";
-import BannerAd from "../component/BannerAd";
+import { FontAwesome } from '@expo/vector-icons';
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -131,12 +131,7 @@ export default function QRCodeOptions({ navigation }) {
           }}
           style={styles.copyButton}
         >
-          <Text style={styles.copyButtonText}>Copy from the Clipboard</Text>
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={calcHeight(3)}
-            style={styles.arrowIcon}
-          />
+          <FontAwesome name="paste" size={24} color="black" />
         </TouchableOpacity>
       );
     } else if (Clipboard.isPasteButtonAvailable) {
@@ -208,10 +203,6 @@ const styles = StyleSheet.create({
     shadowRadius: calcWidth(1),
     elevation: calcWidth(1),
   },
-  copyButtonText: {
-    fontSize: getFontSizeByWindowWidth(15),
-    fontWeight: "600",
-  },
   clipBoardContainer:{
     position:"absolute",
     zIndex: 5,
@@ -225,9 +216,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "blue",
     foregroundColor: "#000",
-  },
-  arrowIcon: {
-    marginLeft: calcWidth(2),
   },
   item: {
     flex: 1,
