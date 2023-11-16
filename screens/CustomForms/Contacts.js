@@ -12,6 +12,7 @@ import Loader from "../../component/Loader";
 import PAGES from "../../constants/pages";
 import { SearchBar } from "react-native-elements";
 
+
 export default function GetContact({ navigation }) {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,16 +42,16 @@ export default function GetContact({ navigation }) {
   const handleAddPeople = (a) => {
     const { generateQRContent } = ContactsProps.componentProps;
     const content = generateQRContent({
-      name: `${a.firstName} ${a.lastName}`,
+      name: `${a.firstName || ""} ${a.lastName || ""}`,
       phone:
         a.phoneNumbers && a.phoneNumbers.length > 0
-          ? a.phoneNumbers[0].number
+          ? a.phoneNumbers[0].number || ""
           : "",
-      email: a.emails && a.emails.length > 0 ? a.emails[0].email : "",
+      email: a.emails && a.emails.length > 0 ? a.emails[0].email || "" : "",
     });
     navigation.navigate(PAGES.QR, {
       data: content,
-      displayData: `${a.firstName} ${a.lastName}`,
+      displayData: `${a.firstName || ""} ${a.lastName || ""}`,
       type: "Contact",
     });
   };
@@ -61,25 +62,31 @@ export default function GetContact({ navigation }) {
       onPress={() => handleAddPeople(item)}
     >
       <Text style={styles.cardItemName}>
-        {item.firstName ? `${item.firstName} ${item.lastName}` : "No name"}
+        {item.firstName ? `${item.firstName} ${item.lastName || ""}` : "No name"}
       </Text>
       <Text style={styles.cardItemDetail}>
         {item.phoneNumbers && item.phoneNumbers.length > 0
-          ? item.phoneNumbers[0].number
+          ? item.phoneNumbers[0].number || "No phone number"
           : "No phone number"}
       </Text>
       <Text style={styles.cardItemDetail}>
         {item.emails && item.emails.length > 0
-          ? item.emails[0].email
+          ? item.emails[0].email || "No email"
           : "No email"}
       </Text>
     </TouchableOpacity>
   );
 
   const filterContacts = () => {
-    return contacts.filter((contact) =>
-      contact.firstName.toLowerCase().includes(search.toLowerCase()),
-    );
+    return contacts.filter((contact) => {
+      if (search === "") {
+        return true;
+      }
+      if (contact.firstName) {
+        return contact.firstName.toLowerCase().includes(search.toLowerCase());
+      }
+      return false;
+    });
   };
 
   return (
@@ -101,6 +108,7 @@ export default function GetContact({ navigation }) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
