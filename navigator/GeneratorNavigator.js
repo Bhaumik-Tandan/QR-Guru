@@ -7,6 +7,9 @@ import Contacts from "../screens/CustomForms/Contacts";
 import LocationPicker from "../screens/CustomForms/Location";
 import QREdit from "../screens/QREdit";
 import Phone from "../screens/CustomForms/Phone";
+import { TouchableOpacity, Text } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { calcHeight } from "../helper/res";
 const Stack = createNativeStackNavigator();
 
 function GeneratorNavigator() {
@@ -31,7 +34,26 @@ function GeneratorNavigator() {
           headerShown: false,
         }}
       />
-      <Stack.Screen name={PAGES.PHONE} component={Phone} />
+      <Stack.Screen
+        name={PAGES.PHONE}
+        component={Phone}
+        options={({ navigation }) => ({
+          headerRight: () => (
+            <TouchableOpacity
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => {
+                navigation.navigate(PAGES.CONTACTS);
+              }}
+            >
+              <AntDesign name="contacts" size={calcHeight(3)} color="black" />
+              <Text>Contacts</Text>
+            </TouchableOpacity>
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 }

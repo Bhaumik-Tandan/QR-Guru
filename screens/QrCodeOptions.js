@@ -21,7 +21,7 @@ import { TUTORIAL } from "../constants/localStorageKeys";
 import { FontAwesome } from "@expo/vector-icons";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from "@expo/vector-icons";
 
 const isURL = (text) => {
   const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -29,7 +29,6 @@ const isURL = (text) => {
 };
 
 export default function QRCodeOptions({ navigation }) {
-
   const [isTutorialVisible, setIsTutorialVisible] = useState(false);
   onCloseTutorial = () => {
     setIsTutorialVisible(false);
@@ -44,16 +43,16 @@ export default function QRCodeOptions({ navigation }) {
     });
   }, []);
 
-
   const renderCategoryItem = ({ item }) => {
-
     return (
-      <View style={{
-        marginBottom:calcHeight(5)
-      }}>
+      <View
+        style={{
+          marginBottom: calcHeight(5),
+        }}
+      >
         <Text style={styles.categoryTitle}>{item}</Text>
-      <View style={styles.categoryContainer}>
-        {renderSubCategories(item)}
+        <View style={styles.categoryContainer}>
+          {renderSubCategories(item)}
         </View>
       </View>
     );
@@ -66,22 +65,31 @@ export default function QRCodeOptions({ navigation }) {
         keyExtractor={(subItem) => subItem}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: subItem }) => (
-          <TouchableOpacity style={styles.icon}  onPress={() =>{
-            pushEvent(subItem);
-            const navigateTo = QRTypesWithCategory[category][subItem].navigateTo || PAGES.GENERATOR_FORM;
-            navigation.navigate(navigateTo, { type: subItem })
-          }}>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              pushEvent(subItem);
+              const navigateTo =
+                QRTypesWithCategory[category][subItem].navigateTo ||
+                PAGES.GENERATOR_FORM;
+              navigation.navigate(navigateTo, { type: subItem });
+            }}
+          >
             {QRTypes[subItem].icon}
             <Text style={styles.iconTitle}>{subItem}</Text>
             <View style={styles.arrowContainer}>
-              <MaterialIcons name="keyboard-arrow-right" size={24} color="black" style={styles.arrow} />
+              <MaterialIcons
+                name="keyboard-arrow-right"
+                size={24}
+                color="black"
+                style={styles.arrow}
+              />
             </View>
           </TouchableOpacity>
         )}
       />
     );
   };
-  
 
   const renderCopyButton = () => {
     if (Platform.OS === "android") {
@@ -114,8 +122,7 @@ export default function QRCodeOptions({ navigation }) {
         <ClipboardPasteButton
           style={styles.copyButtonIOS}
           onPress={async ({ text }) => {
-            if(text.length>1273)
-            {
+            if (text.length > 1273) {
               alert("Text too large");
               return;
             }
@@ -195,39 +202,39 @@ const styles = StyleSheet.create({
   },
   icon: {
     padding: calcHeight(2),
-  shadowColor: "#000",
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 2,
-  elevation: 2,
-  flexDirection: "row",
-  borderBottomColor: "grey",
-  borderBottomWidth: calcWidth(0.1),
-  alignItems: "center", // Center the content horizontally
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
+    flexDirection: "row",
+    borderBottomColor: "grey",
+    borderBottomWidth: calcWidth(0.1),
+    alignItems: "center", // Center the content horizontally
   },
   iconTitle: {
     flex: 1,
-  fontSize: getFontSizeByWindowWidth(12),
-  textAlign: "left", // Align the text to the left
-  marginLeft: calcWidth(5), // Add left margin for spacing,
+    fontSize: getFontSizeByWindowWidth(12),
+    textAlign: "left", // Align the text to the left
+    marginLeft: calcWidth(5), // Add left margin for spacing,
   },
   arrowContainer: {
     flex: 1,
     alignItems: "flex-end", // Align the arrow to the right
   },
-  
+
   // Update the styles for the arrow
   arrow: {
     marginLeft: "auto", // Use marginLeft: "auto" to push it to the right
   },
   categoryContainer: {
     margin: calcHeight(2),
-    borderRadius:calcWidth(2.5),
-    backgroundColor:"white"
+    borderRadius: calcWidth(2.5),
+    backgroundColor: "white",
   },
   categoryTitle: {
     fontSize: getFontSizeByWindowWidth(20),
     fontWeight: "bold",
-    marginLeft:calcWidth(3)
+    marginLeft: calcWidth(3),
   },
 });

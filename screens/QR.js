@@ -22,14 +22,14 @@ export default function QRCodeGenerator({
 
   return (
     <View style={{ flex: 1 }}>
-    <QRDisplay
-      qrCodeContent={qrCodeContent}
-      {...qrProps}
-      displayData={displayData}
-      type={type}
-      id={id}
-    />
-    <BannerAd />
+      <QRDisplay
+        qrCodeContent={qrCodeContent}
+        {...qrProps}
+        displayData={displayData}
+        type={type}
+        id={id}
+      />
+      <BannerAd />
     </View>
   );
 }

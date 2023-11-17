@@ -1,5 +1,5 @@
 import React from "react";
-import {Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { calcWidth } from "../../helper/res";
 import PAGES from "../pages";
 

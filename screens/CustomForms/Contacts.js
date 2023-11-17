@@ -11,6 +11,7 @@ import ContactsProps from "../../constants/QRTypes/ContactsProps";
 import Loader from "../../component/Loader";
 import PAGES from "../../constants/pages";
 import { SearchBar } from "react-native-elements";
+import PhoneProps from "../../constants/QRTypes/PhoneProps";
 
 export default function GetContact({ navigation }) {
   const [contacts, setContacts] = useState([]);
@@ -40,14 +41,24 @@ export default function GetContact({ navigation }) {
 
   const handleAddPeople = (a) => {
     const { generateQRContent } = ContactsProps.componentProps;
+    const phone=a.phoneNumbers && a.phoneNumbers.length > 0
+    ? a.phoneNumbers[0].number || ""
+    : "";
     const content = generateQRContent({
       name: `${a.firstName || ""} ${a.lastName || ""}`,
-      phone:
-        a.phoneNumbers && a.phoneNumbers.length > 0
-          ? a.phoneNumbers[0].number || ""
-          : "",
+      phone,
       email: a.emails && a.emails.length > 0 ? a.emails[0].email || "" : "",
     });
+
+    const routes = navigation.getState()?.routes;
+    const prevRoute = routes[routes.length - 2];
+    if (prevRoute.name == PAGES.PHONE)
+      navigation.navigate(PAGES.QR, {
+        data: PhoneProps.componentProps.generateQRContent({phone}),
+        displayData: phone,
+        type: "Phone",
+      });
+      else
     navigation.navigate(PAGES.QR, {
       data: content,
       displayData: `${a.firstName || ""} ${a.lastName || ""}`,
