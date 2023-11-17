@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import QRDisplay from "../component/QRDisplay";
 import defaultQRProps from "../constants/defaultQRProps";
+import BannerAd from "../component/BannerAd";
 
 export default function QRCodeGenerator({
   route: {
@@ -20,6 +21,7 @@ export default function QRCodeGenerator({
   }, [data]);
 
   return (
+    <View style={{ flex: 1 }}>
     <QRDisplay
       qrCodeContent={qrCodeContent}
       {...qrProps}
@@ -27,5 +29,7 @@ export default function QRCodeGenerator({
       type={type}
       id={id}
     />
+    <BannerAd />
+    </View>
   );
 }
