@@ -2,7 +2,7 @@
   "expo": {
     "name": "QR Generator App",
     "slug": "qrguru",
-    "version": "1.7.7",
+    "version": "1.8.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.qrguru.qrguru",
-      "buildNumber": "22"
+      "buildNumber": "23"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +23,7 @@
         "backgroundColor": "#000"
       },
       "package": "com.qrguru.qrguru",
-      "versionCode": 22
+      "versionCode": 23
     },
     "web": {
       "favicon": "./assets/favicon.png"
