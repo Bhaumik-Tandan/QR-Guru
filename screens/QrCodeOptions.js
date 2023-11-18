@@ -29,7 +29,7 @@ import { TUTORIAL } from "../constants/localStorageKeys";
 import TutorialModal from "../component/Tutorial/TutorialModal";
 
 const PRIMARY_COLOR = "#3498db";
-const SECONDARY_COLOR = "#2ecc71";
+ 
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -217,9 +217,9 @@ const styles = StyleSheet.create({
   },
   clipBoardContainer: {
     position: "absolute",
-    zIndex: 5,
     bottom: calcHeight(5),
     right: calcWidth(3),
+    zIndex:30
   },
   icon: {
     flexDirection: "row",
