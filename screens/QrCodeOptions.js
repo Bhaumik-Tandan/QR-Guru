@@ -82,7 +82,9 @@ export default function QRCodeOptions({ navigation }) {
               navigation.navigate(navigateTo, { type: subItem });
             }}
           >
-            <View>{QRTypes[subItem].icon}</View>
+            <View style={{
+              padding: calcWidth(2)
+            }}>{QRTypes[subItem].icon}</View>
             <View
               style={{
                 flexDirection: "row",
@@ -94,6 +96,8 @@ export default function QRCodeOptions({ navigation }) {
                     ? "white"
                     : "grey",
                 borderBottomWidth: calcWidth(0.1),
+                paddingVertical: calcHeight(1),
+
               }}
             >
               <Text style={styles.iconTitle}>{subItem}</Text>
@@ -219,18 +223,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: calcHeight(5),
     right: calcWidth(3),
-    zIndex:30
+    zIndex:5
   },
   icon: {
     flexDirection: "row",
     alignItems: "center",
-    padding: calcWidth(2),
   },
   iconTitle: {
     flex: 1,
     fontSize: getFontSizeByWindowWidth(15),
-    textAlign: "left",
-    marginLeft: calcWidth(5),
     color: PRIMARY_COLOR,
   },
   arrowContainer: {
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
   categoryContainer: {
     margin: calcHeight(2),
     borderRadius: calcWidth(2.5),
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   categoryTitle: {
     fontSize: getFontSizeByWindowWidth(20),
