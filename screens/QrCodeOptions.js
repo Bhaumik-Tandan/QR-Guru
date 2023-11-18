@@ -7,21 +7,28 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { ClipboardPasteButton } from "expo-clipboard";
+import * as Clipboard from "expo-clipboard";
+
 import PAGES from "../constants/pages";
 import QRTypes, { QRTypesWithCategory } from "../constants/QRTypes";
 import getClipBoard from "../helper/getClipBoard";
-import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
-import { ClipboardPasteButton } from "expo-clipboard";
-import * as Clipboard from "expo-clipboard";
-import { Platform } from "react-native";
+import {
+  calcHeight,
+  calcWidth,
+  getFontSizeByWindowWidth,
+} from "../helper/res";
 import pushEvent from "../helper/pushEvent";
-import TutorialModal from "../component/Tutorial/TutorialModal";
-import { getLocalStoreData, setLocalStoreData } from "../helper/localStorage";
+import {
+  getLocalStoreData,
+  setLocalStoreData,
+} from "../helper/localStorage";
 import { TUTORIAL } from "../constants/localStorageKeys";
-import { FontAwesome } from "@expo/vector-icons";
+import TutorialModal from "../component/Tutorial/TutorialModal";
+
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
-import { MaterialIcons } from "@expo/vector-icons";
 
 const isURL = (text) => {
   const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -30,7 +37,8 @@ const isURL = (text) => {
 
 export default function QRCodeOptions({ navigation }) {
   const [isTutorialVisible, setIsTutorialVisible] = useState(false);
-  onCloseTutorial = () => {
+
+  const onCloseTutorial = () => {
     setIsTutorialVisible(false);
   };
 
@@ -64,7 +72,7 @@ export default function QRCodeOptions({ navigation }) {
         data={Object.keys(QRTypesWithCategory[category])}
         keyExtractor={(subItem) => subItem}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item: subItem }) => (
+        renderItem={({ item: subItem, index }) => (
           <TouchableOpacity
             style={styles.icon}
             onPress={() => {
@@ -75,15 +83,27 @@ export default function QRCodeOptions({ navigation }) {
               navigation.navigate(navigateTo, { type: subItem });
             }}
           >
-            {QRTypes[subItem].icon}
-            <Text style={styles.iconTitle}>{subItem}</Text>
-            <View style={styles.arrowContainer}>
-              <MaterialIcons
-                name="keyboard-arrow-right"
-                size={24}
-                color="black"
-                style={styles.arrow}
-              />
+            <View style={{
+              padding: calcWidth(2),
+            }}>
+              {QRTypes[subItem].icon}
+            </View>
+            <View style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              flex: 1,
+              borderBottomColor: index === Object.keys(QRTypesWithCategory[category]).length - 1 ? "white" : "grey",
+              borderBottomWidth: calcWidth(0.1),
+            }}>
+              <Text style={styles.iconTitle}>{subItem}</Text>
+              <View style={styles.arrowContainer}>
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  size={calcHeight(3)}
+                  color="black"
+                  style={styles.arrow}
+                />
+              </View>
             </View>
           </TouchableOpacity>
         )}
@@ -201,15 +221,7 @@ const styles = StyleSheet.create({
     foregroundColor: "#000",
   },
   icon: {
-    padding: calcHeight(2),
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
     flexDirection: "row",
-    borderBottomColor: "grey",
-    borderBottomWidth: calcWidth(0.1),
     alignItems: "center", // Center the content horizontally
   },
   iconTitle: {
@@ -222,8 +234,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "flex-end", // Align the arrow to the right
   },
-
-  // Update the styles for the arrow
   arrow: {
     marginLeft: "auto", // Use marginLeft: "auto" to push it to the right
   },

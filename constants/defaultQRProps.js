@@ -6,6 +6,7 @@ const defaultQRProps = {
   logoSize: calcWidth(15),
   outerEyeStyle: "square",
   innerEyeStyle: "square",
+  size:250
 };
 
 export default defaultQRProps;
