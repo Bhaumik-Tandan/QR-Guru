@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { ClipboardPasteButton } from "expo-clipboard";
@@ -27,6 +28,8 @@ import {
 import { TUTORIAL } from "../constants/localStorageKeys";
 import TutorialModal from "../component/Tutorial/TutorialModal";
 
+const PRIMARY_COLOR = "#3498db";
+const SECONDARY_COLOR = "#2ecc71";
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
 
@@ -53,11 +56,7 @@ export default function QRCodeOptions({ navigation }) {
 
   const renderCategoryItem = ({ item }) => {
     return (
-      <View
-        style={{
-          marginBottom: calcHeight(5),
-        }}
-      >
+      <View style={styles.categoryItemContainer}>
         <Text style={styles.categoryTitle}>{item}</Text>
         <View style={styles.categoryContainer}>
           {renderSubCategories(item)}
@@ -83,24 +82,26 @@ export default function QRCodeOptions({ navigation }) {
               navigation.navigate(navigateTo, { type: subItem });
             }}
           >
-            <View style={{
-              padding: calcWidth(2),
-            }}>
-              {QRTypes[subItem].icon}
-            </View>
-            <View style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              flex: 1,
-              borderBottomColor: index === Object.keys(QRTypesWithCategory[category]).length - 1 ? "white" : "grey",
-              borderBottomWidth: calcWidth(0.1),
-            }}>
+            <View>{QRTypes[subItem].icon}</View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                flex: 1,
+                borderBottomColor:
+                  index ===
+                  Object.keys(QRTypesWithCategory[category]).length - 1
+                    ? "white"
+                    : "grey",
+                borderBottomWidth: calcWidth(0.1),
+              }}
+            >
               <Text style={styles.iconTitle}>{subItem}</Text>
               <View style={styles.arrowContainer}>
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   size={calcHeight(3)}
-                  color="black"
+                  color="grey"
                   style={styles.arrow}
                 />
               </View>
@@ -183,14 +184,14 @@ export default function QRCodeOptions({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#ecf0f1",
   },
   heading: {
     fontSize: getFontSizeByWindowWidth(24),
     fontWeight: "bold",
     textAlign: "center",
     marginVertical: calcHeight(2),
+    color: PRIMARY_COLOR,
   },
   copyButton: {
     backgroundColor: COPY_BUTTON_BACKGROUND_COLOR,
@@ -206,36 +207,41 @@ const styles = StyleSheet.create({
     shadowRadius: calcWidth(1),
     elevation: calcWidth(1),
   },
+  copyButtonIOS: {
+    height: calcHeight(8),
+    width: calcWidth(15),
+    marginHorizontal: calcWidth(2),
+    alignSelf: "center",
+    backgroundColor: PRIMARY_COLOR,
+    foregroundColor: "#000",
+  },
   clipBoardContainer: {
     position: "absolute",
     zIndex: 5,
     bottom: calcHeight(5),
     right: calcWidth(3),
   },
-  copyButtonIOS: {
-    height: calcHeight(8),
-    width: calcWidth(15),
-    marginHorizontal: calcWidth(2),
-    alignSelf: "center",
-    backgroundColor: "blue",
-    foregroundColor: "#000",
-  },
   icon: {
     flexDirection: "row",
-    alignItems: "center", // Center the content horizontally
+    alignItems: "center",
+    padding: calcWidth(2),
   },
   iconTitle: {
     flex: 1,
-    fontSize: getFontSizeByWindowWidth(12),
-    textAlign: "left", // Align the text to the left
-    marginLeft: calcWidth(5), // Add left margin for spacing,
+    fontSize: getFontSizeByWindowWidth(15),
+    textAlign: "left",
+    marginLeft: calcWidth(5),
+    color: PRIMARY_COLOR,
   },
   arrowContainer: {
     flex: 1,
-    alignItems: "flex-end", // Align the arrow to the right
+    alignItems: "flex-end",
   },
   arrow: {
-    marginLeft: "auto", // Use marginLeft: "auto" to push it to the right
+    marginLeft: "auto",
+  },
+  categoryItemContainer: {
+    marginBottom: calcHeight(10),
   },
   categoryContainer: {
     margin: calcHeight(2),
@@ -246,5 +252,6 @@ const styles = StyleSheet.create({
     fontSize: getFontSizeByWindowWidth(20),
     fontWeight: "bold",
     marginLeft: calcWidth(3),
+    color: PRIMARY_COLOR,
   },
 });
