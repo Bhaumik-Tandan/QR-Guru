@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { View, Text } from "react-native";
 import QRDisplay from "../component/QRDisplay";
 import defaultQRProps from "../constants/defaultQRProps";
 import BannerAd from "../component/BannerAd";
+import Loader from "../component/Loader";
 
 export default function QRCodeGenerator({
   route: {
@@ -11,6 +12,7 @@ export default function QRCodeGenerator({
 }) {
   const [qrCodeContent, setQRCodeContent] = useState("");
   const [qrProps, setQRProps] = useState(defaultQRProps);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (propOverRide) setQRProps(propOverRide);
@@ -18,7 +20,14 @@ export default function QRCodeGenerator({
 
   useEffect(() => {
     setQRCodeContent(data);
+    setTimeout(() => { 
+      setLoading(false);
+    }, 0); 
   }, [data]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <View style={{ flex: 1 }}>
