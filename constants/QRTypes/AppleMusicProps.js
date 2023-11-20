@@ -1,9 +1,9 @@
 import React from "react";
 import { calcWidth } from "../../helper/res";
-import { AntDesign } from "@expo/vector-icons";
+import { Fontisto,AntDesign } from '@expo/vector-icons'; 
 
 const AppleMusicProps = {
-  icon: <AntDesign name="apple1" size={calcWidth(5)} color="black" />,
+  icon: <Fontisto name="applemusic" size={calcWidth(5)} color="#ff445c" />,
   componentProps: {
     fields: [
       {

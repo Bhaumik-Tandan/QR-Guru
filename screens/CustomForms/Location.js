@@ -30,7 +30,6 @@ export default function LocationPicker({ navigation }) {
   };
 
   const handleSubmit = () => {
-    console.log("handleSubmit");
     const { generateQRContent } = LocationProps.componentProps;
     const { latitude, longitude } = selectedLocation;
     Alert.alert(

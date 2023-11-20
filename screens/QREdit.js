@@ -66,7 +66,7 @@ export default function QREdit({
       </TouchableOpacity>
     </View> */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.syncButton}
           onPress={() => {
             setSyncOn((prev) => !prev);
@@ -78,7 +78,7 @@ export default function QREdit({
             color="red"
           />
           <Text>{syncOn ? "Sync Off" : "Sync On"}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity
           style={styles.button}

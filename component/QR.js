@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-import { QRCode } from "react-native-custom-qr-codes-expo";
-import { calcWidth } from "../helper/res";
+import { QRCode as BaseQRCode } from "react-native-custom-qr-codes-expo";
 import defaultQRProps from "../constants/defaultQRProps";
 
+class QRCode extends BaseQRCode {
+  componentDidMount() {
+    // console.log("ecerc");
+  }
+}
 class QR extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +14,7 @@ class QR extends Component {
       showQrCode: false,
     };
   }
+
 
   componentDidUpdate(prevProps) {
     if (
