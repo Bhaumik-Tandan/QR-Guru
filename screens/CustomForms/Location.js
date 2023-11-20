@@ -29,10 +29,10 @@ export default function LocationPicker({ navigation }) {
     setMapType(mapType === "standard" ? "hybrid" : "standard");
   };
 
-  const handleMapPress = (event) => {
-    const { latitude, longitude } = event.nativeEvent.coordinate;
-    setSelectedLocation({ latitude, longitude });
+  const handleSubmit = () => {
+    console.log("handleSubmit");
     const { generateQRContent } = LocationProps.componentProps;
+    const { latitude, longitude } = selectedLocation;
     Alert.alert(
       "Location",
       `Do you want to generate QR code for this location? \n Latitude: ${latitude} \n Longitude: ${longitude}`,
@@ -55,6 +55,12 @@ export default function LocationPicker({ navigation }) {
       ],
       { cancelable: false },
     );
+  }
+
+  const handleMapPress = (event) => {
+    const { latitude, longitude } = event.nativeEvent.coordinate;
+    setSelectedLocation({ latitude, longitude });
+    handleSubmit();
   };
 
   useEffect(() => {
