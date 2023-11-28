@@ -32,11 +32,8 @@ const PRIMARY_COLOR = "#000";
  
 const COPY_BUTTON_BACKGROUND_COLOR = "#F8F8F8";
 const COPY_BUTTON_BORDER_RADIUS = calcWidth(2);
+import textType from "../helper/textType";
 
-const isURL = (text) => {
-  const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-  return urlRegex.test(text);
-};
 
 export default function QRCodeOptions({ navigation }) {
   const [isTutorialVisible, setIsTutorialVisible] = useState(false);
@@ -153,9 +150,9 @@ export default function QRCodeOptions({ navigation }) {
             }
 
             pushEvent("Clipboard");
-            const url = isURL(text);
+            const type= textType(text);
             navigation.navigate(PAGES.QR, {
-              type: url ? "Website" : "Text",
+              type: type,
               data: text,
               displayData: text,
             });
