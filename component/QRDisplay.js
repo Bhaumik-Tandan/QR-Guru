@@ -6,13 +6,12 @@ import * as Sharing from "expo-sharing";
 import getLocalImage from "../helper/getLocalImage";
 import getQrDataFromImage from "../helper/getQrDataFromImage";
 import IconButtons from "../component/IconButtons";
-import saveFile from "../helper/saveFile";
 import { useNavigation } from "@react-navigation/native";
 import PAGES from "../constants/pages";
 import getUUID from "../helper/getUUID";
 import { useSavedQR } from "../SavedQRContext";
 import { calcHeight, getFontSizeByWindowWidth } from "../helper/res";
-
+import saveToGallery from "../helper/saveToGallery";
 const QRDisplay = ({ qrCodeContent, displayData, type, id, ...otherProps }) => {
   const [logo, setLogo] = useState(null);
   const { saveQr } = useSavedQR();
@@ -93,7 +92,7 @@ const QRDisplay = ({ qrCodeContent, displayData, type, id, ...otherProps }) => {
     if (qrCodeView.current) {
       try {
         const uri = await qrCodeView.current.capture();
-        saveFile(uri, "QRCode.png", "image/png");
+        saveToGallery(uri);
       } catch (error) {
         console.error("Error capturing QR code:", error);
       }

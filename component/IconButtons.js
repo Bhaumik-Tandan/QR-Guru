@@ -30,7 +30,6 @@ const IconButtons = ({
         onPress={selectImage}
       />
 
-      {Platform.OS === "android" && (
         <IconItem
           icon={
             <Ionicons name="ios-download" size={calcWidth(10)} color="black" />
@@ -38,7 +37,6 @@ const IconButtons = ({
           text="Download"
           onPress={downloadQR}
         />
-      )}
 
       <IconItem
         icon={<AntDesign name="save" size={calcWidth(10)} color="black" />}
