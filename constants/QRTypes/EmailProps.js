@@ -16,9 +16,7 @@ const EmailProps = {
         name: "subject",
         placeholder: "Subject (optional)",
         type: "text",
-        icon: (
-          <MaterialIcons name="subject" size={calcWidth(8)} color="black" />
-        ),
+        icon: <MaterialIcons name="subject" size={calcWidth(8)} color="black" />,
       },
       {
         name: "content",
@@ -43,9 +41,12 @@ const EmailProps = {
 
       return qrContent;
     },
-    getDisplayContent: ({ phone, message }) => {
+    getDisplayContent: ({ email, subject, content }) => {
       // Define a maximum length for the message
       const maxMessageLength = 50; // You can adjust this based on your requirements
+
+      // Combine email, subject, and content into a message
+      const message = `${email} - ${subject || ""} - ${content || ""}`;
 
       // Remove line breaks from the message
       const cleanedMessage = message.replace(/\n/g, " ");
@@ -56,8 +57,8 @@ const EmailProps = {
           ? `${cleanedMessage.substring(0, maxMessageLength)}...`
           : cleanedMessage;
 
-      // Your logic here to retrieve or generate display content based on phone and truncated message
-      const displayContent = `Phone: ${phone} - Message: ${truncatedMessage}`;
+      // Your logic here to retrieve or generate display content based on the truncated message
+      const displayContent = `Message: ${truncatedMessage}`;
 
       // You can return the display content or perform other operations
       return displayContent;
