@@ -7,7 +7,7 @@ function BannerAdComponent() {
   const adUnitId =
     Platform.OS === "android"
       ? "ca-app-pub-5499479031752321/9214153841"
-      : "ca-app-pub-6942418079218233/9526576622";
+      : "ca-app-pub-5499479031752321/7901243614";
   const {
     BannerAd,
     BannerAdSize,
