@@ -80,7 +80,7 @@ export default function QRCodeOptions({ navigation }) {
             }}
           >
             <View style={{
-              padding: calcWidth(2)
+              padding: calcWidth(4)
             }}>{QRTypes[subItem].icon}</View>
             <View
               style={{
@@ -91,7 +91,7 @@ export default function QRCodeOptions({ navigation }) {
                   index ===
                   Object.keys(QRTypesWithCategory[category]).length - 1
                     ? "white"
-                    : "grey",
+                    : "#D3D3D3",
                 borderBottomWidth: calcWidth(0.1),
                 paddingVertical: calcHeight(1),
 
@@ -102,7 +102,7 @@ export default function QRCodeOptions({ navigation }) {
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   size={calcHeight(3)}
-                  color="grey"
+                  color="#D3D3D3"
                   style={styles.arrow}
                 />
               </View>
@@ -234,12 +234,13 @@ const styles = StyleSheet.create({
   arrowContainer: {
     flex: 1,
     alignItems: "flex-end",
+    marginRight: calcWidth(3),
   },
   arrow: {
     marginLeft: "auto",
   },
   categoryItemContainer: {
-    marginBottom: calcHeight(10),
+    marginBottom: calcHeight(2),
   },
   categoryContainer: {
     margin: calcHeight(2),
