@@ -21,7 +21,7 @@ import AppleMusicProps from "./AppleMusicProps";
 import LinkedInProps from "./LinkedInProps";
 import PinterestProps from "./PininterestProps";
 export const QRTypesWithCategory = {
-  Basic: {
+  "": {
     Text: TextBoxProps,
     Contacts: ContactsProps,
     Phone: PhoneProps,

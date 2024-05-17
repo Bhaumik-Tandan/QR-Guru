@@ -168,8 +168,14 @@ export default function QRCodeOptions({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.clipBoardContainer}>{renderCopyButton()}</View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.heading}>Create QR</Text>
+      <ScrollView showsVerticalScrollIndicator={false} style={{
+        marginTop: calcHeight(5)
+      }}>
+        <Text style={{fontSize: getFontSizeByWindowWidth(25),
+    fontWeight: "bold",
+    marginLeft: calcWidth(4),
+    marginBottom: calcHeight(-2),
+    color: PRIMARY_COLOR}}>Create Qr</Text>
         <FlatList
           data={Object.keys(QRTypesWithCategory)}
           keyExtractor={(item) => item}
@@ -248,9 +254,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   categoryTitle: {
-    fontSize: getFontSizeByWindowWidth(20),
+    fontSize: getFontSizeByWindowWidth(17),
     fontWeight: "bold",
-    marginLeft: calcWidth(3),
+    marginLeft: calcWidth(5),
     color: PRIMARY_COLOR,
   },
 });
