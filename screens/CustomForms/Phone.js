@@ -39,7 +39,7 @@ export default function Phone({ navigation }) {
         keyExtractor={(item) => item.text}
         numColumns={3}
         columnWrapperStyle={styles.numbersWrapper}
-        style={styles.numbers}
+        style={{ marginHorizontal: calcWidth(10) }}
       />
 
       <View style={styles.options}>
