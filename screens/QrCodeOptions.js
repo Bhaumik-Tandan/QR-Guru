@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef,useCallback } from "react";
 import {
   View,
   Text,
@@ -37,6 +37,7 @@ import textType from "../helper/textType";
 
 export default function QRCodeOptions({ navigation }) {
   const [isTutorialVisible, setIsTutorialVisible] = useState(false);
+  const [headingVisible, setHeadingVisible] = useState(false);
 
   const onCloseTutorial = () => {
     setIsTutorialVisible(false);
@@ -165,12 +166,35 @@ export default function QRCodeOptions({ navigation }) {
     return null;
   };
 
+
+  const handleScroll = useCallback((event) => {
+    const { y } = event.nativeEvent.contentOffset;
+    
+    if (y > calcHeight(4)) {
+      setHeadingVisible(true);
+    } else {
+      setHeadingVisible(false);
+    }
+  }, []);
+
+
   return (
     <View style={styles.container}>
       <View style={styles.clipBoardContainer}>{renderCopyButton()}</View>
-      <ScrollView showsVerticalScrollIndicator={false} style={{
-        marginTop: calcHeight(5)
+      <View style={{
+        justifyContent: "center",
+        alignItems: "center",
+        height: calcHeight(5),
       }}>
+        <Text style={{
+          fontSize: getFontSizeByWindowWidth(15),
+          fontWeight: "bold",
+        
+        }}> {headingVisible && 'Create QR'}</Text>
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}  onScroll={handleScroll}
+      scrollEventThrottle={16}
+      >
         <Text style={{fontSize: getFontSizeByWindowWidth(25),
     fontWeight: "bold",
     marginLeft: calcWidth(4),
