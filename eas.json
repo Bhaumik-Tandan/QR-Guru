@@ -67,6 +67,9 @@
     "production": {
       "distribution": "store",
       "releaseChannel": "main",
+      "env": {
+        "ENV": "production"
+      }
     }
   },
   "submit": {
