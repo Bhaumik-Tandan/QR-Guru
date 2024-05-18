@@ -199,7 +199,7 @@ export default function QRCodeOptions({ navigation }) {
     fontWeight: "bold",
     marginLeft: calcWidth(4),
     marginBottom: calcHeight(-2),
-    color: PRIMARY_COLOR}}>Create Qr</Text>
+    color: PRIMARY_COLOR}}>Create QR</Text>
         <FlatList
           data={Object.keys(QRTypesWithCategory)}
           keyExtractor={(item) => item}
