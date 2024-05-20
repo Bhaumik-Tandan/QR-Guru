@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { QRCode as BaseQRCode } from "react-native-custom-qr-codes-expo";
 import defaultQRProps from "../constants/defaultQRProps";
+import QRCod from 'react-native-qrcode-svg';
 
-class QRCode extends BaseQRCode {
-  componentDidMount() {
-    // console.log("ecerc");
-  }
-}
+
 class QR extends Component {
   constructor(props) {
     super(props);
@@ -44,9 +40,8 @@ class QR extends Component {
     const { showQrCode } = this.state;
 
     const qrProps = {
-      content: qrCodeContent,
+      value: qrCodeContent,
       color: color || defaultQRProps.color,
-      codeStyle: codeStyle || defaultQRProps.codeStyle,
       backgroundColor: backgroundColor || defaultQRProps.backgroundColor,
       logoSize: logoSize || defaultQRProps.logoSize,
     };
@@ -56,7 +51,11 @@ class QR extends Component {
     }
 
     return (
-      qrCodeContent && showQrCode && <QRCode {...qrProps} {...otherProps} />
+      qrCodeContent && showQrCode &&(
+        <>
+         <QRCod {...qrProps} {...otherProps} />
+         </>
+        )
     );
   }
 }
