@@ -2,7 +2,7 @@
   "expo": {
     "name": "QR Express",
     "slug": "qrguru",
-    "version": "1.8.7",
+    "version": "1.8.8",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.qrguru.qrguru",
-      "buildNumber": "30"
+      "buildNumber": "31"
     },
     "android": {
       "adaptiveIcon": {
