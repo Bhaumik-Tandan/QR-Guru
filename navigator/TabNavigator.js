@@ -1,13 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import GeneratorNavigator from "./GeneratorNavigator";
 import QRCodeScanner from "../screens/QRCodeScanner";
 import PAGES from "../constants/pages";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { calcHeight, calcWidth, getFontSizeByWindowWidth } from "../helper/res";
 import SavedQrCodes from "../screens/SavedQrCodes";
+
 const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
@@ -17,11 +17,11 @@ function TabNavigator() {
         screenOptions={{
           headerShown: false,
           tabBarLabelStyle: {
-            fontSize: getFontSizeByWindowWidth(12), // Adjust the font size to your preference
+            fontSize: getFontSizeByWindowWidth(12),
             fontWeight: "bold",
           },
           tabBarStyle: {
-            height: calcHeight(10), // Adjust the height to your preference
+            height: calcHeight(10),
           },
         }}
       >
@@ -30,7 +30,7 @@ function TabNavigator() {
           component={GeneratorNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="qrcode" size={size + calcHeight(1)} color={color} />
+              <FontAwesome name="qrcode" size={size + calcHeight(1)} color={color} />
             ),
             tabBarLabel: "Create",
           }}
@@ -54,7 +54,7 @@ function TabNavigator() {
           component={SavedQrCodes}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="bookmark" size={size + calcHeight(1)} color={color} />
+              <FontAwesome name="bookmark" size={size + calcHeight(1)} color={color} />
             ),
             tabBarLabel: "Saved",
           }}
